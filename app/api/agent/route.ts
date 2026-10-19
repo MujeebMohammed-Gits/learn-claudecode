@@ -1,10 +1,8 @@
-﻿// Agent Session API Routes for Learn ClaudeCode Course
+// Agent Session API Routes for Learn ClaudeCode Course
 // API routes for managing ClaudeCode agent sessions
 // Supabase integration for user progress tracking
 
-import { NextResponse } from '@anthropic-ai/framework';
-
-export async function GET(request: Request): Promise<NextResponse> {
+export async function GET(request: Request): Promise<Response> {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
   const sessionId = searchParams.get('sessionId');
@@ -14,7 +12,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     case 'create':
       // Create new agent session
       const newSession = {
-        id: `session-${Date.now()}-${Math.floor(Math.random(1000, 9999))}`,
+        id: `session-${Date.now()}-${Math.floor(Math.random() * 9000) + 1000}`,
         userId: userId || 'anonymous',
         status: 'active' as 'active' | 'completed' | 'failed',
         createdAt: new Date(),
@@ -29,7 +27,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       };
       return new Response(
         JSON.stringify({ success: true, session: newSession }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -45,7 +43,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       }
       return new Response(
         JSON.stringify({ success: true, message: 'Session updated' }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -85,7 +83,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       ];
       return new Response(
         JSON.stringify({ success: true, sessions: mockSessions }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -99,7 +97,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   }
 }
 
-export async function POST(request: Request): Promise<NextResponse> {
+export async function POST(request: Request): Promise<Response> {
   const body = await request.json();
   const { action, sessionId, progress, command } = body;
 
@@ -107,12 +105,12 @@ export async function POST(request: Request): Promise<NextResponse> {
     case 'update-progress':
       // Update agent session progress
       return new Response(
-        JSON.stringify({ 
-          success: true, 
+        JSON.stringify({
+          success: true,
           message: `Progress updated to ${progress}%`,
-          sessionId 
+          sessionId
         }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -121,7 +119,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     case 'create-session':
       // Create new agent session
       const session = {
-        id: `session-${Date.now()}-${Math.floor(Math.random(1000, 9999))}`,
+        id: `session-${Date.now()}-${Math.floor(Math.random() * 9000) + 1000}`,
         userId: body.userId || 'anonymous',
         status: 'active',
         createdAt: new Date(),
@@ -136,7 +134,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       };
       return new Response(
         JSON.stringify({ success: true, session }),
-        { 
+        {
           status: 201,
           headers: { 'Content-Type': 'application/json' }
         }

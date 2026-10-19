@@ -1,10 +1,8 @@
-﻿// MCP API Routes for Learn ClaudeCode Course
+// MCP API Routes for Learn ClaudeCode Course
 // Model Context Protocol endpoints for agent capability exposure
 // Production-ready patterns for third-party service integration
 
-import { NextResponse } from '@anthropic-ai/framework';
-
-export async function GET(request: Request): Promise<NextResponse> {
+export async function GET(request: Request): Promise<Response> {
   const { searchParams } = new URL(request.url);
   const endpoint = searchParams.get('endpoint');
   const capability = searchParams.get('capability');
@@ -49,7 +47,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       ];
       return new Response(
         JSON.stringify({ success: true, capabilities }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -58,39 +56,41 @@ export async function GET(request: Request): Promise<NextResponse> {
     case 'execute':
       // Execute an MCP capability
       const capabilityId = capability || 'agent-creation';
-      
+
       // Mock execution based on capability
-      let result = { success: false, data: null, requestId: `req-${Date.now()}` };
-      
+      let result: {
+        success: boolean;
+        data: {
+          agent?: { name: string; version: string };
+          message?: string;
+        } | { result?: string; output?: string } | { plugin?: { name: string; version: string }; message?: string } | { error: string };
+        requestId: string;
+        executionTimeMs: number;
+      } = { success: false, data: null as any, requestId: `req-${Date.now()}`, executionTimeMs: 0 };
+
       switch (capabilityId) {
         case 'agent-creation':
           result = {
             success: true,
-            data: {
-              agent: { name: 'new-agent', version: '1.0.0' },
-              message: 'Agent created successfully via MCP',
-            },
+            data: { agent: { name: 'new-agent', version: '1.0.0' }, message: 'Agent created successfully via MCP' },
             executionTimeMs: 1200,
+            requestId: `req-${Date.now()}`,
           };
           break;
         case 'skill-execution':
           result = {
             success: true,
-            data: {
-              result: 'Skill executed successfully',
-              output: 'Skill output data',
-            },
+            data: { result: 'Skill executed successfully', output: 'Skill output data' },
             executionTimeMs: 500,
+            requestId: `req-${Date.now()}`,
           };
           break;
         case 'plugin-registration':
           result = {
             success: true,
-            data: {
-              plugin: { name: 'new-plugin', version: '1.0.0' },
-              message: 'Plugin registered successfully',
-            },
+            data: { plugin: { name: 'new-plugin', version: '1.0.0' }, message: 'Plugin registered successfully' },
             executionTimeMs: 800,
+            requestId: `req-${Date.now()}`,
           };
           break;
         default:
@@ -98,12 +98,13 @@ export async function GET(request: Request): Promise<NextResponse> {
             success: false,
             data: { error: 'Unknown capability' },
             executionTimeMs: 0,
+            requestId: `req-${Date.now()}`,
           };
       }
-      
+
       return new Response(
         JSON.stringify(result),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -112,13 +113,13 @@ export async function GET(request: Request): Promise<NextResponse> {
     case 'auth':
       // Check MCP authentication status
       return new Response(
-        JSON.stringify({ 
-          success: true, 
-          authenticated: true, 
+        JSON.stringify({
+          success: true,
+          authenticated: true,
           method: 'OIDC',
-          scope: 'agent-capabilities' 
+          scope: 'agent-capabilities'
         }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -132,7 +133,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   }
 }
 
-export async function POST(request: Request): Promise<NextResponse> {
+export async function POST(request: Request): Promise<Response> {
   const body = await request.json();
   const { action, capability, parameters, requestId } = body;
 
@@ -140,13 +141,13 @@ export async function POST(request: Request): Promise<NextResponse> {
     case 'execute':
       // Execute MCP capability with parameters
       return new Response(
-        JSON.stringify({ 
-          success: true, 
+        JSON.stringify({
+          success: true,
           data: { result: `Capability ${capability} executed` },
           requestId: requestId || `req-${Date.now()}`,
           executionTimeMs: 200,
         }),
-        { 
+        {
           status: 200,
           headers: { 'Content-Type': 'application/json' }
         }
@@ -155,12 +156,12 @@ export async function POST(request: Request): Promise<NextResponse> {
     case 'register':
       // Register new MCP capability/endpoint
       return new Response(
-        JSON.stringify({ 
-          success: true, 
+        JSON.stringify({
+          success: true,
           message: `MCP capability ${capability} registered`,
           endpoint: `/mcp/${capability}`,
         }),
-        { 
+        {
           status: 201,
           headers: { 'Content-Type': 'application/json' }
         }

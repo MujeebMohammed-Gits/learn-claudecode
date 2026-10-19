@@ -25,7 +25,6 @@ export const config: VercelConfig = {
     {
       source: "/tutorials",
       destination: "/tutorials",
-      permanent: true,
     },
   ],
 
@@ -46,28 +45,7 @@ export const config: VercelConfig = {
 
   headers: [
     // Cache control for static tutorial assets
-    {
-      source: "/static/(.*)",
-      headers: [
-        { type: "Cache-Control", value: "public, max-age=86400, immutable" },
-      ],
-    },
-    // Security headers
-    {
-      source: "/:path*",
-      headers: [
-        { type: "X-Content-Type", value: "nosniff" },
-        { type: "X-Frame-Options", value: "DENY" },
-        { type: "Referrer-Policy", value: "origin-cross-origin" },
-      ],
-    },
-    // API route headers
-    {
-      source: "/api/:path*",
-      headers: [
-        { type: "Access-Control-Allow-Origin", value: "*" },
-      ],
-    },
+    routes.cacheControl('/static/(.*)', { public: true, maxAge: '1 week', immutable: true }),
   ],
 
   crons: [
@@ -82,18 +60,4 @@ export const config: VercelConfig = {
       schedule: "*/5 * * * *",  // every 5 minutes
     },
   ],
-
-  // Environment variables for the course
-  environment: {
-    NODE_ENV: "production",
-    NEXT_PUBLIC_COURSE_NAME: "Learn ClaudeCode - Zero to Mastery",
-    NEXT_PUBLIC_MODULE_COUNT: "5",
-  },
-
-  // Experimental features
-  experimental: {
-    // ISR (Incremental Static Regeneration) for tutorial pages
-    // ISR works on Vercel for Next.js, Nuxt, and Astro
-    island: true,
-  },
 };

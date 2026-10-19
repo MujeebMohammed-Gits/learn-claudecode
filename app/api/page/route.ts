@@ -1,18 +1,18 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug?: string }> }
 ) {
-  const { slug } = params;
-  
+  const slug = (await params).slug || `home`;
+
   // In a real implementation, this would query Supabase by slug
   const page = {
-    slug: slug,
-    title: `Page: ${slug}`,
-    description: `The ${slug} page content`,
+    slug: slug || 'home',
+    title: `Page: ${slug || 'home'}`,
+    description: `The ${slug || 'home'} page content`,
     isPublished: true,
   };
-  
+
   return NextResponse.json(page);
 }

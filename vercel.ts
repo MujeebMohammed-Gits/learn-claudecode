@@ -57,7 +57,7 @@ export const config: VercelConfig = {
     // Progress tracking sync
     {
       path: "/api/user/progress-sync",
-      schedule: "*/5 * * * *",  // every 5 minutes
+      schedule: "0 0 * * *",  // daily at midnight
     },
   ],
 };

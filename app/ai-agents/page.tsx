@@ -1,82 +1,164 @@
-import Image from "next/image";
+import { Suspense } from "react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  LuShieldCheck,
+  LuZap,
+  LuRocket,
+  LuSettings,
+  LuGitMerge,
+  LuDatabase,
+} from "lucide-react";
 
 export default function AIAgents() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-            Building AI Agents
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Learn how to create production-ready AI Agents with ClaudeCode. This module covers
-            agent architecture, design patterns, hook integration, and loop patterns for
-            building autonomous workflows that scale.
-          </p>
-        </div>
+    <Suspense fallback>
+      <div className="min-h-screen bg-background p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* AI Agents Fundamentals */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuShieldCheck className="h-6 w-6 mr-3" />
+                  AI Agents Fundamentals
+                </CardTitle>
+                <CardDescription>
+                  Learn the basics of creating and managing AI agents for specific tasks.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Build intelligent agents that automate projects and workflows using
+                  Claude Code's agent capabilities.
+                </p>
+              </CardContent>
+            </Card>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {/* Agent Architecture */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.94 14.34l1.83-1.83a5.5 5.5 0 0 1 7.78 0l1.83 1.83a4.5 4.5 0 0 1-6.36 6.36l-1.41-1.41a2.12 2.12 0 0 1 0-3l1.72-1.72a5.5 5.5 0 0 1 7.78 0l1.83 1.83c.78.41 1.53.41 2.28 0l1.98-1.98a4.5 4.5 0 0 1-6.36-6.36l-1.41 1.41a2.12 2.12 0 0 1 0 3l1.72 1.72z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Agent Architecture</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Design robust agent architectures with proper state management, task delegation,
-              and orchestration patterns. Learn the core components that make agents reliable
-              and maintainable in production environments.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
+            {/* Sub-Agent Patterns */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuZap className="h-6 w-6 mr-3" />
+                  Sub-Agent Patterns
+                </CardTitle>
+                <CardDescription>
+                  Design hierarchical agent structures with parent-child relationships
+                  and specialized task delegation.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Create sub-agents that handle specific domains while coordinating
+                  through a central orchestrator pattern.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Plugin Architecture */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuRocket className="h-6 w-6 mr-3" />
+                  Plugin Architecture
+                </CardTitle>
+                <CardDescription>
+                  Build extensible plugin systems that enhance Claude Code capabilities.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Develop custom plugins and skills that integrate with the Claude Code
+                  ecosystem to extend functionality.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Advanced Hooks */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuSettings className="h-6 w-6 mr-3" />
+                  Advanced Hooks
+                </CardTitle>
+                <CardDescription>
+                  Master custom hooks for state management, side effects, and composition.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Learn hook patterns that enable reusable logic across agents and
+                  applications, including effect hooks and state synchronization.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* MCP Server Integration */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuGitMerge className="h-6 w-6 mr-3" />
+                  MCP Server Integration
+                </CardTitle>
+                <CardDescription>
+                  Configure Model Context Protocol servers for agent communication.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Set up MCP servers enabling inter-agent communication, shared context,
+                  and distributed task processing across multiple Claude Code instances.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Skill Development */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuDatabase className="h-6 w-6 mr-3" />
+                  Skill Development
+                </CardTitle>
+                <CardDescription>
+                  Create reusable skills and capabilities for agent composition.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Design modular skills that can be composed, shared, and reused across
+                  multiple agent types and projects.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Agent Development */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-              <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Agent Development</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Step-by-step: Build your first ClaudeCode agent from scratch. Covering agent
-              initialization, command integration, response handling, and error management
-              for production-ready code.
+          {/* Hero section */}
+          <div className="mt-12 md:mt-0 lg:col-span-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Module 2: AI Agents
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              Creating and managing AI agents for specific tasks. Learn how to build
+              intelligent agents that automate projects and workflows.
             </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
-          </div>
-
-          {/* Hooks & Loops */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8.1-2 10.7-7.6L21.7 12 8 3.7 2 12l4.9 8.2zm13.7-3.2L22 7l-5 4.87L12 17.77 7.74 13 2 7l5-4.87L12.7 2z" />
-              </svg>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                Start Lesson
+              </button>
+              <button className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
+                View Agent Patterns
+              </button>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Hooks & Loops</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Implement Hooks for event-driven agent behavior and Loops for continuous
-              workflow execution. Learn patterns for interruptible loops, timeout handling,
-              and graceful shutdown sequences.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-accent text-accent-foreground hover:bg-accent/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <a href="/projects" className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-4 text-center transition-colors">
-            Start Project Tutorials →
-          </a>
         </div>
       </div>
-    </section>
+    </Suspense>
   );
 }

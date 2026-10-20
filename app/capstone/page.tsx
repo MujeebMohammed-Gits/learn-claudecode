@@ -1,82 +1,175 @@
-import Image from "next/image";
+import { Suspense } from "react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  LuZap,
+  LuBookOpen,
+  LuSettings,
+  LuShieldCheck,
+  LuRocket,
+  LuPalette,
+} from "lucide-react";
 
 export default function CapstoneProject() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-            Capstone Project — From Idea to Deployment
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Bring your idea to life with ClaudeCode. This final module guides you through
-            the complete journey from Analysis stage using plan mode, through development,
-            deployment to Vercel, and post-production monitoring and iteration.
-          </p>
-        </div>
+    <Suspense fallback>
+      <div className="min-h-screen bg-background p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Project Definition */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuBookOpen className="h-6 w-6 mr-3" />
+                  Project Definition
+                </CardTitle>
+                <CardDescription>
+                  Define your capstone project scope, goals, and success criteria.
+                  Identify the problem space, target users, and technical requirements.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Start with a clear project brief. Define what success looks like,
+                  the key features required, and the metrics that matter. This
+                  foundation guides all subsequent development decisions.
+                </p>
+              </CardContent>
+            </Card>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {/* Analysis Stage */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.94 14.34l1.83-1.83a5.5 5.5 0 0 1 7.78 0l1.83 1.83a4.5 4.5 0 0 1-6.36 6.36l-1.41-1.41a2.12 2.12 0 0 1 0-3l1.72-1.72a5.5 5.5 0 0 1 7.78 0l1.83 1.83c.78.41 1.53.41 2.28 0l1.98-1.98a4.5 4.5 0 0 1-6.36-6.36l-1.41 1.41a2.12 2.12 0 0 1 0 3l1.72 1.72z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Analysis Stage</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Define your project vision, requirements, and success criteria using plan mode.
-              Learn how to break down ideas into concrete tasks, estimate effort, and
-              create a roadmap that aligns with your goals and resources.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
+            {/* Agent Architecture */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuZap className="h-6 w-6 mr-3" />
+                  Agent Architecture
+                </CardTitle>
+                <CardDescription>
+                  Design the complete agent hierarchy for your capstone project,
+                  including primary agents, sub-agents, and skill composition.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Blueprint your agent ecosystem: the main orchestrator, specialized
+                  sub-agents for each domain, and the skills each agent carries.
+                  Document agent prompts, tool access, and hand-off protocols.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Plugin Development */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuRocket className="h-6 w-6 mr-3" />
+                  Plugin Development
+                </CardTitle>
+                <CardDescription>
+                  Build custom plugins and skills that extend Claude Code capabilities
+                  for your project's specific needs.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Develop reusable plugins: skill packages, MCP server configurations,
+                  and custom hook libraries. Publish to the skill registry for
+                  version control and team sharing.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Deployment Pipeline */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuSettings className="h-6 w-6 mr-3" />
+                  Deployment Pipeline
+                </CardTitle>
+                <CardDescription>
+                  Set up Vercel deployment, environment variables, and CI/CD for
+                  your capstone project with monitoring and rollback.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Configure Next.js for Vercel deployment. Set up environment
+                  variables, custom domains, and automated CI/CD pipelines. Enable
+                  monitoring, analytics, and quick rollback capabilities.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Monitoring and Observability */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuShieldCheck className="h-6 w-6 mr-3" />
+                  Monitoring and Observability
+                </CardTitle>
+                <CardDescription>
+                  Implement logging, analytics, and performance tracking for your
+                  deployed capstone project.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Set up error tracking, performance metrics, user analytics, and
+                  health checks. Integrate with Vercel observability tools and
+                  custom dashboards for real-time project insights.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Capstone Showcase */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuPalette className="h-6 w-6 mr-3" />
+                  Capstone Showcase
+                </CardTitle>
+                <CardDescription>
+                  Present your completed project with live demo, architecture
+                  diagrams, and lessons learned from the entire learning journey.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Document your complete journey from Module 1 fundamentals through
+                  Module 5 capstone. Include architecture diagrams, code samples,
+                  token savings analytics, and deployment success metrics.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Development Stage */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-              <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Development Stage</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Build your application with ClaudeCode from Analysis stage through deployment.
-              Covering feature implementation, agent integration, Sub-agent orchestration,
-              and MCP server connections as you bring your project to life.
+          {/* Hero section */}
+          <div className="mt-12 md:mt-0 lg:col-span-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Module 5: Capstone Project
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              End-to-end project from definition to production launch with monitoring
+              and deployment.
             </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
-          </div>
-
-          {/* Deployment & Post-Production */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8.1-2 10.7-7.6L21.7 12 8 3.7 2 12l4.9 8.2zm13.7-3.2L22 7l-5 4.87L12 17.77 7.74 13 2 7l5-4.87L12.7 2z" />
-              </svg>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                Start Capstone
+              </button>
+              <button className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
+                View Capstone Examples
+              </button>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Deployment & Post-Production</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Deploy your ClaudeCode project to Vercel with custom domains, HTTPS, and global
-              CDN. Monitor performance, gather user feedback, iterate on features, and
-              maintain your application post-launch for long-term success.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-accent text-accent-foreground hover:bg-accent/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <a href="/about" className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-4 text-center transition-colors">
-            Start Your ClaudeCode Journey →
-          </a>
         </div>
       </div>
-    </section>
+    </Suspense>
   );
 }

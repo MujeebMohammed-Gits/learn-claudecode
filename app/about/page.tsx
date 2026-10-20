@@ -1,70 +1,162 @@
-import Image from "next/image";
+import { Suspense } from "react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  LuBookOpen,
+  LuZap,
+  LuSettings,
+  LuGlobe,
+  LuUsers,
+  LuTerminal,
+} from "lucide-react";
 
 export default function About() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-            Learn ClaudeCode - Your Tutorial Journey
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            This website is built from scratch as part of a learning journey with Claude Code. 
-            The goal is to go from zero to mastery in building interactive, scalable, and fully 
-            secured web applications using modern technologies. You'll learn by doing, not just reading.
-          </p>
-        </div>
+    <Suspense fallback>
+      <div className="min-h-screen bg-background p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Mission */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuBookOpen className="h-6 w-6 mr-3" />
+                  Mission
+                </CardTitle>
+                <CardDescription>
+                  Empower developers of all backgrounds to master Claude Code without
+                  requiring terminal expertise. Make AI-assisted development
+                  accessible to everyone.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Our mission is to lower the barrier to entry for AI-assisted software
+                  development. By focusing on interface-based learning first, we ensure
+                  that anyone can start building with Claude Code regardless of their
+                  terminal familiarity.
+                </p>
+              </CardContent>
+            </Card>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {/* Learning Path Card - TUTORIAL Focus */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.94 14.34l1.83-1.83a5.5 5.5 0 0 1 7.78 0l1.83 1.83a4.5 4.5 0 0 1-6.36 6.36l-1.41-1.41a2.12 2.12 0 0 1 0-3l1.72-1.72a5.5 5.5 0 0 1 7.78 0l1.83 1.83c.78.41 1.53.41 2.28 0l1.98-1.98a4.5 4.5 0 0 1-6.36-6.36l-1.41 1.41a2.12 2.12 0 0 1 0 3l1.72 1.72z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Learn ClaudeCode</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Interactive tutorials, slash commands, and hands-on projects. Master slash commands, 
-              agents, plugins, and MCP servers through guided learning paths.
-            </p>
+            {/* Learning Path */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuZap className="h-6 w-6 mr-3" />
+                  Learning Path
+                </CardTitle>
+                <CardDescription>
+                  A structured 5-module journey from fundamentals to capstone
+                  deployment, with interface-based learning for the first 3 modules.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Module 1: Fundamentals - Core concepts and beginner-friendly
+                  introduction. Module 2: AI Agents - Creating and managing AI
+                  agents. Module 3: Sub-agents and Plugin Architecture - Designing
+                  hierarchical structures. Module 4: Advanced Features - Hooks,
+                  loops, MCP, and ECC skills. Module 5: Capstone Project - End-to-end
+                  deployment and showcase.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Three-Access Pattern */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuGlobe className="h-6 w-6 mr-3" />
+                  Three-Access Pattern
+                </CardTitle>
+                <CardDescription>
+                  Interface-based (primary, no terminal required), Terminal-inclusive
+                  (command syntax reference), and Direct UI interaction (dedicated
+                  panels) for every lesson.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Every section offers three ways to learn: no-terminal interface,
+                  command syntax reference, and dedicated UI panels - you choose
+                  your path through the material.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Target Audience */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuUsers className="h-6 w-6 mr-3" />
+                  Target Audience
+                </CardTitle>
+                <CardDescription>
+                  Non-technical or technical beginners who have never opened a
+                  terminal and want to master Claude Code.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Designed for developers, designers, and entrepreneurs who want to
+                  leverage AI-assisted development without spending months learning
+                  terminal commands. The interface-first approach means you can start
+                  building immediately.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Technology Stack */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuTerminal className="h-6 w-6 mr-3" />
+                  Technology Stack
+                </CardTitle>
+                <CardDescription>
+                  Next.js 16, React 18, Tailwind CSS 4.0, shadcn-ui, TypeScript,
+                  ESLint, and the rtk token optimization system.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Built with modern web technologies: Next.js 16 app router, React
+                  18, Tailwind CSS 4.0 for styling, shadcn-ui components, TypeScript
+                  for type safety, ESLint for linting, and rtk (Rust Token Killer)
+                  for token-optimized CLI proxy operations.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Build Projects Card - TUTORIAL Focus */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-              <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Build Real Projects</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              From scratch to production: Next.js, Tailwind CSS, Supabase, Vercel. Complete project 
-              tutorials with source code, from initial setup to live deployment.
+          {/* Hero section */}
+          <div className="mt-12 md:mt-0 lg:col-span-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              About Learn ClaudeCode
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              The complete zero-to-mastery tutorial course for anyone from non-theoretical
+              or technical background who has never opened a terminal.
             </p>
-          </div>
-
-          {/* Deploy Live Card - TUTORIAL Focus */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8.1-2 10.7-7.6L21.7 12 8 3.7 2 12l4.9 8.2zm13.7-3.2L22 7l-5 4.87L12 17.77 7.74 13 2 7l5-4.87L12.7 2z" />
-              </svg>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                Start Learning
+              </button>
+              <button className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
+                View Syllabus
+              </button>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Deploy Your Learning</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              One-click deployment to Vercel with custom domains, HTTPS automatic, and global CDN. 
-              Publish your ClaudeCode projects live and share your learning journey.
-            </p>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <a href="/projects" className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-4 text-center transition-colors">
-            View Project Tutorials →
-          </a>
         </div>
       </div>
-    </section>
+    </Suspense>
   );
 }

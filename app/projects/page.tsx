@@ -1,78 +1,175 @@
-import Image from "next/image";
+import { Suspense } from "react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  LuGit,
+  LuFolder,
+  LuZap,
+  LuShieldCheck,
+  LuPalette,
+  LuServer,
+} from "lucide-react";
 
 export default function Projects() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-            Build Real Projects
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            From scratch to production: Complete project tutorials with source code, from initial
-            setup to live deployment using Next.js, Tailwind CSS, Supabase, and Vercel.
-          </p>
-        </div>
+    <Suspense fallback>
+      <div className="min-h-screen bg-background p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Completed Projects */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuFolder className="h-6 w-6 mr-3" />
+                  Completed Projects
+                </CardTitle>
+                <CardDescription>
+                  Showcase of capstone projects built through the learning journey
+                  with architecture diagrams and deployment status.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  View all completed capstone projects with their tech stacks,
+                  token savings, deployment status, and lessons learned. Each
+                  project includes a live demo link and source code repository.
+                </p>
+              </CardContent>
+            </Card>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {/* Project 1: Next.js App Router */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.94 14.34l1.83-1.83a5.5 5.5 0 0 1 7.78 0l1.83 1.83a4.5 4.5 0 0 1-6.36 6.36l-1.41-1.41a2.12 2.12 0 0 1 0-3l1.72-1.72a5.5 5.5 0 0 1 7.78 0l1.83 1.83c.78.41 1.53.41 2.28 0l1.98-1.98a4.5 4.5 0 0 1-6.36-6.36l-1.41 1.41a2.12 2.12 0 0 1 0 3l1.72 1.72z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Next.js App Router</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Learn the App Router pattern, file-based routing, and server components. Build
-              interactive pages with dynamic routing and middleware.
-            </p>
-            <a href="/nextjs-router" className="mt-3 inline-block rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Start Tutorial →
-            </a>
+            {/* Agent Projects */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuZap className="h-6 w-6 mr-3" />
+                  Agent Projects
+                </CardTitle>
+                <CardDescription>
+                  Interactive agent building projects with sub-agent hierarchies,
+                  skill compositions, and MCP server configurations.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Hands-on projects for designing and implementing agent ecosystems.
+                  Build sub-agent hierarchies, compose skills, configure MCP
+                  servers, and deploy working agent systems.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Open Source */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuGit className="h-6 w-6 mr-3" />
+                  Open Source
+                </CardTitle>
+                <CardDescription>
+                  Public repository showcases with sanitized code, CLAUDE.md,
+                  setup scripts, and contribution guidelines.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Browse publicly shared projects from the learning community.
+                  Each repository includes sanitized code, CLAUDE.md configuration,
+                  setup.sh scripts, and contribution guidelines.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Deployment Showcase */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuServer className="h-6 w-6 mr-3" />
+                  Deployment Showcase
+                </CardTitle>
+                <CardDescription>
+                  Vercel deployment examples with custom domains, environment
+                  variable configurations, and CI/CD pipeline configurations.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Examples of deployed projects on Vercel with custom domains,
+                  environment variable setups, and CI/CD pipeline configurations.
+                  See token optimization results and performance metrics.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Skill Showcase */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuPalette className="h-6 w-6 mr-3" />
+                  Skill Showcase
+                </CardTitle>
+                <CardDescription>
+                  Published skills and plugins from the learning community with
+                  usage statistics and compatibility information.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Explore published skills and plugins from the community. View
+                  usage statistics, compatibility information, and installation
+                  instructions for each skill package.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Token Savings */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuShieldCheck className="h-6 w-6 mr-3" />
+                  Token Savings
+                </CardTitle>
+                <CardDescription>
+                  rtk gain for analytics, rtk proxy for raw commands, and token-saving
+                  patterns throughout the learning journey.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Track token savings with rtk gain, execute raw commands with rtk
+                  proxy, and apply token-saving patterns throughout your Claude Code
+                  workflow to reduce output by up to 90%.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Project 2: Tailwind CSS Styling */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-              <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Tailwind CSS Styling</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Utility-first styling, custom configuration, responsive design, and dark mode.
-              Build beautiful interfaces without writing custom CSS.
+          {/* Hero section */}
+          <div className="mt-12 md:mt-0 lg:col-span-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Projects
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              Showcase of projects built through the learning journey with
+              architecture diagrams, deployment status, and token savings analytics.
             </p>
-            <a href="/tailwind-styling" className="mt-3 inline-block rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Start Tutorial →
-            </a>
-          </div>
-
-          {/* Project 3: Supabase Integration */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8.1-2 10.7-7.6L21.7 12 8 3.7 2 12l4.9 8.2zm13.7-3.2L22 7l-5 4.87L12 17.77 7.74 13 2 7l5-4.87L12.7 2z" />
-              </svg>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                View Projects
+              </button>
+              <button className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
+                Create New
+              </button>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Supabase Integration</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Auth, database, storage, and real-time subscriptions. Build full-stack
-              applications with auto-generated APIs and edge functions.
-            </p>
-            <a href="/supabase-integration" className="mt-3 inline-block rounded-md bg-accent text-accent-foreground hover:bg-accent/90 py-2 px-4 text-sm font-medium transition-colors">
-              Start Tutorial →
-            </a>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <a href="/tutorials" className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-4 text-center transition-colors">
-            Back to Tutorials Overview →
-          </a>
         </div>
       </div>
-    </section>
+    </Suspense>
   );
 }

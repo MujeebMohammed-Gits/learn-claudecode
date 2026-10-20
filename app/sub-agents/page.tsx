@@ -1,83 +1,159 @@
-import Image from "next/image";
+import { Suspense } from "react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  LuZap,
+  LuShieldCheck,
+  LuBookOpen,
+  LuPuzzle,
+  LuLayers,
+  LuLayout,
+} from "lucide-react";
 
 export default function SubAgents() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6">
-            Sub-agents and Plugin Architecture
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Design and implement modular Sub-agents and plugin systems for ClaudeCode.
-            This component covers agent decomposition, plugin registration, skill injection,
-            and building reusable agent components that compose cleanly.
-          </p>
-        </div>
+    <Suspense fallback>
+      <div className="min-h-screen bg-background p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Sub-Agent Design */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuZap className="h-6 w-6 mr-3" />
+                  Sub-Agent Design
+                </CardTitle>
+                <CardDescription>
+                  Design hierarchical agent structures with parent-child relationships
+                  and specialized task delegation patterns.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Create sub-agents that handle specific domains while coordinating
+                  through a central orchestrator pattern. Learn the lifecycle of
+                  sub-agent creation, spawning, and termination.
+                </p>
+              </CardContent>
+            </Card>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {/* Sub-agent Design */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.94 14.34l1.83-1.83a5.5 5.5 0 0 1 7.78 0l1.83 1.83a4.5 4.5 0 0 1-6.36 6.36l-1.41-1.41a2.12 2.12 0 0 1 0-3l1.72-1.72a5.5 5.5 0 0 1 7.78 0l1.83 1.83c.78.41 1.53.41 2.28 0l1.98-1.98a4.5 4.5 0 0 1-6.36-6.36l-1.41 1.41a2.12 2.12 0 0 1 0 3l1.72 1.72z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Sub-agent Design</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Learn how to decompose complex tasks into focused Sub-agents with clear
-              responsibilities. Design patterns for task isolation, communication protocols,
-              and result aggregation between parent and child agents.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
+            {/* Plugin Architecture */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuPuzzle className="h-6 w-6 mr-3" />
+                  Plugin Architecture
+                </CardTitle>
+                <CardDescription>
+                  Build extensible plugin systems that enhance Claude Code capabilities
+                  through modular components.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Develop custom plugins and skills that integrate with the Claude Code
+                  ecosystem. Learn plugin manifest structure, dependency management,
+                  and hot-reloading capabilities.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Interface-Based Patterns */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuLayers className="h-6 w-6 mr-3" />
+                  Interface-Based Patterns
+                </CardTitle>
+                <CardDescription>
+                  Primary approach: no-terminal required. Learn through interface
+                  interactions and natural language prompts.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  All lessons in this module are conducted through the visual interface
+                  with natural language prompts. No terminal required for the first 3
+                  modules - learn Claude Code fundamentals entirely through the UI.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Direct UI Interaction */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuLayout className="h-6 w-6 mr-3" />
+                  Direct UI Interaction
+                </CardTitle>
+                <CardDescription>
+                  Dedicated panels for hands-on practice with sub-agent configuration.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Interactive panels where you configure sub-agent hierarchies, plugin
+                  manifests, and skill compositions through point-and-click interfaces
+                  with live preview.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Terminal-Inclusive Commands */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <LuShieldCheck className="h-6 w-6 mr-3" />
+                  Terminal-Inclusive Commands
+                </CardTitle>
+                <CardDescription>
+                  rtk gain              # Show token savings analytics
+rtk gain --history      # Show command usage history with savings
+rtk discover            # Analyze Claude Code history for missed opportunities
+rtk proxy <cmd>         # Execute raw command without filtering
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Terminal commands for sub-agent and plugin management:
+                  <br />
+                  <code className="text-sm code-inline bg-muted/50 rounded px-1">rtk gain</code>
+                  shows token savings analytics
+                  <br />
+                  <code className="text-sm code-inline bg-muted/50 rounded px-1">rtk proxy <cmd></code>
+                  executes raw commands without filtering
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
-          {/* Plugin System */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-              <svg className="w-5 h-5 text-secondary" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Plugin System</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Build extensible plugin systems for ClaudeCode. Covering plugin registration,
-              skill injection, lifecycle management, and how to publish plugins for
-              community use or internal teams.
+          {/* Hero section */}
+          <div className="mt-12 md:mt-0 lg:col-span-3">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Module 3: Sub-agents and Plugin Architecture
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              Design sub-agents, skills, and plugins for production-ready applications.
+              Interface-based learning without terminal requirements.
             </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
-          </div>
-
-          {/* Skills & MCP Integration */}
-          <div className="rounded-2xl bg-card p-6 hover:bg-card/90 transition-colors dark:hover:bg-card/80">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8.1-2 10.7-7.6L21.7 12 8 3.7 2 12l4.9 8.2zm13.7-3.2L22 7l-5 4.87L12 17.77 7.74 13 2 7l5-4.87L12.7 2z" />
-              </svg>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                Start Designing
+              </button>
+              <button className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
+                View Plugin Gallery
+              </button>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Skills & MCP Integration</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Integrate ECC Skills and Model Context Protocol servers with your Sub-agents.
-              Learn how to expose agent capabilities as reusable skills, configure
-              MCP servers for third-party service integration, and wire everything
-              together for production-ready workflows.
-            </p>
-            <a href="/tutorials" className="mt-3 inline-block rounded-md bg-accent text-accent-foreground hover:bg-accent/90 py-2 px-4 text-sm font-medium transition-colors">
-              Back to Tutorials →
-            </a>
           </div>
-        </div>
-
-        <div className="mt-12">
-          <a href="/deployment" className="w-full rounded-md bg-primary text-primary-foreground hover:bg-primary/90 py-3 px-4 text-center transition-colors">
-            Continue to Deployment →
-          </a>
         </div>
       </div>
-    </section>
+    </Suspense>
   );
 }

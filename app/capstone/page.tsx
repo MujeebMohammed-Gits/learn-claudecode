@@ -67,6 +67,19 @@ export default function CapstoneProject() {
               for real-time project insights.
             </p>
           </div>
+
+          <div>
+            <h3 className="text-xl font-medium mb-2">Launch Phase</h3>
+            <p className="text-muted-foreground">
+              Execute the final launch sequence for your capstone project. This section
+              covers the production deployment, post-launch verification, and monitoring
+              setup required to go live with confidence. Follow the three-approach
+              pattern: interface-based configuration (primary, no terminal required),
+              terminal-inclusive commands for advanced control, and direct UI interaction
+              for real-time status monitoring.
+            </p>
+          </div>
+
           <div>
             <h3 className="text-xl font-medium mb-2">Capstone Showcase</h3>
             <p className="text-muted-foreground">

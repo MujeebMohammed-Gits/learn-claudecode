@@ -1,63 +1,81 @@
+
 export const metadata = {
-  title: "Module 1: Fundamentals - Beginner-Friendly Start"
+  title: "Module 1: Fundamentals - Getting Started"
 };
 
-import { Suspense } from "react";
+import { createElement } from "react";
+import type {
+  AnchorHTMLAttributes,
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 
-import {
-  Container,
-  h2,
-  h3,
-  p,
-  a,
-  div,
-  ul,
-  li,
-} from "@/components/ui";
+interface UIComponentProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
+}
+
+interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
+  children?: ReactNode;
+}
+
+interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
+  children?: ReactNode;
+}
+
+interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  children?: ReactNode;
+}
+
+interface DivProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
+}
+
+interface RenderProps {
+  [key: string]: string | undefined;
+  className?: string;
+  href?: string;
+}
+
+const UIComponent = (props: UIComponentProps) => createElement("div", props, props.children);
+
+const h3 = (props: HeadingProps) => createElement("h3", props, props.children);
+const p = (props: ParagraphProps) => createElement("p", props, props.children);
+const a = (props: AnchorProps) => createElement("a", props, props.children);
+const div = (props: DivProps) => createElement("div", props, props.children);
+const h2 = (props: HeadingProps) => createElement("h2", props, props.children);
+
+function render(Component: string, props: RenderProps = {}, ...children: ReactNode[]) {
+  return createElement(Component, props, ...children);
+}
 
 export default function Fundamentals() {
-  return (
-    <Suspense fallback>
-      <Container>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          Module 1: Fundamentals
-        </h2>
-        <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl">
-          Your entry point to ClaudeCode mastery - from zero terminal experience to
-          confident AI agent builder in just a few lessons.
-        </p>
-        <div className="mt-6 space-y-4">
-          <div>
-            <h3 className="text-xl font-medium mb-2">Beginner-Friendly Start</h3>
-            <p className="text-muted-foreground">
-              Start your ClaudeCode journey without ever opening a terminal. All lessons
-              are conducted through the visual interface with natural language prompts.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-medium mb-2">Three-Access Pattern</h3>
-            <p className="text-muted-foreground">
-              Every section offers three ways to learn: no-terminal interface,
-              command syntax reference, and dedicated UI panels - you choose your path.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl font-medium mb-2">Production-Ready</h3>
-            <p className="text-muted-foreground">
-              Course covers AI Agents, Sub-agents, Hooks, Loops, MCP servers, Skills,
-              and a final Capstone Project with real deployment.
-            </p>
-          </div>
-        </div>
-        <div className="mt-6">
-          <a href="/ai-agents" className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-            Start Lesson 1
-          </a>
-          <a href="/syllabus" className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors">
-            View Syllabus
-          </a>
-        </div>
-      </Container>
-    </Suspense>
+  return render(
+    "div",
+    {},
+    render(
+      "h2",
+      { className: "text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" },
+      "Module 1: Fundamentals"
+    ),
+    render(
+      "p",
+      { className: "mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl" },
+      "The complete zero-to-mastery tutorial course for learning Claude Code from",
+      "complete beginner to mastery deployment."
+    ),
+    render(
+      "div",
+      { className: "mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" },
+      render(
+        "a",
+        { href: "/fundamentals", className: "group px-4 py_2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors" },
+        "Start Learning"
+      ),
+      render(
+        "a",
+        { href: "/about", className: "group px-4 py_2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors" },
+        "View Syllabus"
+      )
+    ),
   );
 }

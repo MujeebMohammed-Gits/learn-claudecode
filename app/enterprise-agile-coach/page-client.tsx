@@ -1,10 +1,6 @@
-// app/enterprise-agile-coach/page.tsx - Interactive Version
+// app/enterprise-agile-coach/page-client.tsx - Client Component
 
 "use client";
-
-export const metadata = {
-  title: "Enterprise Agile Coach - AI-Powered Agile Coaching"
-};
 
 import { createElement, useState } from "react";
 

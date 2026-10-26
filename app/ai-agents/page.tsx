@@ -23,7 +23,7 @@ const a = (props: AnchorProps) => createElement("a", props, props.children);
 const div = (props: HTMLAttributes<HTMLDivElement>) => createElement("div", props, props.children);
 const h2 = (props: HTMLAttributes<HTMLHeadingElement>) => createElement("h2", props, props.children);
 
-function render(Component: string, props: RenderProps = {}, ...children: unknown[]) {
+function render(Component: string, props: RenderProps = {}, ...children: ReactNode[]) {
   return createElement(Component, props, ...children);
 }
 

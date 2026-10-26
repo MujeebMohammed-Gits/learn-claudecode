@@ -2,11 +2,9 @@ export const metadata = {
   title: "Module 4: Advanced Features - Hooks, Loops, MCP and ECC"
 };
 
-import { Container } from "@/components/ui";
-
 export default function AdvancedFeatures() {
   return (
-    <Container>
+    <div>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           Module 4: Advanced Features
         </h2>
@@ -72,6 +70,6 @@ export default function AdvancedFeatures() {
             View Syllabus
           </a>
         </div>
-    </Container>
+    </div>
   );
 }

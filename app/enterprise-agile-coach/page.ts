@@ -23,6 +23,6 @@ export default function EnterpriseAgileCoachPage() {
     createElement("hr", { className: "my-8 border-t border-secondary-400" }),
 
     // Interactive agent component (Client Component with useState, forms, etc.)
-    <EnterpriseAgileCoach />
+    createElement(EnterpriseAgileCoach)
   );
 }

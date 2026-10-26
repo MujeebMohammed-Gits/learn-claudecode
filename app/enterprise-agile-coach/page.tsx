@@ -1,5 +1,7 @@
 // app/enterprise-agile-coach/page.tsx - Interactive Version
 
+"use client";
+
 export const metadata = {
   title: "Enterprise Agile Coach - AI-Powered Agile Coaching"
 };

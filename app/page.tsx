@@ -32,7 +32,7 @@ function render(
   return createElement(Component, props, ...children);
 }
 
-export default function Home() {
+function Home() {
   return render(
     "div",
     {},
@@ -61,5 +61,19 @@ export default function Home() {
       "The complete zero-to-mastery tutorial course for anyone from non-theoretical",
       "or technical background who has never opened a terminal."
     )
+  );
+}
+
+export default function Page() {
+  return createElement("div", { className: "prose max-w-none" },
+    createElement("h1", { className: "text-4xl font-bold" }, "Homepage"),
+
+    createElement("p", null, "Welcome to the Learn ClaudeCode project"),
+
+    // Navigation link to the agent page
+    createElement("a", {
+      href: "/enterprise-agile-coach",
+      className: "mt-6 btn-primary"
+    }, "Enterprise Agile Coach Agent")
   );
 }

@@ -4,13 +4,14 @@
 
 import { createElement, useState } from "react";
 
-const UIComponent = (props) => createElement("div", props, props.children);
+/* const UIComponent = (props) => createElement("div", props, props.children);
 
 const h3 = (props) => createElement("h3", props, props.children);
 const p = (props) => createElement("p", props, props.children);
 const a = (props) => createElement("a", props, props.children);
 const div = (props) => createElement("div", props, props.children);
 const h2 = (props) => createElement("h2", props, props.children);
+*/
 
 function render(Component, props = {}, ...children) {
   return createElement(Component, props, ...children);

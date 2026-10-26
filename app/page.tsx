@@ -1,4 +1,3 @@
-
 export const metadata = {
   title: "Learn ClaudeCode - Zero to Mastery Tutorial Course",
   description: "The complete zero-to-mastery tutorial course for learning Claude Code from complete beginner to mastery deployment."

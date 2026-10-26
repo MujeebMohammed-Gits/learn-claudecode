@@ -1,7 +1,4 @@
-// app/enterprise-agile-coach/page-client.tsx - Client Component
-
 "use client";
-
 import { createElement, useState } from "react";
 
 /* const UIComponent = (props) => createElement("div", props, props.children);

@@ -178,9 +178,9 @@ export default function EnterpriseAgileCoach() {
             {
               type: "submit",
               className: "w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors",
-              disabled: standaloneState.loading
+              disabled: state.loading
             },
-            standaloneState.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
+            state.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
           )
         )
       ),
@@ -275,15 +275,15 @@ export default function EnterpriseAgileCoach() {
               {
                 type: "submit",
                 className: "w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors",
-                disabled: standaloneState.loading
+                disabled: state.loading
               },
-              standaloneState.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
+              state.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
             )
           )
         ),
 
         // Response Display
-        standaloneState.lastResponse ? render(
+        state.lastResponse ? render(
           "div",
           { className: "mt-6 p-4 bg-indigo-5/5 rounded-md border-indigo-200/50" },
           render(
@@ -294,9 +294,9 @@ export default function EnterpriseAgileCoach() {
           render(
             "pre",
             { className: "text-sm font-mono text-indigo-600 whitespace-pre-wrap", style: { maxHeight: '400px', overflow: 'auto' } },
-            standaloneState.lastResponse
+            state.lastResponse
           )
-        ) : standaloneState.loading ? render(
+        ) : state.loading ? render(
           "div",
           { className: "mt-3 text-indigo-600" },
           "🔍 Retrieving relevant agile knowledge..."

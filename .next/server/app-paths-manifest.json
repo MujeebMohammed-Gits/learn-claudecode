@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about/page": "app/about/page.js",
+  "/advanced-features/page": "app/advanced-features/page.js",
+  "/ai-agents/page": "app/ai-agents/page.js",
+  "/api/agent/route": "app/api/agent/route.js",
+  "/capstone/page": "app/capstone/page.js",
+  "/enterprise-agile-coach/page": "app/enterprise-agile-coach/page.js",
+  "/features-deployment/page": "app/features-deployment/page.js",
+  "/fundamentals/page": "app/fundamentals/page.js",
+  "/page": "app/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/sub-agents/page": "app/sub-agents/page.js"
+}

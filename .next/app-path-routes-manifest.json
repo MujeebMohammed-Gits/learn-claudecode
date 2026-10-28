@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/advanced-features/page": "/advanced-features",
+  "/ai-agents/page": "/ai-agents",
+  "/api/agent/route": "/api/agent",
+  "/capstone/page": "/capstone",
+  "/enterprise-agile-coach/page": "/enterprise-agile-coach",
+  "/features-deployment/page": "/features-deployment",
+  "/fundamentals/page": "/fundamentals",
+  "/page": "/",
+  "/projects/page": "/projects",
+  "/sub-agents/page": "/sub-agents"
+}

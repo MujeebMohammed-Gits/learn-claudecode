@@ -1,5 +1,8 @@
 // app/enterprise-agile-coach/page.tsx
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata = {
   title: "Enterprise Agile Coach - AI-Powered Agile Coaching",
   description: "Enterprise Agile Coach - AI-powered agile coaching and pattern detection agent"

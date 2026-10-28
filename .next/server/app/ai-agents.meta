@@ -1,0 +1,34 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/ai-agents/layout,_N_T_/ai-agents/page,_N_T_/ai-agents"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/ai-agents/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 96,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/4cf42d77d7f688e8ad93b19d884f22a942a22fc14bb5123376611a2d4e776e94/$/ai-agents",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/ai-agents/page"
+    },
+    "isFallback": false
+  }
+}

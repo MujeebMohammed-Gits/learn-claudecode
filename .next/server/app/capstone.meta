@@ -1,0 +1,34 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/capstone/layout,_N_T_/capstone/page,_N_T_/capstone"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/capstone/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 96,
+        "slots": {
+          "children": {
+            "hints": 160,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/b015c962ee789a7f30fc25cc8610c653ed7dfe0af6a88f5f1a8674dc5571131e/$/capstone",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/capstone/page"
+    },
+    "isFallback": false
+  }
+}

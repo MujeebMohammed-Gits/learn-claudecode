@@ -157,23 +157,35 @@ export async function POST(request: NextRequest) {
             );
 
             // Enhance response with Phase 1 insights
-            const enhancedResponse: any = coachingResult;
+            const enhancedResponse = { ...coachingResult } as typeof coachingResult & {
+              ragInsights?: {
+                deepRetrieved: number;
+                topTopics: string[];
+                relevance: number;
+              };
+              knowledgeGaps?: Array<{
+                gap: string;
+                severity: "high" | "medium" | "low";
+                recommendation: string;
+              }>;
+            };
 
             if (deepKnowledge && deepKnowledge.length > 0) {
               enhancedResponse.ragInsights = {
                 deepRetrieved: deepKnowledge.length,
                 topTopics: deepKnowledge
-                  .sort((a: any, b: any) => b.relevance - a.relevance)
+                  .slice()
+                  .sort((a: { relevance: number }, b: { relevance: number }) => b.relevance - a.relevance)
                   .slice(0, 3)
-                  .map((k: any) => k.content),
-                relevance: Math.max(...deepKnowledge.map((k: any) => k.relevance))
+                  .map((k: { content: string }) => k.content),
+                relevance: Math.max(...deepKnowledge.map((k: { relevance: number }) => k.relevance))
               };
             }
 
             if (gapAnalysis && gapAnalysis.length > 0) {
               enhancedResponse.knowledgeGaps = gapAnalysis
                 .slice(0, 3)
-                .map((g: any) => ({
+                .map((g: { gap: string, severity: "high" | "medium" | "low", recommendation: string }) => ({
                   gap: g.gap,
                   severity: g.severity,
                   recommendation: g.recommendation

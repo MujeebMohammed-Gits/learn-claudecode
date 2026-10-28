@@ -1,0 +1,25 @@
+/* Tailwind styles */
+@import "tailwindcss";
+
+/* Custom properties for dark mode */
+:root {
+  --primary: 210 100% 50%;    /* Blue-500 */
+  --primary-foreground: 0 0% 100%; /* White */
+  --secondary: 220 20% 15%;   /* Gray-800 */
+  --secondary-foreground: 0 0% 100%; /* White */
+  
+  /* Additional tokens for the project */
+  --muted: 210 20% 90%;
+  --muted-foreground: 210 20% 40%;
+  --border: 210 20% 80%;
+}
+
+.dark {
+  --primary: 210 100% 50%;    /* Keep same or adjust for dark */
+  --primary-foreground: 0 0% 100%; /* White */
+  --secondary: 220 20% 15%;   /* Darker gray */
+  --secondary-foreground: 0 0% 100%; /* White */
+  --muted: 210 20% 15%;       /* Darker background */
+  --muted-foreground: 210 20% 40%; /* Muted text */
+  --border: 210 20% 30%;      /* Darker border */
+}

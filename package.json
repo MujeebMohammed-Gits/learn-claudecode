@@ -20,7 +20,7 @@
     "vitest": "^5.0.5"
   },
   "scripts": {
-    "build": "next build",
+    "build": "npm cache clean --force && npm install --legacy-peer-deps && next build",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint .",

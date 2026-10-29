@@ -204,8 +204,9 @@ export async function POST(request: NextRequest) {
                 headers: { "Content-Type": "application/json" },
               }
             );
-  } catch (error) {
-    console.error("RAG coaching error:", error);
+        }
+    } catch (error) {
+      console.error("RAG coaching error:", error);
     return new Response(
       JSON.stringify({ error: "Internal server error" }),
       {

@@ -164,18 +164,15 @@ export async function POST(request: NextRequest) {
           return new Response(
             JSON.stringify({
               status: "success",
-              // Structured coaching sections
-              organizationTypeRecommendations: structuredResponse.organizationTypeRecommendations,
-              teamMaturityRecommendations: structuredResponse.teamMaturityRecommendations,
-              primaryChallengeRecommendations: structuredResponse.primaryChallengeRecommendations,
-              practicalExamples: structuredResponse.practicalExamples,
-              overallOverview: structuredResponse.overview,
-              // Original query and context
-              query: structuredResponse.query,
-              teamContext: structuredResponse.teamContext,
-              // Raw coaching text for reference
-              rawCoachingText: rawCoachingText,
-              // Metadata
+              message: formatCoachingResponse(
+                structuredResponse.organizationTypeRecommendations,
+                structuredResponse.teamMaturityRecommendations,
+                structuredResponse.primaryChallengeRecommendations,
+                structuredResponse.practicalExamples,
+                structuredResponse.overview,
+                structuredResponse.query,
+                structuredResponse.teamContext
+              ),
               action: "interactive-coaching",
               timestamp: new Date().toISOString()
             }),
@@ -405,7 +402,7 @@ function getTeamMaturityRecommendations(maturityLevel: string) {
     storming: "Address conflicts constructively, establish psychological safety, clarify roles and responsibilities. Encourage open communication and help the team navigate through disagreements productively.",
     norming: "Reinforce successful patterns, cross-train team members, share knowledge widely. Celebrate successes and use the team's growing cohesion to innovate and improve processes.",
     performing: "Innovate continuously, experiment with new practices, mentor other teams. Focus on continuous improvement and empirical process optimization. Enable the team to self-organize and deliver high-value increments.",
-    adjourning: "Document lessons learned, celebrate achievements, prepare team for new formations. Conduct a retrospective to capture insights and support team members moving to new projects."
+    adjourning: "Document lessons learned, celebrate achievements, prepare team for new formations. Conduct a retrospective to capture insights and support team members moving to new formations."
   };
   return (recommendations[maturityLevel] || recommendations.performing) || "Focus on building trust, establishing norms, and defining clear ways of working.";
 }
@@ -441,7 +438,8 @@ function getPracticalExamples(challenge: string, teamSize: number) {
       : "Example: A 12-member team implements cross-functional pairs and a twice-weekly community of practice to share knowledge across disciplines.",
     burnout: teamSize <= 10
       ? "Example: A 5-member team introduces 'no-meeting Wednesdays' and limits sprint work to 30 story points, improving team satisfaction scores by 40%."
-      : "Example: A 15-member team implements weekly health checks and workload redistribution, reducing overtime by 50% and improving retention."
+      : "Example: A 15-member team implements weekly health checks and workload redistribution, reducing overtime by 50% and improving retention.",
+    uncertainty: "Example: Regular retrospectives and iterative planning help the team navigate unknowns and deliver value incrementally, even with unclear requirements."
   };
   return (examples[challenge] || "Example: Regular retrospectives and team health checks help identify and address issues before they impact delivery.") || "Example: Regular retrospectives and team health checks help identify and address issues before they impact delivery.";
 }
@@ -459,4 +457,40 @@ function getCoachingOverview(challenge: string) {
     uncertainty: "Agile coaching focused on adaptive planning and flexibility. Helps teams navigate unknowns and deliver value incrementally even with unclear requirements."
   };
   return (overviews[challenge] || overviews.collaboration) || "Agile coaching recommendations generated for your team's specific context and challenges.";
+}
+
+/**
+ * Format coaching response into a nicely-formatted plain text string
+ * for display in the Agent Response Flashbar component
+ */
+function formatCoachingResponse(
+  orgTypeRecommendations: string,
+  teamMaturityRecommendations: string,
+  primaryChallengeRecommendations: string,
+  practicalExamples: string,
+  overallOverview: string,
+  query: string,
+  teamContext: { teamSize: number, teamMaturityLevel: string, primaryChallenge: string }
+) {
+  const sizeLabel = teamContext.teamSize <= 10 ? "small" : teamContext.teamSize <= 25 ? "medium" : "large";
+  const maturityLabel = teamContext.teamMaturityLevel || "performing";
+  const challengeLabel = teamContext.primaryChallenge || "collaboration";
+
+  return `Agile Coaching Recommendations
+
+**Organization Type** ${orgTypeRecommendations}
+
+**Team Maturity** ${teamMaturityRecommendations}
+
+**Primary Challenge** ${primaryChallengeRecommendations}
+
+${practicalExamples ? `\n${practicalExamples}` : ''}
+
+${overallOverview ? `\n${overallOverview}` : ''}
+
+---
+
+Query: ${query || 'No query provided'}
+Team Context: Size ${sizeLabel}, Maturity ${maturityLabel}, Challenge ${challengeLabel}
+`;
 }

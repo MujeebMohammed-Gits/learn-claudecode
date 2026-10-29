@@ -397,8 +397,7 @@ export default function EnterpriseAgileCoach() {
             ),
             render(
               "input",
-              { type: "number", name: "knowledgeAge", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500", min: "0", value: "0" },
-              ""
+              { type: "number", name: "knowledgeAge", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500", min: "0", value: "0" }
             )
           ),
           render(

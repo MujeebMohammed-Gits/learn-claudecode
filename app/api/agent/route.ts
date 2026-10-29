@@ -125,9 +125,10 @@ export async function POST(request: NextRequest) {
             query: query || "Team needs agile coaching guidance"
           });
 
-          // Format the response with actual coaching insights
+          // Convert React element to string for API response
+          // Use JSON.stringify to safely serialize the coaching result
           const responseMessage = coachingResult
-            ? coachingResult.slice(0, 500) + (coachingResult.length > 500 ? "..." : "")
+            ? JSON.stringify(coachingResult)
             : "Generating coaching insights...";
 
           return new Response(

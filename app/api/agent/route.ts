@@ -125,11 +125,37 @@ export async function POST(request: NextRequest) {
             query: query || "Team needs agile coaching guidance"
           });
 
-          // Convert React element to string for API response
-          // Use JSON.stringify to safely serialize the coaching result
-          const responseMessage = coachingResult
-            ? JSON.stringify(coachingResult)
-            : "Generating coaching insights...";
+          // Extract the coaching text from the React element
+          // The coachingString contains: **Organization Type** ... **Team Maturity** ... **Primary Challenge** ...
+          let responseMessage: string;
+
+          if (typeof coachingResult === 'object' && coachingResult !== null && 'props' in coachingResult) {
+            const props = (coachingResult as any).props;
+            if (props && props.children && Array.isArray(props.children)) {
+              // Find the children with the coaching text (typically index 1 has the coachingString)
+              const coachingChild = props.children.find((child: any) =>
+                child && typeof child === 'object' && child.props && child.props.children
+              );
+              if (coachingChild && coachingChild.props && coachingChild.props.children) {
+                responseMessage = String(coachingChild.props.children);
+              } else if (props.children.length > 1) {
+                responseMessage = String(props.children[1]?.props?.children || props.children[0]?.props?.children);
+              } else {
+                responseMessage = String(props.children[0]?.props?.children || '');
+              }
+            } else {
+              responseMessage = "Generating coaching insights...";
+            }
+          } else {
+            responseMessage = "Generating coaching insights...";
+          }
+
+          // Fallback: if we couldn't extract the text, use a summary
+          if (!responseMessage || responseMessage === "") {
+            responseMessage = "Agile Coaching Recommendations generated for your team. " +
+              "Consider focusing on improving communication, defining clear ways of working, " +
+              "and addressing your primary challenge areas.";
+          }
 
           return new Response(
             JSON.stringify({

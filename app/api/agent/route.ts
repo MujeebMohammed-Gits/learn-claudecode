@@ -109,6 +109,20 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      case "interactive-coaching": {
+        const { query, context, teamSize, teamMaturityLevel, primaryChallenge } = params;
+        return new Response(
+          JSON.stringify({
+            status: "success",
+            message: "Interactive coaching session initiated",
+            action: "interactive-coaching",
+          }),
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+
       // Add to the POST handler switch case
       case "provide-rag-coaching": {
         const { query, context, organizationType, teamMaturityLevel, primaryChallenge, teamSize, experienceLevel, coachingGoals } = params;

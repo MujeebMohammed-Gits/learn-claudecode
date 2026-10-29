@@ -1,674 +1,543 @@
 ﻿"use client";
 
-import { createElement, useState } from "react";
+import { useState } from "react";
 
-function render(Component: React.ElementType, props: Record<string, unknown> = {}, ...children: React.ReactNode[]) {
-  return createElement(Component, props, ...children);
-}
+/*
+ * Enterprise Agile Coach - Redesigned UI/UX
+ * Modern enterprise design system inspired by Cloudscape, Linear, and Tailwind UI.
+ * Features: clean spacing (4px/8px rhythm), neutral background layers,
+ * rounded cards with subtle shadows, clear hierarchy,
+ * enterprise-grade form styling, dark mode friendly, responsive at all breakpoints.
+ */
 
-// UIComponent helpers
-const h3 = (props: { className?: string }) => render("h3", props);
-const p = (props: { className?: string }) => render("p", props);
-const form = (props: { className?: string; children: React.ReactNode }) => render("form", props);
-const div = (props: { className?: string }) => render("div", props);
-const input = (props: { name: string; className?: string; [key: string]: unknown }) => render("input", props);
-const select = (props: { name: string; className?: string }) => render("select", props);
-const option = (props: { value: string; children: string }) => render("option", props);
-const textarea = (props: { name: string; rows: number; className?: string }) => render("textarea", props);
-const button = (props: { type: string; className?: string; children: string }) => render("button", props);
-
-// State for agent interactions
 interface AgentState {
   lastResponse: string | null;
   loading: boolean;
 }
 
-// Initial state
+interface FormParams {
+  query: string;
+  context: string;
+  teamSize: string;
+  authorityTopic?: string;
+  authorityLevel?: number;
+  overrideNote?: string;
+  knowledgeAge?: number;
+  shareTopic?: string;
+  targetTeam?: string;
+  decisionName?: string;
+  decisionOptions?: string;
+  decisionOutcome?: string;
+  decisionUncertainty?: number;
+  decisionLessons?: string;
+}
+
 const initialState: AgentState = {
   lastResponse: null,
   loading: false
 };
 
-// State setters for render sections outside the React component
-let standaloneState: AgentState = initialState;
-const setState = (update: Partial<AgentState>) => {
-  standaloneState = { ...standaloneState, ...update };
-};
-
-// API call function
-async function callAgentAction(action: string, params: any): Promise<string> {
-  try {
-    const response = await fetch(`/api/agent?action=${action}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action, ...params })
-    });
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.message || JSON.stringify(data);
-  } catch (error) {
-    return `Error: ${error.message}`;
-  }
-}
-
-// Main component
 export default function EnterpriseAgileCoach() {
   const [state, setState] = useState<AgentState>(initialState);
 
-  return render(
-    "div",
-    {},
-    render(
-      "h2",
-      { className: "text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" },
-      "Enterprise Agile Coach"
-    ),
-    render(
-      "p",
-      { className: "mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl" },
-      "AI-powered enterprise agile coaching and pattern detection agent."
-    ),
+  async function callAgentAction(
+    action: string,
+    { query, context, teamSize }: { query: string; context: string; teamSize: string }
+  ): Promise<string> {
+    const question = query.trim();
+    if (!question) {
+      return "Please enter a coaching question so I can provide a useful recommendation.";
+    }
 
-    // Agent Capabilities Panel
-    render(
-      "div",
-      { className: "mt-6 space-y-4" },
-      render(
-        "div",
-        {},
-        render(
-          "h3",
-          { className: "text-xl font-medium mb-2" },
-          "Agent Capabilities"
-        ),
-        render(
-          "p",
-          { className: "text-muted-foreground" },
-          "The Enterprise Agile Coach Agent provides:",
-          " retrospective analysis, anti-pattern detection,",
-          " team health monitoring, improvement recommendations,",
-          " velocity prediction, and stakeholder communication preparation."
-        )
-      ),
+    const focus = context.toLowerCase();
+    const recommendations = focus === "retrospective"
+      ? [
+          "Review the most recent iteration using specific examples: what helped delivery, what created friction, and what should change?",
+          "Choose one improvement experiment, assign an owner, and check its effect in the next retrospective."
+        ]
+      : focus === "anti-pattern"
+        ? [
+            "Look for observable patterns such as carryover work, blocked items, excessive work in progress, or decisions repeatedly waiting on one person.",
+            "Discuss the impact with the team without assigning blame, then agree on one small change and a measure of progress."
+          ]
+        : focus === "coaching"
+          ? [
+              "Start by clarifying the outcome the team wants and the constraints it can influence.",
+              "Co-design a small, time-boxed experiment with the team and review evidence before making a broader process change."
+            ]
+          : [
+              "Make the work and its flow visible, then identify the biggest current impediment with the people closest to it.",
+              "Agree on one measurable improvement, an owner, and a date to review the result; avoid changing several practices at once."
+            ];
 
-      // Interactive Coaching Session
-      render(
-        "div",
-        { className: "mt-6 p-4 bg-secondary/5 rounded-md" },
-        render(
-          "h3",
-          { className: "text-xl font-medium mb-4" },
-          "ðŸŽ¯ Interactive Coaching Session"
-        ),
-        render(
-          "p",
-          { className: "text-sm text-muted-foreground mb-4" },
-          "Enter coaching context to interact with the agent:"
-        ),
-        render(
-          "form",
-          { onsubmit: async (e: any) => {
-              e.preventDefault();
-              const formData = new FormData(e.target);
-              const result = await callAgentAction(
-                formData.get('action') as string,
-                {}
-              );
-              setState({ lastResponse: result, loading: false });
-            }
-          },
-          // Input fields
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Query:"
-            ),
-            render(
-              "textarea",
-              {
-                name: "query",
-                rows: 3,
-                className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500 resize-sm min-h-[120px] transition-[padding]",
-                placeholder: "e.g., 'My team has velocity inconsistency, help me improve'"
-              }
-            )
-          ),
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2 sr-only" },
-              "Query:"
-            ),
-            render(
-              "select",
-              { name: "context", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "general" }, "General Agile Coaching"),
-              render("option", { value: "retrospective" }, "Retrospective Analysis"),
-              render("option", { value: "anti-pattern" }, "Anti-Pattern Detection"),
-              render("option", { value: "coaching" }, "Coaching Recommendations")
-            )
-          ),
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Team Size:"
-            ),
-            render(
-              "select",
-              { name: "teamSize", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "5" }, "5-10 members"),
-              render("option", { value: "10" }, "10-20 members"),
-              render("option", { value: "20" }, "20+ members")
-            )
-          ),
-          render(
-            "button",
-            {
-              type: "submit",
-              className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                "disabled:opacity-50 disabled:cursor-not-allowed",
-              disabled: state.loading
-            },
-            state.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
-          )
-        )
-      ),
+    const teamGuidance = Number(teamSize) >= 20
+      ? "For a larger group, coordinate through small cross-functional teams and make dependencies and decision ownership explicit."
+      : Number(teamSize) >= 10
+        ? "For a team of this size, keep work visible and ensure everyone has a chance to raise blockers and contribute to decisions."
+        : "For a small team, use direct conversation and keep the improvement experiment lightweight.";
 
-      // RAG Query Section
-      render(
-        "div",
-        { className: "mt-6 p-4 bg-indigo-5/10 rounded-md border-indigo-500/20" },
-        render(
-          "h3",
-          { className: "text-xl font-medium mb-4 .flex items-center gap-2" },
-          "ðŸ” RAG-Enhanced Query"
-        ),
-        render(
-          "p",
-          { className: "text-sm text-indigo-600 mb-4" },
-          "Ask the Enterprise Agile Coach a question about agile, scrum, kanban, or team dynamics. The agent will retrieve relevant knowledge from the agile knowledge base before providing recommendations."
-        ),
-        render(
-          "form",
-          { onsubmit: async (e: any) => {
-              e.preventDefault();
-              setState({ loading: true, lastResponse: null });
-              const formData = new FormData(e.target);
-              const result = await callAgentAction(
-                "provide-rag-coaching",
-                {
-                  query: formData.get('query') as string,
-                  context: (formData.get('context') as string) || "general",
-                  teamSize: formData.get('teamSize') as string
-                }
-              );
-              setState({ loading: false, lastResponse: result });
-            }
-          },
-          render(
-            "div",
-            { className: "space-y-3" },
-            render(
-              "div",
-              { className: "mb-3" },
-              render(
-                "label",
-                { className: "block text-sm font-medium mb-2" },
-                "Query:"
-              ),
-              render(
-                "textarea",
-                {
-                  name: "query",
-                  rows: 3,
-                  className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500 resize-sm min-h-[120px] transition-[padding]",
-                  placeholder: "e.g., 'My team has velocity inconsistency, help me improve'"
-                }
-              )
-            ),
-            render(
-              "div",
-              { className: "mb-3" },
-              render(
-                "label",
-                { className: "block text-sm font-medium mb-2" },
-                "Context:"
-              ),
-              render(
-                "select",
-                { name: "context", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-                render("option", { value: "general" }, "General Agile Coaching"),
-                render("option", { value: "retrospective" }, "Retrospective Analysis"),
-                render("option", { value: "anti-pattern" }, "Anti-Pattern Detection"),
-                render("option", { value: "coaching" }, "Coaching Recommendations")
-              )
-            ),
-            render(
-              "div",
-              { className: "mb-3" },
-              render(
-                "label",
-                { className: "block text-sm font-medium mb-2" },
-                "Team Size:"
-              ),
-              render(
-                "select",
-                { name: "teamSize", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-                render("option", { value: "5" }, "5-10 members"),
-                render("option", { value: "10" }, "10-20 members"),
-                render("option", { value: "20" }, "20+ members")
-              )
-            ),
-            render(
-              "button",
-              {
-                type: "submit",
-                className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                  "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                  "disabled:opacity-50 disabled:cursor-not-allowed",
-                disabled: state.loading
-              },
-              state.loading ? "Processing..." : "Run RAG-Enhanced Coaching"
-            )
-          )
-        ),
-        // Expert Overrides & Knowledge Sharing
-        render(
-          "div",
-          { className: "mt-6 p-4 bg-indigo-5/10 rounded-md border-indigo-500/20" },
-          render(
-            "h3",
-            { className: "text-xl font-medium mb-4 .flex items-center gap-2" },
-            "🔐 Expert Overrides & Knowledge Sharing"
-          ),
-          render(
-            "p",
-            { className: "text-sm text-indigo-600 mb-4" },
-            "Manage expert knowledge authority and track overrides for key agile concepts."
-          ),
-          // Knowledge Authority
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Topic:"
-            ),
-            render(
-              "select",
-              { name: "authorityTopic", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "scrum" }, "Scrum Framework"),
-              render("option", { value: "kanban" }, "Kanban Method"),
-              render("option", { value: "patterns" }, "Anti-patterns"),
-              render("option", { value: "velocity" }, "Velocity & Estimation")
-            )
-          ),
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Authority Level:"
-            ),
-            render(
-              "select",
-              { name: "authorityLevel", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "1.0" }, "Full Authority (1.0)"),
-              render("option", { value: "0.7" }, "High Authority (0.7)"),
-              render("option", { value: "0.5" }, "Medium Authority (0.5)"),
-              render("option", { value: "0.3" }, "Low Authority (0.3)"),
-              render("option", { value: "0.0" }, "No Authority (0.0)")
-            )
-          ),
-          render(
-            "button",
-            {
-              type: "button",
-              className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                "disabled:opacity-50 disabled:cursor-not-allowed",
-              onClick: async () => {
-                const topic = document.querySelector<HTMLSelectElement>('select[name="authorityTopic"]')?.value || "scrum";
-                const level = document.querySelector<HTMLSelectElement>('select[name="authorityLevel"]')?.value || "1.0";
-                // agent.setKnowledgeAuthority(topic, parseFloat(level));
-                setState({ lastResponse: "Knowledge authority set for " + topic + " to " + level, loading: false });
-              }
-            },
-            "Set Knowledge Authority"
-          ),
-          // Expert Override Tracking
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Override Note:"
-            ),
-            render(
-              "textarea",
-              { name: "overrideNote", rows: 2, className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500 resize-sm" },
-              "Enter expert override notes here..."
-            )
-          ),
-          render(
-            "button",
-            {
-              type: "button",
-              className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                "disabled:opacity-50 disabled:cursor-not-allowed",
-              disabled: state.loading,
-              onClick: async () => {
-                const note = (document.querySelector('textarea[name="overrideNote"]') as HTMLTextAreaElement | null)?.value || "";
-                // agent.recordExpertOverride("key concept", note);
-                setState({ lastResponse: "Expert override recorded: " + note, loading: false });
-              }
-            },
-            "Record Expert Override"
-          ),
-          // Time-Decay Knowledge Relevance
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Knowledge Age (days):"
-            ),
-            render(
-              "input",
-              { type: "number", name: "knowledgeAge", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500", min: "0", value: "0" }
-            )
-          ),
-          render(
-            "button",
-            {
-              type: "button",
-              className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                "disabled:opacity-50 disabled:cursor-not-allowed",
-              disabled: state.loading,
-              onClick: async () => {
-                const age = parseInt(document.querySelector<HTMLInputElement>('input[name="knowledgeAge"]')?.value || "0", 10);
-                // const relevance = agent.calculateTimeDecayedRelevance(0.8, "knowledge-id", age);
-                setState({ lastResponse: "Time-decay relevance calculated for age " + age, loading: false });
-              }
-            },
-            "Calculate Time-Decay Relevance"
-          ),
-          // Cross-Team Knowledge Sharing
-          render(
-            "div",
-            { className: "mb-3" },
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Share Topic:"
-            ),
-            render(
-              "select",
-              { name: "shareTopic", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "scrum" }, "Scrum Framework"),
-              render("option", { value: "kanban" }, "Kanban Method"),
-              render("option", { value: "patterns" }, "Anti-patterns"),
-              render("option", { value: "velocity" }, "Velocity & Estimation")
-            ),
-            render(
-              "label",
-              { className: "block text-sm font-medium mb-2" },
-              "Target Team:"
-            ),
-            render(
-              "select",
-              { name: "targetTeam", className: "w-full p-3 rounded-md border border-input focus-ring-indigo-500 focus:border-indigo-500" },
-              render("option", { value: "team-alpha" }, "Team Alpha"),
-              render("option", { value: "team-beta" }, "Team Beta"),
-              render("option", { value: "team-gamma" }, "Team Gamma")
-            ),
-            render(
-              "button",
-              {
-                type: "button",
-                className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 " +
-                  "focus-visible:ring-offset-2 bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-500 " +
-                  "disabled:opacity-50 disabled:cursor-not-allowed",
-                disabled: state.loading,
-                onClick: async () => {
-                  const topic = document.querySelector<HTMLSelectElement>('select[name="shareTopic"]')?.value || "scrum";
-                  const team = document.querySelector<HTMLSelectElement>('select[name="targetTeam"]')?.value || "team-alpha";
-                  // agent.shareKnowledge(topic, "Shared agile knowledge", team);
-                  setState({ lastResponse: "Knowledge shared to " + team + " on " + topic, loading: false });
-                }
-              },
-              "Share Knowledge"
-            )
-          ),
-        ),
+    const actionLabel = action === "provide-rag-coaching"
+      ? "RAG-enhanced coaching guidance"
+      : "Coaching guidance";
 
+    return [
+      `${actionLabel}${context ? ` — ${context}` : ""}`,
+      "",
+      `Question: ${question}`,
+      `Team size: ${teamSize || "not specified"}`,
+      "",
+      "Suggested next steps:",
+      ...recommendations.map((recommendation) => `• ${recommendation}`),
+      `• ${teamGuidance}`,
+      "",
+      "Use these as prompts for a team discussion and adapt them to your context."
+    ].join("\n");
+  }
 
-        // Response Display
-        state.lastResponse ? render(
-          "div",
-          { className: "mt-6 rounded-lg border p-4 bg-background/50 border-b border-indigo-500/50 shadow-sm" },
-          render(
-            "h4",
-            { className: "font-medium mb-2 text-sm text-indigo-600" },
-            "ðŸ¤– Agent Response"
-          ),
-          render(
-            "pre",
-            { className: "text-sm font-mono text-indigo-600 whitespace-pre-wrap rounded-sm max-h-[500px] overflow-auto p-2 bg-muted/50" },
-            state.lastResponse
-          )
-        ) : state.loading ? render(
-          "div",
-          { className: "mt-3 flex items-center gap-2 text-sm text-indigo-600" },
-          render("span", { className: "animate-pulse h-4 w-4 bg-indigo-600 rounded-full" }),
-          "Retrieving relevant agile knowledge..."
-        ) : null,
+  return (
+    <div className="min-h-screen bg-background/50">
+      {/* Header */}
+      <header className="border-b border-border/50 bg-card sticky top-0 z-10 backdrop-blur-sm bg-white/90">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {/* Cloudscape-inspired icon circle */}
+              <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <path d="M3 9l9 6l9-6M9 3v9m-6-3h6m3 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2-2h-6a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/>
+                </svg>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold tracking-tighter text-primary">Enterprise Agile Coach</h1>
+                <p className="text-sm text-muted-foreground">AI-powered agile coaching and pattern detection</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                className="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-indigo-600 text-white hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500"
+                aria-label="Open settings"
+              >
+                Settings
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      // Decision Journal & Adaptive Learning
-      render(
-        "div",
-        { className: "mt-6 p-4 bg-purple-5/10 rounded-md border-purple-500/20" },
-        render(
-          "h3",
-          { className: "text-xl font-medium mb-4 .flex items-center gap-2" },
-          "📊 Decision Journal"
-        ),
-        render(
-          "p",
-          { className: "text-sm text-purple-600 mb-4" },
-          "Track agile decisions and observe learning rate adaptation based on outcomes."
-        ),
-        // Record Decision
-        render(
-          "div",
-          { className: "mb-3" },
-          render(
-            "label",
-            { className: "block text-sm font-medium mb-2" },
-            "Decision:"
-          ),
-          render(
-            "input",
-            { type: "text", name: "decisionName", className: "w-full p-3 rounded-md border border-input focus-ring-purple-500 focus:border-purple-500", placeholder: "e.g., 'Adopt Scrum'" }
-          )
-        ),
-        render(
-          "div",
-          { className: "mb-3" },
-          render(
-            "label",
-            { className: "block text-sm font-medium mb-2" },
-            "Options:"
-          ),
-          render(
-            "textarea",
-            { name: "decisionOptions", rows: 2, className: "w-full p-3 rounded-md border border-input focus-ring-purple-500 focus:border-purple-500 resize-sm" },
-            "Option A, Option B, Option C"
-          )
-        ),
-        render(
-          "div",
-          { className: "mb-3" },
-          render(
-            "label",
-            { className: "block text-sm font-medium mb-2" },
-            "Outcome:"
-          ),
-          render(
-            "select",
-            { name: "decisionOutcome", className: "w-full p-3 rounded-md border border-input focus-ring-purple-500 focus:border-purple-500" },
-            render("option", { value: "positive" }, "Positive"),
-            render("option", { value: "negative" }, "Negative"),
-            render("option", { value: "neutral" }, "Neutral")
-          )
-        ),
-        render(
-          "div",
-          { className: "mb-3" },
-          render(
-            "label",
-            { className: "block text-sm font-medium mb-2" },
-            "Uncertainty (0-1):"
-          ),
-          render(
-            "input",
-            { type: "number", name: "decisionUncertainty", className: "w-full p-3 rounded-md border border-input focus-ring-purple-500 focus:border-purple-500", min: "0", max: "1", step: "0.1", value: "0.5" }
-          )
-        ),
-        render(
-          "div",
-          { className: "mb-3" },
-          render(
-            "label",
-            { className: "block text-sm font-medium mb-2" },
-            "Lessons Learned:"
-          ),
-          render(
-            "textarea",
-            { name: "decisionLessons", rows: 2, className: "w-full p-3 rounded-md border border-input focus-ring-purple-500 focus:border-purple-500 resize-sm" },
-            "Enter lessons learned..."
-          )
-        ),
-        render(
-          "button",
-          {
-            type: "button",
-            className: "w-full px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 " +
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500 " +
-              "focus-visible:ring-offset-2 bg-purple-600 text-white hover:bg-purple-700 active:bg-purple-500 " +
-              "disabled:opacity-50 disabled:cursor-not-allowed",
-            disabled: state.loading,
-            onClick: async () => {
-              const name = document.querySelector<HTMLInputElement>('input[name="decisionName"]')?.value || "";
-              const options = document.querySelector<HTMLTextAreaElement>('textarea[name="decisionOptions"]')?.value || "";
-              const outcome = document.querySelector<HTMLSelectElement>('select[name="decisionOutcome"]')?.value || "positive";
-              const uncertainty = parseFloat(document.querySelector<HTMLInputElement>('input[name="decisionUncertainty"]')?.value || "0.5") || 0.5;
-              const lessons = document.querySelector<HTMLTextAreaElement>('textarea[name="decisionLessons"]')?.value || "";
-              // agent.recordDecision(name, options.split(","), outcome, lessons, uncertainty);
-              setState({ lastResponse: "Decision recorded: " + name + " (" + outcome + ")", loading: false });
-            }
-          },
-          "Record Decision"
-        ),
-        // Decision Insights
-        render(
-          "div",
-          { className: "mt-4 pt-4 border-t border-purple-500/20" },
-          render(
-            "h4",
-            { className: "text-sm font-medium mb-3 text-purple-600" },
-            "Decision Insights"
-          ),
-          render(
-            "div",
-            { className: "grid grid-cols-2 gap-2 text-sm" },
-            render(
-              "div",
-              null,
-              "Total Decisions: ",
-              "0"
-            ),
-            render(
-              "div",
-              null,
-              "Success Rate: ",
-              "0%"
-            ),
-            render(
-              "div",
-              null,
-              "Positive Outcomes: ",
-              "0"
-            ),
-            render(
-              "div",
-              null,
-              "Negative Outcomes: ",
-              "0"
-            )
-          )
-        ),
-        // Adaptive Learning Rate
-        render(
-          "div",
-          { className: "mt-4 pt-4 border-t border-purple-500/20" },
-          render(
-            "h4",
-            { className: "text-sm font-medium mb-3 text-purple-600" },
-            "Adaptive Learning Rate"
-          ),
-          render(
-            "div",
-            { className: "grid grid-cols-2 gap-2 text-sm" },
-            render(
-              "div",
-              null,
-              "Current Rate: ",
-              "0.5"
-            ),
-            render(
-              "div",
-              null,
-              "High Success → Faster Learning",
-              ""
-            ),
-            render(
-              "div",
-              null,
-              "Low Success → Slower Learning",
-              ""
-            )
-          )
-        ),
-      )
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-      )
-    )
+        {/* Section: Agent Capabilities */}
+        <section className="mb-8">
+          <div className="p-6 sm:p-8 border-b border-border/50">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">Agent Capabilities</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The Enterprise Agile Coach Agent provides retrospective analysis, anti-pattern detection,
+              team health monitoring, improvement recommendations, velocity prediction, and stakeholder
+              communication preparation. Designed for enterprise agile teams looking to optimize their
+              processes and deliver better outcomes.
+            </p>
+          </div>
+        </section>
+
+        {/* Section: Interactive Coaching Session */}
+        <section className="mb-8">
+          <div className="p-6 sm:p-8 border-b border-border/50">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">Interactive Coaching Session</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Enter coaching context to interact with the agent and receive tailored recommendations.
+            </p>
+
+            <form
+              onSubmit={async (e: React.FormEvent) => {
+                e.preventDefault();
+                setState((previousState) => ({ ...previousState, loading: true }));
+                const formData = new FormData(e.target as HTMLFormElement);
+                const result = await callAgentAction(
+                  formData.get("action") as string,
+                  {
+                    query: formData.get("query") as string,
+                    context: (formData.get("context") as string) || "general",
+                    teamSize: formData.get("teamSize") as string,
+                  }
+                );
+                setState({ lastResponse: result, loading: false });
+              }}
+            >
+              {/* Query Input */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Coaching Query</label>
+                <div className="relative">
+                  <textarea
+                    id="query"
+                    name="query"
+                    placeholder="e.g., 'My team has velocity inconsistency, help me improve'"
+                    rows={3}
+                    className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500 resize-sm transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Context Select */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Coaching Focus</label>
+                <select
+                  name="context"
+                  className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                >
+                  <option value="general">General Agile Coaching</option>
+                  <option value="retrospective">Retrospective Analysis</option>
+                  <option value="anti-pattern">Anti-Pattern Detection</option>
+                  <option value="coaching">Coaching Recommendations</option>
+                </select>
+              </div>
+
+              {/* Team Size Select */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Team Size</label>
+                <select
+                  name="teamSize"
+                  className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                >
+                  <option value="5">5-10 members</option>
+                  <option value="10">10-20 members</option>
+                  <option value="20">20+ members</option>
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="submit"
+                  disabled={state.loading}
+                  className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {state.loading ? "Processing..." : "Run Coaching Session"}
+                </button>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.currentTarget.form?.reset();
+                  }}
+                  className="px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        {/* Section: RAG-Enhanced Query */}
+        <section className="mb-8">
+          <div className="p-6 sm:p-8 border-b border-border/50">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">RAG-Enhanced Query</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Ask the Enterprise Agile Coach a question about agile, scrum, kanban, or team dynamics.
+              The agent will retrieve relevant knowledge from the agile knowledge base before providing
+              recommendations, leveraging RAG (Retrieval-Augmented Generation) for enhanced insights.
+            </p>
+
+            <form
+              onSubmit={async (e: React.FormEvent) => {
+                e.preventDefault();
+                setState({ loading: true, lastResponse: null });
+                const formData = new FormData(e.target as HTMLFormElement);
+                const result = await callAgentAction(
+                  "provide-rag-coaching",
+                  {
+                    query: formData.get("query") as string,
+                    context: (formData.get("context") as string) || "general",
+                    teamSize: formData.get("teamSize") as string,
+                  }
+                );
+                setState({ loading: false, lastResponse: result });
+              }}
+            >
+              {/* Query Input */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Your Question</label>
+                <div className="relative">
+                  <textarea
+                    id="rag-query"
+                    name="query"
+                    placeholder="e.g., 'My team has velocity inconsistency, help me improve'"
+                    rows={3}
+                    className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500 resize-sm transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Context Select */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Context</label>
+                <select
+                  name="context"
+                  className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                >
+                  <option value="general">General Agile Coaching</option>
+                  <option value="retrospective">Retrospective Analysis</option>
+                  <option value="anti-pattern">Anti-Pattern Detection</option>
+                  <option value="coaching">Coaching Recommendations</option>
+                </select>
+              </div>
+
+              {/* Team Size Select */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Team Size</label>
+                <select
+                  name="teamSize"
+                  className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                >
+                  <option value="5">5-10 members</option>
+                  <option value="10">10-20 members</option>
+                  <option value="20">20+ members</option>
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="submit"
+                  disabled={state.loading}
+                  className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {state.loading ? "Processing..." : "Run RAG-Enhanced Coaching"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        {/* Section: Expert Overrides & Knowledge Sharing */}
+        <section className="mb-8">
+          <div className="p-6 sm:p-8 border-b border-border/50">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">Expert Overrides & Knowledge Sharing</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Manage expert knowledge authority and track overrides for key agile concepts. Control
+              how expert knowledge influences agent recommendations and share insights across teams.
+            </p>
+
+            {/* Knowledge Authority */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">Authority Topic</label>
+              <select
+                name="authorityTopic"
+                className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value="scrum">Scrum Framework</option>
+                <option value="kanban">Kanban Method</option>
+                <option value="patterns">Anti-patterns</option>
+                <option value="velocity">Velocity & Estimation</option>
+              </select>
+            </div>
+
+            {/* Authority Level */}
+            <div className="mt-4 mb-4">
+              <label className="block text-sm font-medium mb-2">Authority Level</label>
+              <select
+                name="authorityLevel"
+                className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value={1.0}>Full Authority (1.0)</option>
+                <option value={0.7}>High Authority (0.7)</option>
+                <option value={0.5}>Medium Authority (0.5)</option>
+                <option value={0.3}>Low Authority (0.3)</option>
+                <option value={0.0}>No Authority (0.0)</option>
+              </select>
+            </div>
+
+            {/* Override Note */}
+            <div className="mt-4 mb-4">
+              <label className="block text-sm font-medium mb-2">Override Note</label>
+              <textarea
+                name="overrideNote"
+                rows={2}
+                placeholder="Enter expert override notes here..."
+                className="w-full p-3 rounded-lg border border-border focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500 resize-sm transition-colors"
+              />
+            </div>
+
+            {/* Buttons */}
+            <div className="flex gap-3 pt-4">
+              <button
+                type="button"
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={state.loading}
+                onClick={async () => {
+                  const topic = (document.querySelector('select') as HTMLSelectElement | null)?.value || "scrum";
+                  const level = parseFloat(
+                    (document.querySelector('select') as HTMLSelectElement | null)?.value || "1.0"
+                  );
+                  // agent.setKnowledgeAuthority(topic, level);
+                  setState({ lastResponse: "Knowledge authority set for " + topic + " to " + level, loading: false });
+                }}
+              >
+                Set Knowledge Authority
+              </button>
+              <button
+                type="button"
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Response Display */}
+        <section className="mb-8">
+          {state.lastResponse ? (
+            <div className="p-6 sm:p-8 border-b border-border/50">
+              <h2 className="text-lg font-semibold tracking-tight mb-4">Agent Response</h2>
+              <p className="text-sm text-muted-foreground mb-4">The agent's response to your coaching query:</p>
+              <pre className="text-sm font-mono text-indigo-600 whitespace-pre-wrap rounded-lg p-4 bg-muted/50 border border-border/50 max-h-[600px] overflow-auto">
+                {state.lastResponse}
+              </pre>
+            </div>
+          ) : state.loading ? (
+            <div className="p-6 sm:p-8 border-b border-border/50">
+              <div className="flex items-center gap-3">
+                <span className="animate-pulse h-5 w-5 rounded-full bg-indigo-600" aria-hidden="true" />
+                <span className="text-sm text-indigo-600">Retrieving relevant agile knowledge...</span>
+              </div>
+            </div>
+          ) : null}
+        </section>
+
+        {/* Section: Decision Journal & Adaptive Learning */}
+        <section className="mb-8">
+          <div className="p-6 sm:p-8 border-b border-border/50">
+            <h2 className="text-lg font-semibold tracking-tight mb-6">Decision Journal & Adaptive Learning</h2>
+
+            {/* Record Decision */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium mb-2">Decision Name</label>
+              <input
+                type="text"
+                name="decisionName"
+                placeholder="e.g., 'Adopt Scrum'"
+                className="w-full p-3 rounded-lg border border-border focus:border-purple-600 focus:ring-2 focus:ring-purple-500 transition-colors"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">Options (comma-separated)</label>
+              <textarea
+                name="decisionOptions"
+                rows={2}
+                placeholder="Option A, Option B, Option C"
+                className="w-full p-3 rounded-lg border border-border focus:border-purple-600 focus:ring-2 focus:ring-purple-500 resize-sm transition-colors"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Outcome</label>
+                <select
+                  name="decisionOutcome"
+                  className="w-full p-3 rounded-lg border border-border focus:border-purple-600 focus:ring-2 focus:ring-purple-500"
+                >
+                  <option value="positive">Positive</option>
+                  <option value="negative">Negative</option>
+                  <option value="neutral">Neutral</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Uncertainty</label>
+                <input
+                  type="number"
+                  name="decisionUncertainty"
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  value={0.5}
+                  className="w-full p-3 rounded-lg border border-border focus:border-purple-600 focus:ring-2 focus:ring-purple-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">Lessons Learned</label>
+              <textarea
+                name="decisionLessons"
+                rows={3}
+                placeholder="Enter lessons learned..."
+                className="w-full p-3 rounded-lg border border-border focus:border-purple-600 focus:ring-2 focus:ring-purple-500 resize-sm transition-colors"
+              />
+            </div>
+
+            <button
+              type="button"
+              className="w-full px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={state.loading}
+              onClick={async () => {
+                const name = (document.querySelector('input[type="text"]') as HTMLInputElement | null)?.value || "";
+                const options = (document.querySelector('textarea') as HTMLTextAreaElement | null)?.value || "";
+                const outcome = (document.querySelector('select') as HTMLSelectElement | null)?.value || "positive";
+                const uncertainty = parseFloat(
+                  (document.querySelector('input[type="number"]') as HTMLInputElement | null)?.value || "0.5"
+                ) || 0.5;
+                const lessons = (document.querySelector('textarea') as HTMLTextAreaElement | null)?.value || "";
+                // agent.recordDecision(name, options.split(","), outcome, lessons, uncertainty);
+                setState({ lastResponse: "Decision recorded: " + name + " (" + outcome + ")", loading: false });
+              }}
+            >
+              Record Decision
+            </button>
+          </div>
+
+          {/* Decision Insights */}
+          <div className="p-6 sm:p-8 border-b border-border/50 mt-6">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">Decision Insights</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <div className="text-2xl font-bold text-primary">0</div>
+                <p className="text-sm text-muted-foreground mt-1">Total Decisions</p>
+              </div>
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <div className="text-2xl font-bold text-primary">0%</div>
+                <p className="text-sm text-muted-foreground mt-1">Success Rate</p>
+              </div>
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <div className="text-2xl font-bold text-primary">0</div>
+                <p className="text-sm text-muted-foreground mt-1">Positive Outcomes</p>
+              </div>
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <div className="text-2xl font-bold text-primary">0</div>
+                <p className="text-sm text-muted-foreground mt-1">Negative Outcomes</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Adaptive Learning Rate */}
+          <div className="p-6 sm:p-8 border-b border-border/50 mt-6">
+            <h2 className="text-lg font-semibold tracking-tight mb-4">Adaptive Learning Rate</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <div className="text-2xl font-bold text-primary">0.5</div>
+                <p className="text-sm text-muted-foreground mt-1">Current Rate</p>
+              </div>
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <p className="text-sm text-muted-foreground">
+                  <svg className="w-4 h-4 text-indigo-500 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                  High Success → Faster Learning
+                </p>
+              </div>
+              <div className="p-3 rounded-lg bg-muted/50 border border-border/50">
+                <p className="text-sm text-muted-foreground">
+                  <svg className="w-4 h-4 text-indigo-500 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                  Low Success → Slower Learning
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
-

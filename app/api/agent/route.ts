@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
           // Extract the coaching text from the React element
           // The React element structure from provideCoaching is always:
           // children[0] = h2: "Agile Coaching Recommendations"
-          // children[1] = coachingString: "**Organization Type** ... **Team Maturity** ... **Primary Challenge** ...
+          // children[1] = coachingString: "**Organization Type** ... **Team Maturity** ... **Primary Challenge** ... (plain string)"
           // children[2] = p: description text
           let responseMessage: string;
 
@@ -136,9 +136,17 @@ export async function POST(request: NextRequest) {
             const props = (coachingResult as any).props;
             if (props && props.children && Array.isArray(props.children) && props.children.length > 1) {
               // Directly access children[1] which contains the coachingString
+              // This is typically a plain string with **Organization Type**, **Team Maturity**, **Primary Challenge** recommendations
               const coachingChild = props.children[1];
-              if (coachingChild && coachingChild.props && coachingChild.props.children) {
-                responseMessage = String(coachingChild.props.children);
+              if (coachingChild) {
+                // children[1] is a plain string containing the coaching recommendations
+                if (typeof coachingChild === 'string') {
+                  responseMessage = coachingChild;
+                } else if (coachingChild.props && coachingChild.props.children) {
+                  responseMessage = String(coachingChild.props.children);
+                } else {
+                  responseMessage = "Generating coaching insights...";
+                }
               } else {
                 responseMessage = "Generating coaching insights...";
               }

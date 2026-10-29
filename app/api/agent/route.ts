@@ -126,22 +126,21 @@ export async function POST(request: NextRequest) {
           });
 
           // Extract the coaching text from the React element
-          // The coachingString contains: **Organization Type** ... **Team Maturity** ... **Primary Challenge** ...
+          // The React element structure from provideCoaching is always:
+          // children[0] = h2: "Agile Coaching Recommendations"
+          // children[1] = coachingString: "**Organization Type** ... **Team Maturity** ... **Primary Challenge** ...
+          // children[2] = p: description text
           let responseMessage: string;
 
           if (typeof coachingResult === 'object' && coachingResult !== null && 'props' in coachingResult) {
             const props = (coachingResult as any).props;
-            if (props && props.children && Array.isArray(props.children)) {
-              // Find the children with the coaching text (typically index 1 has the coachingString)
-              const coachingChild = props.children.find((child: any) =>
-                child && typeof child === 'object' && child.props && child.props.children
-              );
+            if (props && props.children && Array.isArray(props.children) && props.children.length > 1) {
+              // Directly access children[1] which contains the coachingString
+              const coachingChild = props.children[1];
               if (coachingChild && coachingChild.props && coachingChild.props.children) {
                 responseMessage = String(coachingChild.props.children);
-              } else if (props.children.length > 1) {
-                responseMessage = String(props.children[1]?.props?.children || props.children[0]?.props?.children);
               } else {
-                responseMessage = String(props.children[0]?.props?.children || '');
+                responseMessage = "Generating coaching insights...";
               }
             } else {
               responseMessage = "Generating coaching insights...";

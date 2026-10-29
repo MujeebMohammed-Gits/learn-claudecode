@@ -111,16 +111,51 @@ export async function POST(request: NextRequest) {
 
       case "interactive-coaching": {
         const { query, context, teamSize, teamMaturityLevel, primaryChallenge } = params;
-        return new Response(
-          JSON.stringify({
-            status: "success",
-            message: "Interactive coaching session initiated",
-            action: "interactive-coaching",
-          }),
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
+
+        try {
+          // Initialize the enterprise agile coach agent
+          const agent = new enterpriseAgileCoachAgent();
+
+          // Provide coaching based on the user's query
+          const coachingResult = await agent.provideCoaching({
+            organizationType: "enterprise",
+            teamMaturityLevel: teamMaturityLevel || "performing",
+            primaryChallenge: primaryChallenge || "collaboration",
+            teamSize: teamSize || 8,
+            query: query || "Team needs agile coaching guidance"
+          });
+
+          // Format the response with actual coaching insights
+          const responseMessage = coachingResult
+            ? coachingResult.slice(0, 500) + (coachingResult.length > 500 ? "..." : "")
+            : "Generating coaching insights...";
+
+          return new Response(
+            JSON.stringify({
+              status: "success",
+              message: responseMessage,
+              action: "interactive-coaching",
+              query: query || "",
+              teamContext: {
+                teamSize: teamSize || 8,
+                teamMaturityLevel: teamMaturityLevel || "performing",
+                primaryChallenge: primaryChallenge || "collaboration"
+              }
+            }),
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        } catch (error) {
+          console.error("Interactive coaching error:", error);
+          return new Response(
+            JSON.stringify({ error: "Failed to generate coaching response" }),
+            {
+              status: 500,
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        }
       }
 
       // Add to the POST handler switch case

@@ -110,113 +110,111 @@ export async function POST(request: NextRequest) {
       }
 
       // Add to the POST handler switch case
-        case "provide-rag-coaching": {
-          const { query, context, organizationType, teamMaturityLevel, primaryChallenge, teamSize, experienceLevel, coachingGoals } = params;
+      case "provide-rag-coaching": {
+        const { query, context, organizationType, teamMaturityLevel, primaryChallenge, teamSize, experienceLevel, coachingGoals } = params;
 
-          try {
-            // Phase 1: Initialize agent and record RAG metrics
-            const agent = new enterpriseAgileCoachAgent();
+        try {
+          // Phase 1: Initialize agent and record RAG metrics
+          const agent = new enterpriseAgileCoachAgent();
 
-            // Record RAG metrics for query quality tracking
-            const relevanceScore = 0.85;
-            const coverageScore = 0.75;
-            const correctnessScore = 0.8;
-            agent.recordRAGMetrics(query, relevanceScore, coverageScore, correctnessScore);
+          // Record RAG metrics for query quality tracking
+          const relevanceScore = 0.85;
+          const coverageScore = 0.75;
+          const correctnessScore = 0.8;
+          agent.recordRAGMetrics(query, relevanceScore, coverageScore, correctnessScore);
 
-            // Phase 1: Context-aware deep knowledge retrieval with team context
-            const teamContext = {
+          // Phase 1: Context-aware deep knowledge retrieval with team context
+          const teamContext = {
+            teamSize: teamSize || 8,
+            teamMaturityLevel: teamMaturityLevel || "performing"
+          };
+          const deepKnowledge = await (agent as any).deepRetrieveKnowledge(
+            query,
+            [context],
+            teamContext
+          );
+
+          // Phase 1: Knowledge gap analysis for team maturity level
+          const currentPractices: string[] = [];
+          const gapAnalysis = await (agent as any).knowledgeGapAnalysis(
+            teamMaturityLevel || "performing",
+            teamSize || 8,
+            currentPractices
+          );
+
+          // Original RAG coaching
+          const coachingResult = await agent.provideRAGCoaching(
+            query,
+            context,
+            {
+              organizationType: organizationType || "enterprise",
+              teamMaturityLevel: teamMaturityLevel || "performing",
+              primaryChallenge: primaryChallenge || "collaboration",
               teamSize: teamSize || 8,
-              teamMaturityLevel: teamMaturityLevel || "performing"
-            };
-            const deepKnowledge = await (agent as any).deepRetrieveKnowledge(
-              query,
-              [context],
-              teamContext
-            );
-
-            // Phase 1: Knowledge gap analysis for team maturity level
-            const currentPractices: string[] = [];
-            const gapAnalysis = await (agent as any).knowledgeGapAnalysis(
-              teamMaturityLevel || "performing",
-              teamSize || 8,
-              currentPractices
-            );
-
-            // Original RAG coaching
-            const coachingResult = await agent.provideRAGCoaching(
-              query,
-              context,
-              {
-                organizationType: organizationType || "enterprise",
-                teamMaturityLevel: teamMaturityLevel || "performing",
-                primaryChallenge: primaryChallenge || "collaboration",
-                teamSize: teamSize || 8,
-                experienceLevel: experienceLevel || "intermediate",
-                coachingGoals: coachingGoals || ["improvement"]
-              }
-            );
-
-            // Enhance response with Phase 1 insights
-            const enhancedResponse = { ...coachingResult } as typeof coachingResult & {
-              ragInsights?: {
-                deepRetrieved: number;
-                topTopics: string[];
-                relevance: number;
-              };
-              knowledgeGaps?: Array<{
-                gap: string;
-                severity: "high" | "medium" | "low";
-                recommendation: string;
-              }>;
-            };
-
-            if (deepKnowledge && deepKnowledge.length > 0) {
-              enhancedResponse.ragInsights = {
-                deepRetrieved: deepKnowledge.length,
-                topTopics: deepKnowledge
-                  .slice()
-                  .sort((a: { relevance: number }, b: { relevance: number }) => b.relevance - a.relevance)
-                  .slice(0, 3)
-                  .map((k: { content: string }) => k.content),
-                relevance: Math.max(...deepKnowledge.map((k: { relevance: number }) => k.relevance))
-              };
+              experienceLevel: experienceLevel || "intermediate",
+              coachingGoals: coachingGoals || ["improvement"]
             }
+          );
 
-            if (gapAnalysis && gapAnalysis.length > 0) {
-              enhancedResponse.knowledgeGaps = gapAnalysis
+          // Enhance response with Phase 1 insights
+          const enhancedResponse = { ...coachingResult } as typeof coachingResult & {
+            ragInsights?: {
+              deepRetrieved: number;
+              topTopics: string[];
+              relevance: number;
+            };
+            knowledgeGaps?: Array<{
+              gap: string;
+              severity: "high" | "medium" | "low";
+              recommendation: string;
+            }>;
+          };
+
+          if (deepKnowledge && deepKnowledge.length > 0) {
+            enhancedResponse.ragInsights = {
+              deepRetrieved: deepKnowledge.length,
+              topTopics: deepKnowledge
+                .slice()
+                .sort((a: { relevance: number }, b: { relevance: number }) => b.relevance - a.relevance)
                 .slice(0, 3)
-                .map((g: { gap: string, severity: "high" | "medium" | "low", recommendation: string }) => ({
-                  gap: g.gap,
-                  severity: g.severity,
-                  recommendation: g.recommendation
-                }));
-            }
+                .map((k: { content: string }) => k.content),
+              relevance: Math.max(...deepKnowledge.map((k: { relevance: number }) => k.relevance))
+            };
+          }
 
-            return new Response(
-              JSON.stringify({
-                status: "success",
-                message: "RAG-enhanced coaching generated with Phase 1 insights",
-                action: "provide-rag-coaching",
-                response: enhancedResponse,
-                metrics: agent.getRAGMetrics()
-              }),
-              {
-                headers: { "Content-Type": "application/json" },
-              }
-            );
+          if (gapAnalysis && gapAnalysis.length > 0) {
+            enhancedResponse.knowledgeGaps = gapAnalysis
+              .slice(0, 3)
+              .map((g: { gap: string, severity: "high" | "medium" | "low", recommendation: string }) => ({
+                gap: g.gap,
+                severity: g.severity,
+                recommendation: g.recommendation
+              }));
+          }
+
+          return new Response(
+            JSON.stringify({
+              status: "success",
+              message: "RAG-enhanced coaching generated with Phase 1 insights",
+              action: "provide-rag-coaching",
+              response: enhancedResponse,
+              metrics: agent.getRAGMetrics()
+            }),
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          );
+        } catch (error) {
+          console.error("RAG coaching error:", error);
+          return new Response(
+            JSON.stringify({ error: "Internal server error" }),
+            {
+              status: 500,
+              headers: { "Content-Type": "application/json" },
+            }
+          );
         }
-    }
-  } catch (error) {
-    console.error("RAG coaching error:", error);
-    return new Response(
-      JSON.stringify({ error: "Internal server error" }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
       }
-    );
-  }
-}
 
       default:
         return new Response(

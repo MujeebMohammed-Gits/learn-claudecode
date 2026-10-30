@@ -70,6 +70,53 @@ export default function EnterpriseAgileCoach() {
   const [state, setState] = useState<AgentState>(initialState);
   const [query, setQuery] = useState("");
   const [ragQuery, setRagQuery] = useState("");
+
+  // Load state from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("enterprise-agile-coach-state");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setState(prev => ({ ...prev, ...parsed }));
+        setQuery(parsed.query || "");
+        setRagQuery(parsed.ragQuery || "");
+      }
+    } catch (e) {
+      console.error("Failed to load coaching state from localStorage", e);
+    }
+  }, []);
+
+  // Save state to localStorage on changes
+  useEffect(() => {
+    try {
+      const stateToStore = {
+        lastResponse: state.lastResponse,
+        relevantData: state.relevantData,
+        queryAnalysis: state.queryAnalysis
+      };
+      localStorage.setItem("enterprise-agile-coach-state", JSON.stringify(stateToStore));
+    } catch (e) {
+      console.error("Failed to save coaching state to localStorage", e);
+    }
+  }, [state.lastResponse, state.relevantData, state.queryAnalysis]);
+
+  // Save query to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("enterprise-agile-coach-query", query);
+    } catch (e) {
+      console.error("Failed to save query to localStorage", e);
+    }
+  }, [query]);
+
+  // Save ragQuery to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("enterprise-agile-coach-rag-query", ragQuery);
+    } catch (e) {
+      console.error("Failed to save ragQuery to localStorage", e);
+    }
+  }, [ragQuery]);
   const [decisionName, setDecisionName] = useState("");
   const [decisionOptions, setDecisionOptions] = useState("Option A, Option B, Option C");
   const [decisionLessons, setDecisionLessons] = useState("");
@@ -157,6 +204,7 @@ export default function EnterpriseAgileCoach() {
                       <Select
                         name="context"
                         selectedOption={{ value: "general", label: "General agile coaching" }}
+                        onChange={({ detail }) => setQuery(detail.value)}
                         options={[
                           { value: "general", label: "General agile coaching" },
                           { value: "retrospective", label: "Retrospective analysis" },
@@ -170,6 +218,7 @@ export default function EnterpriseAgileCoach() {
                       <Select
                         name="teamSize"
                         selectedOption={{ value: "5", label: "5–10 members" }}
+                        onChange={({ detail }) => setQuery(detail.value)}
                         options={[
                           { value: "5", label: "5–10 members" },
                           { value: "10", label: "10–20 members" },
@@ -221,6 +270,7 @@ export default function EnterpriseAgileCoach() {
                       <Select
                         name="context"
                         selectedOption={{ value: "general", label: "General agile coaching" }}
+                        onChange={({ detail }) => setQuery(detail.value)}
                         options={[
                           { value: "general", label: "General agile coaching" },
                           { value: "retrospective", label: "Retrospective analysis" },
@@ -234,6 +284,7 @@ export default function EnterpriseAgileCoach() {
                       <Select
                         name="teamSize"
                         selectedOption={{ value: "5", label: "5–10 members" }}
+                        onChange={({ detail }) => setQuery(detail.value)}
                         options={[
                           { value: "5", label: "5–10 members" },
                           { value: "10", label: "10–20 members" },
@@ -531,7 +582,7 @@ export default function EnterpriseAgileCoach() {
               {/* Always-On indicators - displayed when coaching data includes RAG metrics */}
               {state.lastResponse && !state.loading && (
                 <Box variant="p" color="text-muted-foreground" size="s">
-                  {`🔍 Knowledge sources analyzed: ${relevantData?.metrics?.deepRetrieved || 0} | 📊 Relevance: ${(relevantData?.metrics?.relevanceScore * 100 || 0).toFixed(0)}% | 🎯 Intent: ${queryAnalysis?.intent || 'general'}`
+                  {`🔍 Knowledge sources analyzed: ${state.relevantData?.metrics?.deepRetrieved || 0} | 📊 Relevance: ${(state.relevantData?.metrics?.relevanceScore * 100 || 0).toFixed(0)}% | 🎯 Intent: ${state.queryAnalysis?.intent || 'general'}`
                   }
                 </Box>
               )}

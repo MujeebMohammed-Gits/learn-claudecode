@@ -501,4 +501,81 @@ describe("EnterpriseAgileCoachAgent", () => {
       expect(resultStr).toContain("EnterpriseAgileCoach");
     });
   });
+
+  describe("React component test coverage", () => {
+    import { render, screen } from "@testing-library/react"
+    import EnterpriseAgileCoach from "../app/enterprise-agile-coach/page-client"
+
+    it("renders the EnterpriseAgileCoach component", () => {
+      render(<EnterpriseAgileCoach />)
+      expect(screen.getByRole("heading", { name: "Enterprise Agile Coach" })).toBeInTheDocument()
+    })
+
+    it("Select components have onChange handlers", () => {
+      render(<EnterpriseAgileCoach />)
+      // Interactive coaching context Select
+      const contextSelect = screen.getByLabelText("Context")
+      expect(contextSelect).toHaveAttribute("onchange")
+      // Interactive coaching team size Select
+      const teamSizeSelect = screen.getByLabelText("Team size")
+      expect(teamSizeSelect).toHaveAttribute("onchange")
+      // RAG-enhanced query context Select
+      const ragContextSelect = screen.getByPlaceholderText("e.g., "My team has velocity inconsistency, help me improve."")
+        .closest("form")
+        .querySelector('[name="context"]')
+      expect(ragContextSelect).toHaveAttribute("onchange")
+      // RAG-enhanced query team size Select
+      const ragTeamSizeSelect = screen.getByPlaceholderText("e.g., "My team has velocity inconsistency, help me improve."")
+        .closest("form")
+        .querySelector('[name="teamSize"]')
+      expect(ragTeamSizeSelect).toHaveAttribute("onchange")
+    })
+
+    it("displays Flashbar with agent response", () => {
+      const mockResponse = "Test coaching response"
+      render(
+        <EnterpriseAgileCoach
+          lastResponse={mockResponse}
+          relevantData={{ metrics: { deepRetrieved: 5, relevanceScore: 0.85 } }}
+          queryAnalysis={{ intent: "retrospective" }}
+        />
+      )
+      const flashbar = screen.getByRole("status")
+      expect(flashbar).toBeInTheDocument()
+    })
+
+    it("persists state to localStorage", () => {
+      const mockResponse = "Persistent response"
+      render(
+        <EnterpriseAgileCoach
+          lastResponse={mockResponse}
+          relevantData={{ metrics: { deepRetrieved: 3, relevanceScore: 0.9 } }}
+          queryAnalysis={{ intent: "anti-pattern" }}
+        />
+      )
+      // Check localStorage was updated
+      const storedState = localStorage.getItem("enterprise-agile-coach-state")
+      expect(storedState).toBeDefined()
+      const parsed = JSON.parse(storedState!)
+      expect(parsed.lastResponse).toBe(mockResponse)
+    })
+
+    it("query state is stored in localStorage", () => {
+      const testQuery = "My team has velocity issues"
+      render(
+        <EnterpriseAgileCoach query={testQuery} />
+      )
+      const storedQuery = localStorage.getItem("enterprise-agile-coach-query")
+      expect(storedQuery).toBe(testQuery)
+    })
+
+    it("ragQuery state is stored in localStorage", () => {
+      const testRagQuery = "How to improve collaboration"
+      render(
+        <EnterpriseAgileCoach ragQuery={testRagQuery} />
+      )
+      const storedRagQuery = localStorage.getItem("enterprise-agile-coach-rag-query")
+      expect(storedRagQuery).toBe(testRagQuery)
+    })
+  })
 });

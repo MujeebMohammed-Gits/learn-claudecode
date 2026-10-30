@@ -326,6 +326,9 @@ export async function POST(request: NextRequest) {
             coachingResult
           );
 
+          // Build query analysis for dynamic, query-specific response
+          const queryAnalysis = analyzeQueryIntent(query || "");
+
           return new Response(
             JSON.stringify({
               status: "success",
@@ -334,6 +337,7 @@ export async function POST(request: NextRequest) {
               response: enhancedResponse,
               metrics: agent.getRAGMetrics(),
               relevantData: relevantData,
+              queryAnalysis: queryAnalysis,
               timestamp: new Date().toISOString()
             }),
             {

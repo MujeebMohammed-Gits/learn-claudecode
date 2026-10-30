@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  mode: 'cjs',
   test: {
     globals: true,
     environment: 'jsdom',
     css: true,
-  },
+    plugins: [react()]
+  }
 })

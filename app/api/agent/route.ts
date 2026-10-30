@@ -466,6 +466,128 @@ function analyzeQueryIntent(query: string): {
 }
 
 /**
+ * Get practical examples based on challenge, team size, and query analysis
+ * Returns query-specific guidance enhanced with topic-specific advice
+ */
+function getPracticalExamples(
+  challenge: string,
+  teamSize: number,
+  queryAnalysis?: { keyTopics: string[] }
+): string {
+  // Base practical examples based on primary challenge
+  let examples = "";
+
+  switch (challenge) {
+    case "velocity":
+      examples = "Velocity-focused practical examples:\n";
+      examples += "- Establish clear WIP (Work In Progress) limits per column\n";
+      examples += "- Use cumulative flow diagrams to identify bottlenecks\n";
+      examples += "- Implement regular velocity tracking and sprint planning adjustments\n";
+      if (queryAnalysis?.keyTopics?.includes('speed')) {
+        examples += "- Focus on reducing lead time through faster feedback loops\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('quality')) {
+        examples += "- Maintain quality while improving speed via automated testing\n";
+      }
+      break;
+
+    case "quality":
+      examples = "Quality-focused practical examples:\n";
+      examples += "- Implement a Definition of Done with clear criteria\n";
+      examples += "- Add automated unit and integration tests to your pipeline\n";
+      examples += "- Conduct regular code reviews with focus on maintainability\n";
+      if (queryAnalysis?.keyTopics?.includes('bug')) {
+        examples += "- Prioritize bug triage and root cause analysis\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('test')) {
+        examples += "- Expand test coverage focusing on critical paths\n";
+      }
+      break;
+
+    case "collaboration":
+      examples = "Collaboration-focused practical examples:\n";
+      examples += "- Set up daily stand-ups with clear focus areas\n";
+      examples += "- Implement cross-functional pair programming rotations\n";
+      examples += "- Use shared team boards for visibility and transparency\n";
+      if (queryAnalysis?.keyTopics?.includes('communication')) {
+        examples += "- Establish async communication channels and update cadence\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('silo')) {
+        examples += "- Break down departmental silos with cross-team initiatives\n";
+      }
+      break;
+
+    case "communication":
+      examples = "Communication-focused practical examples:\n";
+      examples += "- Create clear communication channels with defined purposes\n";
+      examples += "- Use regular retrospectives to surface communication gaps\n";
+      examples += "- Implement visual management boards for team transparency\n";
+      if (queryAnalysis?.keyTopics?.includes('meeting')) {
+        examples += "- Optimize meeting structure with clear agendas and outcomes\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('async')) {
+        examples += "- Establish async update routines and status reporting\n";
+      }
+      break;
+
+    case "burnout":
+      examples = "Burnout prevention practical examples:\n";
+      examples += "- Implement sustainable pace with reasonable work hours\n";
+      examples += "- Introduce regular breaks and team wellness check-ins\n";
+      examples += "- Focus on capacity planning and realistic sprint commitments\n";
+      if (queryAnalysis?.keyTopics?.includes('stress')) {
+        examples += "- Add stress management resources and time-off policies\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('workload')) {
+        examples += "- Rebalance workload distribution across team members\n";
+      }
+      break;
+
+    case "uncertainty":
+      examples = "Uncertainty management practical examples:\n";
+      examples += "- Use iterative planning with minimum viable outcomes\n";
+      examples += "- Create option-based roadmaps for flexible direction\n";
+      examples += "- Conduct regular risk assessments and mitigation planning\n";
+      if (queryAnalysis?.keyTopics?.includes('pivot')) {
+        examples += "- Establish pivot points and decision criteria for changes\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('timeline')) {
+        examples += "- Protect timeline flexibility with buffer planning\n";
+      }
+      break;
+
+    default:
+      // General agile coaching examples
+      examples = "General agile coaching practical examples:\n";
+      examples += "- Start with a team retrospective to surface current challenges\n";
+      examples += "- Implement small, incremental process improvements\n";
+      examples += "- Focus on one area of improvement at a time\n";
+      if (queryAnalysis?.keyTopics?.includes('learning')) {
+        examples += "- Create dedicated learning time and skill-sharing sessions\n";
+      }
+      if (queryAnalysis?.keyTopics?.includes('growth')) {
+        examples += "- Set up mentorship and professional development programs\n";
+      }
+      break;
+  }
+
+  // Team size-specific guidance
+  const sizeGuidance = teamSize <= 10
+    ? "for small teams"
+    : teamSize <= 25
+      ? "for medium teams"
+      : "for large teams";
+
+  // Append size-specific examples
+  examples += `\n${sizeGuidance}:\n`;
+  examples += "- Adapt processes to your team's communication patterns\n";
+  examples += "- Adjust ceremony frequency based on team size\n";
+  examples += "- Ensure adequate representation in cross-team interactions\n";
+
+  return examples;
+}
+
+/**
  * Build a relevant data summary from RAG pipeline results
  * Includes metrics, topics, and insights for coaching response
  */

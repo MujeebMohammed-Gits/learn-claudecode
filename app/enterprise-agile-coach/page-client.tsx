@@ -21,14 +21,25 @@ import Flashbar from "@cloudscape-design/components/flashbar";
 interface AgentState {
   lastResponse: string | null;
   loading: boolean;
+  relevantData: any;
+  queryAnalysis: {
+    intent: string;
+    primaryChallenge: string;
+    teamSizeMentioned: boolean;
+    maturityMentioned: boolean;
+    keyTopics: string[];
+    suggestedFocus: string[];
+  } | null;
 }
 
 const initialState: AgentState = {
   lastResponse: null,
-  loading: false
+  loading: false,
+  relevantData: null,
+  queryAnalysis: null
 };
 
-async function callAgentAction(action: string, params: any): Promise<string> {
+async function callAgentAction(action: string, params: any): Promise<{message: string, queryAnalysis?: any, relevantData?: any}> {
   try {
     const response = await fetch(`/api/agent?action=${action}`, {
       method: "POST",
@@ -41,9 +52,17 @@ async function callAgentAction(action: string, params: any): Promise<string> {
     }
 
     const data = await response.json();
-    return data.message || JSON.stringify(data);
+    return {
+      message: data.message || JSON.stringify(data),
+      queryAnalysis: data.queryAnalysis,
+      relevantData: data.relevantData
+    };
   } catch (error: any) {
-    return `Error: ${error.message}`;
+    return {
+      message: `Error: ${error.message}`,
+      queryAnalysis: null,
+      relevantData: null
+    };
   }
 }
 
@@ -105,7 +124,12 @@ export default function EnterpriseAgileCoach() {
                   const formData = new FormData(event.currentTarget);
                   setState({ ...state, loading: true });
                   const result = await callAgentAction(formData.get("action") as string, {});
-                  setState({ lastResponse: result, loading: false });
+                  setState({
+                    lastResponse: result.message,
+                    loading: false,
+                    queryAnalysis: result.queryAnalysis,
+                    relevantData: result.relevantData
+                  });
                 }}
               >
               <Form
@@ -171,7 +195,7 @@ export default function EnterpriseAgileCoach() {
                     context: (formData.get("context") as string) || "general",
                     teamSize: formData.get("teamSize") as string
                   });
-                  setState({ loading: false, lastResponse: result });
+                  setState({ loading: false, lastResponse: result.message, queryAnalysis: result.queryAnalysis, relevantData: result.relevantData });
                 }}
               >
                 <Form
@@ -502,6 +526,13 @@ export default function EnterpriseAgileCoach() {
               ) : (
                 <Box variant="p" color="text-label">
                   Run a coaching session or RAG query to see the agent’s response here.
+                </Box>
+              )}
+              {/* Always-On indicators - displayed when coaching data includes RAG metrics */}
+              {state.lastResponse && !state.loading && (
+                <Box variant="p" color="text-muted-foreground" size="s">
+                  {`🔍 Knowledge sources analyzed: ${relevantData?.metrics?.deepRetrieved || 0} | 📊 Relevance: ${(relevantData?.metrics?.relevanceScore * 100 || 0).toFixed(0)}% | 🎯 Intent: ${queryAnalysis?.intent || 'general'}`
+                  }
                 </Box>
               )}
             </Container>

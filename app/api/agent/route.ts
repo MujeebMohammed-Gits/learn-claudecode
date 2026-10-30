@@ -195,6 +195,7 @@ export async function POST(request: NextRequest) {
               ),
               action: "interactive-coaching",
               queryAnalysis: structuredResponse.queryAnalysis,
+              relevantData: structuredResponse.relevantData,
               timestamp: new Date().toISOString()
             }),
             {

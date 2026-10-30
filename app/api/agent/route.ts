@@ -462,6 +462,7 @@ function getCoachingOverview(challenge: string) {
 /**
  * Format coaching response into a nicely-formatted plain text string
  * for display in the Agent Response Flashbar component
+ * Enhancements: vertical spacing, sub-points, team size variations, metrics, custom separators
  */
 function formatCoachingResponse(
   orgTypeRecommendations: string,
@@ -476,21 +477,76 @@ function formatCoachingResponse(
   const maturityLabel = teamContext.teamMaturityLevel || "performing";
   const challengeLabel = teamContext.primaryChallenge || "collaboration";
 
-  return `Agile Coaching Recommendations
+  // Team size-specific prefix text
+  const sizeSpecificText = teamContext.teamSize <= 10
+    ? "Small team: rapid communication, flexible processes, shared ownership"
+    : teamContext.teamSize <= 25
+      ? "Medium team: balanced structure with agility, defined roles, lightweight processes"
+      : "Large team: scaled coordination, cross-team dependencies, consistent metrics needed";
 
-**Organization Type** ${orgTypeRecommendations}
+  // Challenge-specific metric/text based on team size
+  const metricText = teamContext.teamSize <= 10
+    ? `• Success rate tracks: 80%+ satisfaction, 60%+ reduction in blockers`
+    : teamContext.teamSize <= 25
+      ? `• Success rate tracks: 75%+ satisfaction, 40%+ reduction in blockers`
+      : `• Success rate tracks: 70%+ satisfaction, 30%+ reduction in blockers`;
 
-**Team Maturity** ${teamMaturityRecommendations}
+  return `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**Primary Challenge** ${primaryChallengeRecommendations}
+🤖 Agile Coaching Recommendations
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**📋 Organization Type** (${sizeLabel} team)
+${orgTypeRecommendations}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**👥 Team Maturity** (${maturityLabel})
+${teamMaturityRecommendations}
+
+💡 Sub-points:
+• Focus on continuous empirical process optimization
+• Enable self-organization and high-value increment delivery
+• Mentor other teams and share best practices
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+**🎯 Primary Challenge** (${challengeLabel})
+${primaryChallengeRecommendations}
+
+💡 Sub-points:
+• Improve cross-functional communication quality
+• Enhance daily stand-up effectiveness
+• Establish shared ownership and pair programming rotations
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${practicalExamples ? `\n${practicalExamples}` : ''}
 
 ${overallOverview ? `\n${overallOverview}` : ''}
 
+${sizeSpecificText ? `\n${sizeSpecificText}` : ''}
+
+${metricText ? `\n${metricText}` : ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 Overall Overview
+${overallOverview || 'Agile coaching recommendations generated for your team\'s specific context and challenges.'}
+
 ---
 
-Query: ${query || 'No query provided'}
-Team Context: Size ${sizeLabel}, Maturity ${maturityLabel}, Challenge ${challengeLabel}
+**📝 Query:** ${query || 'No query provided'}
+
+**📊 Team Context:**
+• Size: ${sizeLabel}
+• Maturity Level: ${maturityLabel}
+• Primary Challenge: ${challengeLabel}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 Generated with Enterprise Agile Coach AI
+⏱️ ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
 `;
 }

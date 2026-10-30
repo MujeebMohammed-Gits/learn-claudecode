@@ -1,0 +1,38 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/dropdown-status/styles.scoped.css [app-client] (css) */
+.awsui_root_vrgzu_19ow3_9:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-dropdown-footer-vtjeo4, #656871);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  padding-block-start: var(--space-option-padding-vertical-40lww2, 4px);
+  padding-block-end: calc(var(--space-option-padding-vertical-40lww2, 4px) + var(--space-xxxs-elf9ja, 2px));
+  padding-inline: var(--space-field-horizontal-d3xvls, 12px);
+  list-style: outside;
+}
+
+/*# sourceMappingURL=03qk_components_internal_components_dropdown-status_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

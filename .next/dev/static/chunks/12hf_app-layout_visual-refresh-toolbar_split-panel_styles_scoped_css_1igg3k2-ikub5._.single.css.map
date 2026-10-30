@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/app-layout/visual-refresh-toolbar/split-panel/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n/* stylelint-disable @cloudscape-design/no-motion-outside-of-mixin, selector-combinator-disallowed-list, selector-pseudo-class-no-unknown, selector-class-pattern */\n/* stylelint-enable @cloudscape-design/no-motion-outside-of-mixin, selector-combinator-disallowed-list, selector-pseudo-class-no-unknown, selector-class-pattern */\n/* Style used for links in slots/components that are text heavy, to help links stand out among\nsurrounding text. (WCAG F73) https://www.w3.org/WAI/WCAG21/Techniques/failures/F73#description */\n.awsui_split-panel-side_j4v3w_1dtc6_9:not(#\\9) {\n  position: sticky;\n  z-index: 830;\n  overflow-x: hidden;\n}"],"names":[],"mappings":"AAQA","ignoreList":[0]}}]
+}

@@ -1,0 +1,53 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/checkbox-icon/styles.scoped.css [app-client] (css) */
+.awsui_root_1fn7j_sbxt8_9:not(#\9 ) {
+  block-size: 100%;
+  inline-size: 100%;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box_1fn7j_sbxt8_16:not(#\9 ) {
+  fill: var(--awsui-internal-style-fill-color, var(--color-background-control-default-03ibzy, #fff));
+  stroke: var(--awsui-internal-style-border-color, var(--color-border-control-default-dfulha, #8c8c94));
+  stroke-width: var(--border-width-field-f7slp9, 1px);
+  transition: fill var(--motion-duration-transition-quick-wyqttl, 90ms) var(--motion-easing-transition-quick-28eo3q, linear), stroke var(--motion-duration-transition-quick-wyqttl, 90ms) var(--motion-easing-transition-quick-28eo3q, linear);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box_1fn7j_sbxt8_16:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box_1fn7j_sbxt8_16:not(#\9 ), .awsui-mode-entering .awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box_1fn7j_sbxt8_16:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box-checked_1fn7j_sbxt8_32:not(#\9 ), .awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box-indeterminate_1fn7j_sbxt8_32:not(#\9 ) {
+  fill: var(--awsui-internal-style-fill-color, var(--color-background-control-checked-4bqnep, #006ce0));
+  stroke: var(--awsui-internal-style-border-color, var(--color-border-control-checked-fgnalc, #006ce0));
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box-disabled_1fn7j_sbxt8_36:not(#\9 ), .awsui_root_1fn7j_sbxt8_9 > .awsui_styled-box-readonly_1fn7j_sbxt8_36:not(#\9 ) {
+  fill: var(--awsui-internal-style-fill-color, var(--color-background-control-disabled-tdp2nu, #dedee3));
+  stroke: var(--awsui-internal-style-border-color, var(--color-border-control-disabled-gg2cew, #dedee3));
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-line_1fn7j_sbxt8_40:not(#\9 ) {
+  stroke: var(--awsui-internal-style-indicator-color, var(--color-foreground-control-default-vycayl, #fff));
+  stroke-width: 2px;
+  fill: none;
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-line-disabled_1fn7j_sbxt8_45:not(#\9 ) {
+  stroke: var(--awsui-internal-style-indicator-color, var(--color-foreground-control-disabled-0eaxkw, #fff));
+}
+
+.awsui_root_1fn7j_sbxt8_9 > .awsui_styled-line-readonly_1fn7j_sbxt8_48:not(#\9 ) {
+  stroke: var(--awsui-internal-style-indicator-color, var(--color-foreground-control-read-only-i0z7u3, #656871));
+}
+
+/*# sourceMappingURL=03qk_components_internal_components_checkbox-icon_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

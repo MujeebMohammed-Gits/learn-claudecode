@@ -1,0 +1,63 @@
+/* [project]/node_modules/@cloudscape-design/components/file-input/styles.scoped.css [app-client] (css) */
+.awsui_root_1wp4s_tds1n_9:not(#\9 ) {
+  position: relative;
+}
+
+.awsui_file-input_1wp4s_tds1n_13:not(#\9 ) {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  block-size: 1px;
+  inline-size: 1px;
+  margin-block: -1px;
+  margin-inline: -1px;
+  padding-block: 0;
+  padding-inline: 0;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_file-input-button_1wp4s_tds1n_28.awsui_force-focus-outline-icon_1wp4s_tds1n_28:not(#\9 ) {
+  outline-offset: calc(var(--space-button-focus-outline-gutter-zjh22k, 4px) - 1px);
+  outline: 2px dotted #0000;
+  position: relative;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_file-input-button_1wp4s_tds1n_28.awsui_force-focus-outline-icon_1wp4s_tds1n_28:not(#\9 ):before {
+  content: " ";
+  inline-size: calc(100% + var(--space-button-focus-outline-gutter-zjh22k, 4px) + var(--space-button-focus-outline-gutter-zjh22k, 4px));
+  block-size: calc(100% + var(--space-button-icon-focus-outline-gutter-vertical-5h3z7u, 0px) + var(--space-button-icon-focus-outline-gutter-vertical-5h3z7u, 0px));
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-button-icon-focus-outline-gutter-vertical-5h3z7u, 0px));
+  inset-inline-start: calc(-1 * var(--space-button-focus-outline-gutter-zjh22k, 4px));
+}
+
+body[data-awsui-focus-visible="true"] .awsui_file-input-button_1wp4s_tds1n_28.awsui_force-focus-outline-button_1wp4s_tds1n_49:not(#\9 ) {
+  outline-offset: calc(var(--space-button-focus-outline-gutter-zjh22k, 4px) - 1px);
+  outline: 2px dotted #0000;
+  position: relative;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_file-input-button_1wp4s_tds1n_28.awsui_force-focus-outline-button_1wp4s_tds1n_49:not(#\9 ):before {
+  content: " ";
+  inline-size: calc(100% + var(--space-button-focus-outline-gutter-zjh22k, 4px) + var(--space-button-focus-outline-gutter-zjh22k, 4px));
+  block-size: calc(100% + var(--space-button-focus-outline-gutter-zjh22k, 4px) + var(--space-button-focus-outline-gutter-zjh22k, 4px));
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-button-focus-outline-gutter-zjh22k, 4px));
+  inset-inline-start: calc(-1 * var(--space-button-focus-outline-gutter-zjh22k, 4px));
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_file-input_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

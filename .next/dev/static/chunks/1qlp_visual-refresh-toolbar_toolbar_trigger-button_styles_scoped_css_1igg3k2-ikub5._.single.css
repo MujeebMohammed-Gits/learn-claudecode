@@ -1,0 +1,94 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/visual-refresh-toolbar/toolbar/trigger-button/styles.scoped.css [app-client] (css) */
+.awsui_trigger_lpshu_1ylzn_9:not(#\9 ) {
+  all: initial;
+  cursor: pointer;
+  color: var(--color-text-interactive-default-2m347v, #424650);
+  text-align: center;
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_custom_lpshu_1ylzn_15:not(#\9 ) {
+  box-sizing: border-box;
+  block-size: 100%;
+  inline-size: 100%;
+  display: flex;
+}
+
+.awsui_trigger_lpshu_1ylzn_9:not(#\9 ):focus {
+  outline: none;
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24:not(#\9 ) {
+  border-start-start-radius: var(--border-radius-button-o0udma, 20px);
+  border-start-end-radius: var(--border-radius-button-o0udma, 20px);
+  border-end-end-radius: var(--border-radius-button-o0udma, 20px);
+  border-end-start-radius: var(--border-radius-button-o0udma, 20px);
+  block-size: 30px;
+  inline-size: 30px;
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24:not(#\9 ):hover {
+  background: var(--color-background-input-disabled-obdkw7, #ebebf0);
+  color: var(--color-text-interactive-hover-n4kzym, #0f141a);
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24:not(#\9 ):active {
+  background: var(--color-background-control-disabled-tdp2nu, #dedee3);
+  color: var(--color-text-interactive-hover-n4kzym, #0f141a);
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24.awsui_selected_lpshu_1ylzn_40:not(#\9 ) {
+  background: var(--color-background-layout-toggle-selected-default-f9tjvi, #006ce0);
+  color: var(--color-text-layout-toggle-selected-g6uufq, #fff);
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24.awsui_selected_lpshu_1ylzn_40:not(#\9 ):hover {
+  background: var(--color-background-layout-toggle-selected-hover-brd1ln, #004a9e);
+}
+
+.awsui_trigger_lpshu_1ylzn_9.awsui_default_lpshu_1ylzn_24.awsui_selected_lpshu_1ylzn_40:not(#\9 ):active {
+  background: var(--color-background-layout-toggle-selected-active-e7f8gb, #006ce0);
+}
+
+.awsui_trigger-wrapper_lpshu_1ylzn_51:not(#\9 ) {
+  position: relative;
+}
+
+.awsui_trigger-wrapper_lpshu_1ylzn_51:not(#\9 ):has(:focus-visible) {
+  position: relative;
+}
+
+.awsui_trigger-wrapper_lpshu_1ylzn_51:not(#\9 ):has(:focus-visible) {
+  outline-offset: calc(3px - 1px);
+  outline: 2px dotted #0000;
+}
+
+.awsui_trigger-wrapper_lpshu_1ylzn_51:not(#\9 ):has(:focus-visible):before {
+  content: " ";
+  block-size: calc(100% + 6px);
+  inline-size: calc(100% + 6px);
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: -3px;
+  inset-inline-start: -3px;
+}
+
+.awsui_dot_lpshu_1ylzn_76:not(#\9 ) {
+  background-color: var(--color-background-badge-icon-l9xo5q, #db0000);
+  outline: solid 2px var(--color-background-layout-toolbar-9s6pix, #fff);
+  border-start-start-radius: 8px;
+  border-start-end-radius: 8px;
+  border-end-end-radius: 8px;
+  border-end-start-radius: 8px;
+  block-size: 8px;
+  inline-size: 8px;
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline-end: -1px;
+}
+
+/*# sourceMappingURL=1qlp_visual-refresh-toolbar_toolbar_trigger-button_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

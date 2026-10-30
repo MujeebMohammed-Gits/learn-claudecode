@@ -1,0 +1,15 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/visual-refresh-toolbar/notifications/styles.scoped.css [app-client] (css) */
+.awsui_sticky-notifications_154bi_5wedf_5:not(#\9 ) {
+  z-index: 850;
+  position: sticky;
+}
+
+.awsui_sticky-notifications-with-background_154bi_5wedf_9:not(#\9 ) {
+  background-color: var(--color-background-layout-main-lursna, #fff);
+}
+
+.awsui_has-notifications-content_154bi_5wedf_13:not(#\9 ) {
+  padding-block-start: var(--space-scaled-xs-65ylh6, 8px);
+}
+
+/*# sourceMappingURL=12hf_app-layout_visual-refresh-toolbar_notifications_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

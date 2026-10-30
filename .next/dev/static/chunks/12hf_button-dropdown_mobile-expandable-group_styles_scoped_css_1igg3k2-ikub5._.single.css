@@ -1,0 +1,62 @@
+/* [project]/node_modules/@cloudscape-design/components/button-dropdown/mobile-expandable-group/styles.scoped.css [app-client] (css) */
+.awsui_root_14cnr_on754_9:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  white-space: inherit;
+  list-style: outside;
+  display: inline;
+  position: static;
+}
+
+.awsui_root_14cnr_on754_9 > .awsui_trigger_14cnr_on754_43:not(#\9 ) {
+  display: inline;
+}
+
+.awsui_root_14cnr_on754_9 > .awsui_dropdown_14cnr_on754_46:not(#\9 ) {
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: var(--color-background-dropdown-item-default-ietiqg, #fff);
+  border-block: none;
+  outline: none;
+  flex-direction: column;
+  inline-size: 100%;
+  display: flex;
+  position: static;
+}
+
+.awsui_root_14cnr_on754_9 > .awsui_dropdown_14cnr_on754_46.awsui_nowrap_14cnr_on754_57:not(#\9 ) {
+  white-space: nowrap;
+}
+
+.awsui_root_14cnr_on754_9 > .awsui_dropdown_14cnr_on754_46.awsui_open_14cnr_on754_60:not(#\9 ) {
+  display: flex;
+}
+
+/*# sourceMappingURL=12hf_button-dropdown_mobile-expandable-group_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

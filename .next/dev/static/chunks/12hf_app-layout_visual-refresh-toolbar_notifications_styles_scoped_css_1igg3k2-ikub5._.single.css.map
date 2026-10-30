@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/app-layout/visual-refresh-toolbar/notifications/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_sticky-notifications_154bi_5wedf_5:not(#\\9) {\n  position: sticky;\n  z-index: 850;\n}\n.awsui_sticky-notifications-with-background_154bi_5wedf_9:not(#\\9) {\n  background-color: var(--color-background-layout-main-lursna, #ffffff);\n}\n\n.awsui_has-notifications-content_154bi_5wedf_13:not(#\\9) {\n  padding-block-start: var(--space-scaled-xs-65ylh6, 8px);\n}"],"names":[],"mappings":"AAIA;;;;;AAIA;;;;AAIA","ignoreList":[0]}}]
+}

@@ -170,7 +170,16 @@ export default function EnterpriseAgileCoach() {
                   event.preventDefault();
                   const formData = new FormData(event.currentTarget);
                   setState({ ...state, loading: true });
-                  const result = await callAgentAction(formData.get("action") as string, {});
+                  const result = await callAgentAction(
+                    formData.get("action") as string,
+                    {
+                      query: formData.get("query") as string,
+                      context: (formData.get("context") as string) || "general",
+                      teamSize: formData.get("teamSize") as string,
+                      teamMaturityLevel: "performing",
+                      primaryChallenge: "collaboration"
+                    }
+                  );
                   setState({
                     lastResponse: result.message,
                     loading: false,

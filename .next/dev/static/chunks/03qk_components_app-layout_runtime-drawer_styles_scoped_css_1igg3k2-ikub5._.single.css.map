@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/app-layout/runtime-drawer/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_runtime-content-wrapper_14m8x_spfr5_5:not(#\\9) {\n  display: contents;\n}\n\n.awsui_runtime-header-wrapper_14m8x_spfr5_9:not(#\\9) {\n  display: contents;\n}"],"names":[],"mappings":"AAIA","ignoreList":[0]}}]
+}

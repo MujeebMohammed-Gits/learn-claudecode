@@ -1,0 +1,1 @@
+import { render, screen } from '@testing-library/react'; import EnterpriseAgileCoach from './app/enterprise-agile-coach/page-client'; describe('test', () => { it('renders', () => { render(<EnterpriseAgileCoach></EnterpriseAgileCoach>); }); });

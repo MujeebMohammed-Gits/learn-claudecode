@@ -1,0 +1,45 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/toggles/styles.scoped.css [app-client] (css) */
+.awsui_toggle-button_16w0h_82jgz_9:not(#\9 ) {
+  cursor: pointer;
+  padding-block: calc(var(--space-scaled-xxs-54nfiu, 4px) + 1px);
+  padding-inline: calc(var(--space-xxs-burh9x, 4px) + 1px);
+  color: currentColor;
+  background: none;
+  border: 0;
+}
+
+.awsui_toggle-button_16w0h_82jgz_9:not(#\9 ):focus {
+  outline: none;
+  text-decoration: none;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_toggle-button_16w0h_82jgz_9:not(#\9 ):focus {
+  outline-offset: calc(var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px) - 1px);
+  outline: 2px dotted #0000;
+  position: relative;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_toggle-button_16w0h_82jgz_9:not(#\9 ):focus:before {
+  content: " ";
+  inline-size: calc(100% + var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px) + var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px));
+  block-size: calc(100% + var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px) + var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px));
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: calc(-1 * var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px));
+  inset-inline-start: calc(-1 * var(--space-button-inline-icon-focus-outline-gutter-kmzr8l, 0px));
+}
+
+.awsui_close-button_16w0h_82jgz_44:not(#\9 ) {
+  z-index: 1;
+  outline: none;
+  position: absolute;
+  inset-block-start: var(--size-vertical-panel-icon-offset-288e1a, 15px);
+  inset-inline-end: var(--space-m-txio36, 16px);
+}
+
+/*# sourceMappingURL=03qk_components_app-layout_toggles_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

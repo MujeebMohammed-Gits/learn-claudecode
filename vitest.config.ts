@@ -6,6 +6,11 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     css: true,
-    plugins: [react()]
+    plugins: [react()],
+    // Use SWC transformer instead of oxc to avoid JSX parsing issues
+    // with self-closing tags like <EnterpriseAgileCoach />
+    transformer: {
+      swc: {}
+    }
   }
 })

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/form-field/test-classes/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_constraint_6mjrv_ag0bo_5:not(#\\9),\n.awsui_character-count_6mjrv_ag0bo_6:not(#\\9) {\n  /* used in test-utils */\n}"],"names":[],"mappings":"","ignoreList":[0]}}]
+}

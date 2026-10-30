@@ -1,0 +1,39 @@
+/* [project]/node_modules/@cloudscape-design/components/token-group/styles.scoped.css [app-client] (css) */
+.awsui_root_dm8gx_dpjap_14:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  list-style: outside;
+}
+
+.awsui_root_dm8gx_dpjap_14.awsui_has-items_dm8gx_dpjap_45:not(#\9 ):not(.awsui_no-padding_dm8gx_dpjap_45) {
+  padding-block-start: var(--space-xs-3yjatw, 8px);
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_token-group_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

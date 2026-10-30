@@ -1,6 +1,7 @@
-/// <reference types="jest" />
-
 import EnterpriseAgileCoachAgent from "../agents/enterprise-agile-coach";
+
+import { render, screen } from "@testing-library/react"
+import EnterpriseAgileCoach from "../app/enterprise-agile-coach/page-client"
 
 describe("EnterpriseAgileCoachAgent", () => {
   let agent: EnterpriseAgileCoachAgent;
@@ -503,16 +504,13 @@ describe("EnterpriseAgileCoachAgent", () => {
   });
 
   describe("React component test coverage", () => {
-    import { render, screen } from "@testing-library/react"
-    import EnterpriseAgileCoach from "../app/enterprise-agile-coach/page-client"
-
     it("renders the EnterpriseAgileCoach component", () => {
-      render(<EnterpriseAgileCoach />)
+      render(<EnterpriseAgileCoach></EnterpriseAgileCoach>)
       expect(screen.getByRole("heading", { name: "Enterprise Agile Coach" })).toBeInTheDocument()
     })
 
     it("Select components have onChange handlers", () => {
-      render(<EnterpriseAgileCoach />)
+      render(<EnterpriseAgileCoach></EnterpriseAgileCoach>)
       // Interactive coaching context Select
       const contextSelect = screen.getByLabelText("Context")
       expect(contextSelect).toHaveAttribute("onchange")
@@ -563,7 +561,7 @@ describe("EnterpriseAgileCoachAgent", () => {
     it("query state is stored in localStorage", () => {
       const testQuery = "My team has velocity issues"
       render(
-        <EnterpriseAgileCoach query={testQuery} />
+        <EnterpriseAgileCoach query={testQuery}></EnterpriseAgileCoach>
       )
       const storedQuery = localStorage.getItem("enterprise-agile-coach-query")
       expect(storedQuery).toBe(testQuery)
@@ -572,7 +570,7 @@ describe("EnterpriseAgileCoachAgent", () => {
     it("ragQuery state is stored in localStorage", () => {
       const testRagQuery = "How to improve collaboration"
       render(
-        <EnterpriseAgileCoach ragQuery={testRagQuery} />
+        <EnterpriseAgileCoach ragQuery={testRagQuery}></EnterpriseAgileCoach>
       )
       const storedRagQuery = localStorage.getItem("enterprise-agile-coach-rag-query")
       expect(storedRagQuery).toBe(testRagQuery)

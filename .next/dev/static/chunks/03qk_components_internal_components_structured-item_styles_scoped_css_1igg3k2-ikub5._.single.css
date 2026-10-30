@@ -1,0 +1,83 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/structured-item/styles.scoped.css [app-client] (css) */
+.awsui_root_1ifko_cqwet_9:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  word-break: break-word;
+  min-inline-size: 0;
+  cursor: inherit;
+  align-items: baseline;
+  column-gap: var(--space-xs-3yjatw, 8px);
+  flex-direction: row;
+  flex: 1;
+  list-style: outside;
+  display: flex;
+}
+
+.awsui_root_1ifko_cqwet_9.awsui_disable-paddings_1ifko_cqwet_48:not(#\9 ) {
+  column-gap: 0;
+}
+
+.awsui_main_1ifko_cqwet_52:not(#\9 ) {
+  flex-direction: column;
+  flex-grow: 1;
+  min-inline-size: 0;
+  display: flex;
+}
+
+.awsui_actions_1ifko_cqwet_59:not(#\9 ) {
+  margin-inline-start: auto;
+}
+
+.awsui_content-wrap_1ifko_cqwet_63:not(#\9 ) {
+  align-items: baseline;
+  column-gap: var(--space-xs-3yjatw, 8px);
+  flex-direction: row;
+  flex-grow: 1;
+  display: flex;
+}
+
+.awsui_disable-paddings_1ifko_cqwet_48 > .awsui_main_1ifko_cqwet_52 > .awsui_content-wrap_1ifko_cqwet_63:not(#\9 ) {
+  column-gap: 0;
+}
+
+.awsui_content-wrap_1ifko_cqwet_63.awsui_wrap-actions_1ifko_cqwet_73:not(#\9 ) {
+  flex-wrap: wrap;
+}
+
+.awsui_content-wrap_1ifko_cqwet_63:not(#\9 ):not(.awsui_wrap-actions_1ifko_cqwet_73) > .awsui_actions_1ifko_cqwet_59 {
+  flex-shrink: 0;
+}
+
+.awsui_content_1ifko_cqwet_63:not(#\9 ) {
+  flex-grow: 1;
+  min-inline-size: 0;
+}
+
+/*# sourceMappingURL=03qk_components_internal_components_structured-item_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

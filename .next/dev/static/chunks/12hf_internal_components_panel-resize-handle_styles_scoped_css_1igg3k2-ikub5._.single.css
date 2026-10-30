@@ -1,0 +1,43 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/panel-resize-handle/styles.scoped.css [app-client] (css) */
+.awsui_slider_cqzlk_1xywl_9:not(#\9 ) {
+  cursor: ns-resize;
+  touch-action: none;
+  block-size: 18px;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+.awsui_slider_cqzlk_1xywl_9:not(#\9 ):focus {
+  outline: none;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_slider_cqzlk_1xywl_9:not(#\9 ):focus {
+  outline-offset: calc(0px - 1px);
+  outline: 2px dotted #0000;
+  position: relative;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_slider_cqzlk_1xywl_9:not(#\9 ):focus:before {
+  content: " ";
+  block-size: 100%;
+  inline-size: 100%;
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_slider-side_cqzlk_1xywl_43:not(#\9 ), .awsui_slider-side-start_cqzlk_1xywl_44:not(#\9 ) {
+  cursor: ew-resize;
+  margin-block: 0;
+  margin-inline-end: 0;
+}
+
+/*# sourceMappingURL=12hf_internal_components_panel-resize-handle_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

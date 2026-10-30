@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/internal/base-component/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n@keyframes awsui-fade-in-jiml2r {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes awsui-fade-out-au27m5 {\n  from {\n    opacity: 1;\n  }\n  to {\n    opacity: 0;\n  }\n}\n@keyframes awsui-status-icon-error-mjjk3s {\n  0% {\n    transform: translateX(-5px);\n    animation-timing-function: linear;\n  }\n  50% {\n    transform: translateX(5px);\n    animation-timing-function: var(--motion-easing-refresh-only-a-puvjff, cubic-bezier(0, 0, 0, 1));\n  }\n  100% {\n    transform: translateX(0px);\n  }\n}\n@keyframes awsui-scale-popup-2m9987 {\n  0% {\n    transform: scale(0.95);\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n:root {\n  --awsui-version-info-b7014ed7: true;\n}"],"names":[],"mappings":"AAIA;;;;;;;;;;AAQA;;;;;;;;;;AAQA;;;;;;;;;;;;;;;;AAaA;;;;;;;;;;AAQA","ignoreList":[0]}}]
+}

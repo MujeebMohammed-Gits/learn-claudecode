@@ -1,0 +1,99 @@
+/* [project]/node_modules/@cloudscape-design/components/space-between/styles.scoped.css [app-client] (css) */
+.awsui_root_18582_s2eix_9:not(#\9 ) {
+  display: flex;
+}
+
+.awsui_child_18582_s2eix_13:not(#\9 ):empty {
+  display: none;
+}
+
+.awsui_horizontal_18582_s2eix_24:not(#\9 ) {
+  flex-flow: wrap;
+}
+
+.awsui_horizontal-xxxs_18582_s2eix_28:not(#\9 ) {
+  gap: var(--space-xxxs-elf9ja, 2px);
+}
+
+.awsui_horizontal-xxs_18582_s2eix_31:not(#\9 ) {
+  gap: var(--space-xxs-burh9x, 4px);
+}
+
+.awsui_horizontal-xs_18582_s2eix_34:not(#\9 ) {
+  gap: var(--space-xs-3yjatw, 8px);
+}
+
+.awsui_horizontal-s_18582_s2eix_37:not(#\9 ) {
+  gap: var(--space-s-f4zmjb, 12px);
+}
+
+.awsui_horizontal-m_18582_s2eix_40:not(#\9 ) {
+  gap: var(--space-m-txio36, 16px);
+}
+
+.awsui_horizontal-l_18582_s2eix_43:not(#\9 ) {
+  gap: var(--space-l-e5i7qp, 20px);
+}
+
+.awsui_horizontal-xl_18582_s2eix_46:not(#\9 ) {
+  gap: var(--space-xl-i9l2ag, 24px);
+}
+
+.awsui_horizontal-xxl_18582_s2eix_49:not(#\9 ) {
+  gap: var(--space-xxl-l55zj3, 32px);
+}
+
+.awsui_vertical_18582_s2eix_56:not(#\9 ) {
+  flex-direction: column;
+}
+
+.awsui_vertical-xxxs_18582_s2eix_59:not(#\9 ) {
+  row-gap: var(--space-xxxs-elf9ja, 2px);
+}
+
+.awsui_vertical-xxs_18582_s2eix_62:not(#\9 ) {
+  row-gap: var(--space-xxs-burh9x, 4px);
+}
+
+.awsui_vertical-xs_18582_s2eix_65:not(#\9 ) {
+  row-gap: var(--space-xs-3yjatw, 8px);
+}
+
+.awsui_vertical-s_18582_s2eix_68:not(#\9 ) {
+  row-gap: var(--space-scaled-s-srzhhj, 12px);
+}
+
+.awsui_vertical-m_18582_s2eix_71:not(#\9 ) {
+  row-gap: var(--space-scaled-m-vjrqwc, 16px);
+}
+
+.awsui_vertical-l_18582_s2eix_74:not(#\9 ) {
+  row-gap: var(--space-scaled-l-kalwlg, 20px);
+}
+
+.awsui_vertical-xl_18582_s2eix_77:not(#\9 ) {
+  row-gap: var(--space-scaled-xl-zco9ns, 24px);
+}
+
+.awsui_vertical-xxl_18582_s2eix_80:not(#\9 ) {
+  row-gap: var(--space-scaled-xxl-pn6ur6, 32px);
+}
+
+.awsui_align-center_18582_s2eix_84:not(#\9 ) {
+  align-items: center;
+}
+
+.awsui_align-start_18582_s2eix_88:not(#\9 ) {
+  align-items: start;
+}
+
+.awsui_align-end_18582_s2eix_92:not(#\9 ) {
+  align-items: end;
+}
+
+.awsui_child-aligned_18582_s2eix_96:not(#\9 ) {
+  align-items: inherit;
+  display: flex;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_space-between_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

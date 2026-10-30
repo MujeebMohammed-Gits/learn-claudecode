@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/error-boundary/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_error-boundary_9pwoq_e6u2g_5:not(#\\9),\n.awsui_header_9pwoq_e6u2g_6:not(#\\9),\n.awsui_description_9pwoq_e6u2g_7:not(#\\9),\n.awsui_action_9pwoq_e6u2g_8:not(#\\9),\n.awsui_app-layout-part-fallback_9pwoq_e6u2g_9:not(#\\9) {\n  display: contents;\n}"],"names":[],"mappings":"AAIA","ignoreList":[0]}}]
+}

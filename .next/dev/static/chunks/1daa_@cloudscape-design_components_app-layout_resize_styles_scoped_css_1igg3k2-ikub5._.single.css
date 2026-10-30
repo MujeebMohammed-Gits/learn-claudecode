@@ -1,0 +1,64 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/resize/styles.scoped.css [app-client] (css) */
+@media (min-width: 689px) {
+  .awsui_with-motion-vertical_b18tp_1df33_10:not(#\9 ) {
+    transition: var(--motion-duration-refresh-only-medium-ivrvd3, .165s);
+    transition-property: border-color, opacity, block-size, inset-block-start, inset-block-end;
+  }
+}
+
+@media (min-width: 689px) and (prefers-reduced-motion: reduce) {
+  .awsui_with-motion-vertical_b18tp_1df33_10:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+@media (min-width: 689px) {
+  .awsui-motion-disabled .awsui_with-motion-vertical_b18tp_1df33_10:not(#\9 ), .awsui-mode-entering .awsui_with-motion-vertical_b18tp_1df33_10:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+
+  .awsui_with-motion-horizontal_b18tp_1df33_29:not(#\9 ) {
+    transition: var(--motion-duration-refresh-only-medium-ivrvd3, .165s);
+    transition-property: border-color, opacity, inline-size, inset-inline-start;
+  }
+}
+
+@media (min-width: 689px) and (prefers-reduced-motion: reduce) {
+  .awsui_with-motion-horizontal_b18tp_1df33_29:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+@media (min-width: 689px) {
+  .awsui-motion-disabled .awsui_with-motion-horizontal_b18tp_1df33_29:not(#\9 ), .awsui-mode-entering .awsui_with-motion-horizontal_b18tp_1df33_29:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui_resize-active_b18tp_1df33_48 :not(#\9 ) {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.awsui_resize-active_b18tp_1df33_48 * .awsui_with-motion-vertical_b18tp_1df33_10:not(#\9 ), .awsui_resize-active_b18tp_1df33_48 * .awsui_with-motion-horizontal_b18tp_1df33_29:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_resize-active_b18tp_1df33_48 iframe:not(#\9 ) {
+  pointer-events: none;
+}
+
+.awsui_resize-side_b18tp_1df33_59 :not(#\9 ) {
+  cursor: ew-resize;
+}
+
+.awsui_resize-bottom_b18tp_1df33_62 :not(#\9 ) {
+  cursor: ns-resize;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_app-layout_resize_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

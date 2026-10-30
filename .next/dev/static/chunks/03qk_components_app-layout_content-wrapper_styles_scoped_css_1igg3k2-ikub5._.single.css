@@ -1,0 +1,34 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/content-wrapper/styles.scoped.css [app-client] (css) */
+.awsui_content-wrapper_zycdx_1rw34_13:not(#\9 ) {
+  padding-inline-start: var(--space-layout-content-horizontal-h90vtd, 24px);
+  padding-inline-end: var(--space-layout-content-horizontal-h90vtd, 24px);
+}
+
+.awsui_content-wrapper-mobile_zycdx_1rw34_17:not(#\9 ) {
+  padding-inline-start: var(--space-l-e5i7qp, 20px);
+  padding-inline-end: var(--space-l-e5i7qp, 20px);
+}
+
+.awsui_content-type-dashboard_zycdx_1rw34_22:not(#\9 ) {
+  margin-inline: auto;
+}
+
+@media (min-width: 1401px) {
+  .awsui_content-type-dashboard_zycdx_1rw34_22:not(#\9 ) {
+    max-inline-size: 1280px;
+  }
+}
+
+@media (min-width: 1921px) {
+  .awsui_content-type-dashboard_zycdx_1rw34_22:not(#\9 ) {
+    max-inline-size: 1620px;
+  }
+}
+
+@media (min-width: 2541px) {
+  .awsui_content-type-dashboard_zycdx_1rw34_22:not(#\9 ) {
+    max-inline-size: 2160px;
+  }
+}
+
+/*# sourceMappingURL=03qk_components_app-layout_content-wrapper_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

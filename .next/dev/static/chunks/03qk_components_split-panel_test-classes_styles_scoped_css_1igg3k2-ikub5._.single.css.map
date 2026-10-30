@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/split-panel/test-classes/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_root_rjqu5_1kbym_5:not(#\\9),\n.awsui_header-actions_rjqu5_1kbym_6:not(#\\9),\n.awsui_header-before_rjqu5_1kbym_7:not(#\\9),\n.awsui_header-description_rjqu5_1kbym_8:not(#\\9),\n.awsui_header-info_rjqu5_1kbym_9:not(#\\9),\n.awsui_header-text_rjqu5_1kbym_10:not(#\\9),\n.awsui_open-button_rjqu5_1kbym_11:not(#\\9),\n.awsui_close-button_rjqu5_1kbym_12:not(#\\9),\n.awsui_preferences-button_rjqu5_1kbym_13:not(#\\9),\n.awsui_slider_rjqu5_1kbym_14:not(#\\9),\n.awsui_open-position-bottom_rjqu5_1kbym_15:not(#\\9),\n.awsui_open-position-side_rjqu5_1kbym_16:not(#\\9) {\n  /* used in test-utils */\n}"],"names":[],"mappings":"","ignoreList":[0]}}]
+}

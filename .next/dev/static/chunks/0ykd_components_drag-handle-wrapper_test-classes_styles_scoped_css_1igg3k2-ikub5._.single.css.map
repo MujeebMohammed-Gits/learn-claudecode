@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/internal/components/drag-handle-wrapper/test-classes/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_root_8k1rt_1i1h9_5:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button_8k1rt_1i1h9_9:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button-visible_8k1rt_1i1h9_13:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button-block-start_8k1rt_1i1h9_17:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button-block-end_8k1rt_1i1h9_21:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button-inline-start_8k1rt_1i1h9_25:not(#\\9) {\n  /* used in test-utils */\n}\n\n.awsui_direction-button-inline-end_8k1rt_1i1h9_29:not(#\\9) {\n  /* used in test-utils */\n}"],"names":[],"mappings":"","ignoreList":[0]}}]
+}

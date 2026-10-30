@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/node_modules/@cloudscape-design/components/app-layout/notifications/styles.scoped.css"],"sourcesContent":["/*\n Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n*/\n.awsui_notifications_1hmm4_1iega_5:not(#\\9),\n.awsui_notifications-sticky_1hmm4_1iega_6:not(#\\9) {\n  z-index: 850;\n}\n\n.awsui_notifications_1hmm4_1iega_5:not(#\\9) {\n  /* This is necessary for the z-index to have effect */\n  position: relative;\n}\n\n.awsui_notifications-sticky_1hmm4_1iega_6:not(#\\9) {\n  inset-block-start: 0;\n  position: sticky;\n  --awsui-flashbar-sticky-bottom-margin-ka4djm: var(--space-xxl-l55zj3, 32px);\n}\n\n.awsui_no-content-paddings_1hmm4_1iega_21:not(#\\9) {\n  /*\n  When using the disableContentPaddings option, the Flashbar will use this custom property to add additional space\n  when the notification bar is rendered, to prevent it from overlapping the content.\n   */\n  --awsui-stacked-notifications-bottom-margin-ka4djm: var(--space-scaled-l-kalwlg, 20px);\n}"],"names":[],"mappings":"AAIA;;;;AAKA;;;;AAKA;;;;;;AAMA","ignoreList":[0]}}]
+}

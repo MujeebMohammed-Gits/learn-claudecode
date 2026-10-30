@@ -1,0 +1,242 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/drag-handle-wrapper/styles.scoped.css [app-client] (css) */
+@keyframes awsui_drag-handle-entry_155yk_1t4u0_1 {
+  from {
+    transform: translate(var(--awsui-drag-handle-animation-inline-offset-ka4djm), var(--awsui-drag-handle-animation-block-offset-ka4djm));
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes awsui_drag-handle-exit_155yk_1t4u0_1 {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(var(--awsui-drag-handle-animation-inline-offset-ka4djm), var(--awsui-drag-handle-animation-block-offset-ka4djm));
+  }
+}
+
+.awsui_direction-button-wrapper_155yk_1t4u0_29:not(#\9 ) {
+  --awsui-drag-handle-animation-inline-offset-ka4djm: 0;
+  --awsui-drag-handle-animation-block-offset-ka4djm: 0;
+}
+
+@keyframes awsui_awsui-motion-fade-in_155yk_1t4u0_1 {
+  from {
+    opacity: .2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes awsui_awsui-motion-fade-out-0_155yk_1t4u0_1 {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.awsui_direction-button-wrapper-motion-enter_155yk_1t4u0_49:not(#\9 ), .awsui_direction-button-wrapper-motion-entering_155yk_1t4u0_49:not(#\9 ), .awsui_direction-button-wrapper-motion-exit_155yk_1t4u0_49:not(#\9 ), .awsui_direction-button-wrapper-motion-exiting_155yk_1t4u0_49:not(#\9 ) {
+  pointer-events: none;
+}
+
+.awsui_direction-button-wrapper-motion-entering_155yk_1t4u0_49:not(#\9 ) {
+  animation: awsui_drag-handle-entry_155yk_1t4u0_1 var(--motion-duration-complex-h93x8u, .25s) var(--motion-easing-responsive-vkzjfg, cubic-bezier(0, 0, 0, 1)), awsui_awsui-motion-fade-in_155yk_1t4u0_1 var(--motion-duration-complex-h93x8u, .25s) var(--motion-easing-responsive-vkzjfg, cubic-bezier(0, 0, 0, 1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_direction-button-wrapper-motion-entering_155yk_1t4u0_49:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_direction-button-wrapper-motion-entering_155yk_1t4u0_49:not(#\9 ), .awsui-mode-entering .awsui_direction-button-wrapper-motion-entering_155yk_1t4u0_49:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_direction-button-wrapper-motion-exiting_155yk_1t4u0_49:not(#\9 ) {
+  animation: awsui_drag-handle-exit_155yk_1t4u0_1 var(--motion-duration-complex-h93x8u, .25s) var(--motion-easing-responsive-vkzjfg, cubic-bezier(0, 0, 0, 1)) forwards, awsui_awsui-motion-fade-out-0_155yk_1t4u0_1 var(--motion-duration-complex-h93x8u, .25s) var(--motion-easing-responsive-vkzjfg, cubic-bezier(0, 0, 0, 1)) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_direction-button-wrapper-motion-exiting_155yk_1t4u0_49:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_direction-button-wrapper-motion-exiting_155yk_1t4u0_49:not(#\9 ), .awsui-mode-entering .awsui_direction-button-wrapper-motion-exiting_155yk_1t4u0_49:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_direction-button-wrapper_155yk_1t4u0_29:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_direction-button-wrapper_155yk_1t4u0_29:not(#\9 ), .awsui-mode-entering .awsui_direction-button-wrapper_155yk_1t4u0_29:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_direction-button-wrapper-block-start_155yk_1t4u0_89:not(#\9 ) {
+  --awsui-drag-handle-animation-block-offset-ka4djm: 20px;
+}
+
+.awsui_direction-button-wrapper-block-end_155yk_1t4u0_93:not(#\9 ) {
+  --awsui-drag-handle-animation-block-offset-ka4djm: -20px;
+}
+
+.awsui_direction-button-wrapper-inline-start_155yk_1t4u0_97:not(#\9 ):not(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  --awsui-drag-handle-animation-inline-offset-ka4djm: 20px;
+}
+
+.awsui_direction-button-wrapper-inline-start_155yk_1t4u0_97:not(#\9 ):is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)), .awsui_direction-button-wrapper-inline-end_155yk_1t4u0_108:not(#\9 ):not(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  --awsui-drag-handle-animation-inline-offset-ka4djm: -20px;
+}
+
+.awsui_direction-button-wrapper-inline-end_155yk_1t4u0_108:not(#\9 ):is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  --awsui-drag-handle-animation-inline-offset-ka4djm: 20px;
+}
+
+.awsui_contents_155yk_1t4u0_119:not(#\9 ) {
+  display: contents;
+}
+
+.awsui_portal-overlay_155yk_1t4u0_123:not(#\9 ) {
+  pointer-events: none;
+  z-index: 7000;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_portal-overlay-disabled_155yk_1t4u0_131:not(#\9 ) {
+  display: none;
+}
+
+.awsui_portal-overlay-contents_155yk_1t4u0_135:not(#\9 ) {
+  pointer-events: auto;
+}
+
+.awsui_drag-handle_155yk_1t4u0_139:not(#\9 ) {
+  display: inline-flex;
+  position: relative;
+}
+
+.awsui_direction-button-wrapper_155yk_1t4u0_29:not(#\9 ) {
+  block-size: var(--space-static-xl-f42nfd, 24px);
+  inline-size: var(--space-static-xl-f42nfd, 24px);
+  padding-block: var(--space-static-xxs-0tl528, 4px);
+  padding-inline: var(--space-static-xxs-0tl528, 4px);
+  position: absolute;
+}
+
+.awsui_direction-button-wrapper-hidden_155yk_1t4u0_152:not(#\9 ) {
+  display: none;
+}
+
+.awsui_direction-button-wrapper-block-start_155yk_1t4u0_89:not(#\9 ) {
+  inset-block-start: calc(-1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+  inset-inline-start: calc(50% - (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)) / 2);
+}
+
+.awsui_direction-button-wrapper-block-end_155yk_1t4u0_93:not(#\9 ) {
+  inset-block-end: calc(-1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+  inset-inline-start: calc(50% - (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)) / 2);
+}
+
+.awsui_direction-button-wrapper-inline-start_155yk_1t4u0_97:not(#\9 ) {
+  inset-block-start: calc(50% - (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)) / 2);
+  inset-inline-start: calc(-1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-inline-end_155yk_1t4u0_108:not(#\9 ) {
+  inset-block-start: calc(50% - (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)) / 2);
+  inset-inline-end: calc(-1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced_155yk_1t4u0_176:not(#\9 ) {
+  inset-inline-start: calc(50% - (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)) / 2);
+}
+
+.awsui_direction-button-wrapper-forced-top-0_155yk_1t4u0_180:not(#\9 ) {
+  inset-block-start: calc(-1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-top-1_155yk_1t4u0_184:not(#\9 ) {
+  inset-block-start: calc(-2 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-top-2_155yk_1t4u0_188:not(#\9 ) {
+  inset-block-start: calc(-3 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-top-3_155yk_1t4u0_192:not(#\9 ) {
+  inset-block-start: calc(-4 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-bottom-0_155yk_1t4u0_196:not(#\9 ) {
+  inset-block-start: calc(1 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-bottom-1_155yk_1t4u0_200:not(#\9 ) {
+  inset-block-start: calc(2 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-bottom-2_155yk_1t4u0_204:not(#\9 ) {
+  inset-block-start: calc(3 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button-wrapper-forced-bottom-3_155yk_1t4u0_208:not(#\9 ) {
+  inset-block-start: calc(4 * (var(--space-static-xl-f42nfd, 24px) + 2 * var(--space-static-xxs-0tl528, 4px)));
+}
+
+.awsui_direction-button_155yk_1t4u0_29:not(#\9 ) {
+  cursor: pointer;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  inline-size: var(--space-static-xl-f42nfd, 24px);
+  block-size: var(--space-static-xl-f42nfd, 24px);
+  padding-block: var(--space-xxs-burh9x, 4px);
+  padding-inline: var(--space-xxs-burh9x, 4px);
+  background-color: var(--color-background-direction-button-default-ewutyt, #424650);
+  color: var(--color-text-direction-button-default-ywr3ay, #fff);
+  box-shadow: var(--shadow-dropdown-py0mls, 0px 4px 20px 1px #0007161a);
+  border-width: 0;
+  border-start-start-radius: 50%;
+  border-start-end-radius: 50%;
+  border-end-end-radius: 50%;
+  border-end-start-radius: 50%;
+  display: inline-block;
+  position: absolute;
+}
+
+.awsui_direction-button_155yk_1t4u0_29:not(#\9 ):not(.awsui_direction-button-disabled_155yk_1t4u0_231):hover {
+  background-color: var(--color-background-direction-button-hover-rxnl0l, #333843);
+}
+
+.awsui_direction-button_155yk_1t4u0_29:not(#\9 ):not(.awsui_direction-button-disabled_155yk_1t4u0_231):active {
+  background-color: var(--color-background-direction-button-active-ziirpu, #232b37);
+}
+
+.awsui_direction-button-disabled_155yk_1t4u0_231:not(#\9 ) {
+  cursor: default;
+  background-color: var(--color-background-direction-button-disabled-mt2zqn, #ebebf0);
+  color: var(--color-text-direction-button-disabled-ykyihd, #b4b4bb);
+}
+
+/*# sourceMappingURL=12hf_internal_components_drag-handle-wrapper_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

@@ -1,0 +1,80 @@
+/* [project]/node_modules/@cloudscape-design/components/content-layout/styles.scoped.css [app-client] (css) */
+.awsui_layout_5gtk3_lcvgq_9:not(#\9 ) {
+  --awsui-content-layout-default-horizontal-padding-ka4djm: var(--space-layout-content-horizontal-h90vtd, 24px);
+  --awsui-content-layout-max-content-width-ka4djm: 0px;
+  --awsui-content-layout-main-gap-ka4djm: 0px;
+  grid-template-columns: 0 0 1fr minmax(0, var(--awsui-content-layout-max-content-width-ka4djm)) 1fr 0 0;
+  grid-template-rows: var(--awsui-content-layout-main-gap-ka4djm) min-content min-content auto var(--space-dark-header-overlap-distance-42qj0d, 36px) 1fr;
+  min-block-size: 100%;
+  display: grid;
+}
+
+@media (max-width: 688px) {
+  .awsui_layout_5gtk3_lcvgq_9:not(#\9 ) {
+    --awsui-content-layout-default-horizontal-padding-ka4djm: var(--space-l-e5i7qp, 20px);
+  }
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_background_5gtk3_lcvgq_23:not(#\9 ) {
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  grid-area: 1 / 1 / 6 / 8;
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_background_5gtk3_lcvgq_23.awsui_is-overlap-disabled_5gtk3_lcvgq_28:not(#\9 ) {
+  grid-row: 1 / 5;
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_background_5gtk3_lcvgq_23 > .awsui_header-background_5gtk3_lcvgq_31:not(#\9 ) {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_notifications_5gtk3_lcvgq_35:not(#\9 ) {
+  grid-area: 2 / 4;
+  padding-block-end: var(--space-xs-3yjatw, 8px);
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_breadcrumbs_5gtk3_lcvgq_40:not(#\9 ) {
+  grid-area: 3 / 4;
+  padding-block-end: var(--space-xs-3yjatw, 8px);
+}
+
+.awsui_layout_5gtk3_lcvgq_9.awsui_default-padding_5gtk3_lcvgq_45:not(#\9 ) {
+  --awsui-content-layout-main-gap-ka4djm: var(--space-scaled-m-vjrqwc, 16px);
+  grid-template-columns: var(--awsui-toggles-left-width-ka4djm, 0) var(--awsui-content-layout-default-horizontal-padding-ka4djm, 0) 1fr minmax(0, var(--awsui-content-layout-max-content-width-ka4djm)) 1fr var(--awsui-content-layout-default-horizontal-padding-ka4djm, 0) var(--awsui-toggles-right-width-ka4djm, 0);
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_header-wrapper_5gtk3_lcvgq_49:not(#\9 ) {
+  grid-area: 4 / 4;
+  padding-block-end: var(--space-content-header-padding-bottom-cv8lp4, 16px);
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_header-wrapper_5gtk3_lcvgq_49.awsui_with-divider_5gtk3_lcvgq_54:not(#\9 ) {
+  border-block-end: 1px solid var(--color-border-divider-default-8vuq97, #c6c6cd);
+}
+
+.awsui_layout_5gtk3_lcvgq_9 > .awsui_content_5gtk3_lcvgq_57:not(#\9 ) {
+  grid-area: 5 / 4 / 8;
+}
+
+.awsui_layout_5gtk3_lcvgq_9:not(#\9 ):not(.awsui_has-header_5gtk3_lcvgq_61) {
+  grid-template-rows: var(--awsui-content-layout-main-gap-ka4djm) min-content min-content 0 calc(var(--space-dark-header-overlap-distance-42qj0d, 36px)) 1fr;
+}
+
+.awsui_layout_5gtk3_lcvgq_9.awsui_is-overlap-disabled_5gtk3_lcvgq_28:not(#\9 ) {
+  grid-template-rows: var(--awsui-content-layout-main-gap-ka4djm) min-content min-content auto 0 1fr;
+}
+
+.awsui_layout_5gtk3_lcvgq_9.awsui_is-visual-refresh_5gtk3_lcvgq_68 > .awsui_background_5gtk3_lcvgq_23.awsui_has-default-background_5gtk3_lcvgq_68:not(#\9 ) {
+  background-color: var(--color-background-layout-main-lursna, #fff);
+}
+
+.awsui_layout_5gtk3_lcvgq_9:not(#\9 ):not(.awsui_is-visual-refresh_5gtk3_lcvgq_68).awsui_has-notifications_5gtk3_lcvgq_72 {
+  --awsui-content-layout-main-gap-ka4djm: 0px;
+}
+
+.awsui_layout_5gtk3_lcvgq_9:not(#\9 ):not(.awsui_is-visual-refresh_5gtk3_lcvgq_68) > .awsui_notifications_5gtk3_lcvgq_35 {
+  grid-column: 1 / 8;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_content-layout_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

@@ -1,0 +1,43 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/dropdown-footer/styles.scoped.css [app-client] (css) */
+.awsui_root_1afi9_18e03_9:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  list-style: outside;
+}
+
+.awsui_root_1afi9_18e03_9:not(#\9 ):not(.awsui_hidden_1afi9_18e03_40) {
+  border-block-start: var(--border-divider-list-width-q8ujlb, 1px) solid var(--color-border-dropdown-item-default-kbs4wa, #c6c6cd);
+}
+
+.awsui_root_1afi9_18e03_9:not(#\9 ):not(.awsui_hidden_1afi9_18e03_40).awsui_no-items_1afi9_18e03_43 {
+  border-block-start: var(--border-divider-list-width-q8ujlb, 1px) solid var(--color-border-dropdown-item-top-q19215, transparent);
+}
+
+/*# sourceMappingURL=03qk_components_internal_components_dropdown-footer_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

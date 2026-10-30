@@ -1,0 +1,87 @@
+/* [project]/node_modules/@cloudscape-design/components/column-layout/styles.scoped.css [app-client] (css) */
+div.awsui_column-layout_vvxn7_1unmr_9:not(#\9 ) {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+  caption-side: top;
+  cursor: auto;
+  direction: inherit;
+  empty-cells: show;
+  font-variant: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  letter-spacing: normal;
+  tab-size: 8;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  visibility: visible;
+  white-space: normal;
+  word-spacing: normal;
+  font-family: serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  word-wrap: break-word;
+  list-style: outside;
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41:not(#\9 ) {
+  margin-block: calc(var(--space-grid-gutter-vhfxd9, 20px) / -2);
+  margin-inline: calc(var(--space-grid-gutter-vhfxd9, 20px) / -2);
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-no-gutters_vvxn7_1unmr_47:not(#\9 ) {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51:not(#\9 ) {
+  margin-block: calc(-1 * var(--space-grid-gutter-vhfxd9, 20px) / 2);
+  margin-inline: calc(-1 * var(--space-grid-gutter-vhfxd9, 20px));
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51 > :not(#\9 ) {
+  border-inline-start: var(--border-divider-section-width-ljhehl, 1px) solid var(--color-border-divider-default-8vuq97, #c6c6cd);
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-breakpoint-default_vvxn7_1unmr_59 > :not(#\9 ):nth-child(n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-1_vvxn7_1unmr_62.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-1_vvxn7_1unmr_62.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(3n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-variant-text-grid_vvxn7_1unmr_51.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(4n+1) {
+  border-inline-start-width: 0;
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41:not(#\9 ):not(.awsui_grid-no-gutters_vvxn7_1unmr_47) > * {
+  padding-block: calc(var(--space-grid-gutter-vhfxd9, 20px) / 2);
+  padding-inline: calc(var(--space-grid-gutter-vhfxd9, 20px) / 2);
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41:not(#\9 ):not(.awsui_grid-no-gutters_vvxn7_1unmr_47).awsui_grid-variant-text-grid_vvxn7_1unmr_51 > * {
+  padding-block: 0;
+  padding-inline: var(--space-grid-gutter-vhfxd9, 20px);
+  margin-block: calc(var(--space-grid-gutter-vhfxd9, 20px) / 2);
+  margin-inline: 0;
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96 > :not(#\9 ) {
+  border-inline-end: var(--border-divider-section-width-ljhehl, 1px) solid var(--color-border-divider-default-8vuq97, #c6c6cd);
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-breakpoint-default_vvxn7_1unmr_59 > :not(#\9 ):nth-child(n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-1_vvxn7_1unmr_62.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-1_vvxn7_1unmr_62.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(2n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(2n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(2n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(3n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-child(2n), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-vertical-borders_vvxn7_1unmr_96.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-child(4n) {
+  border-inline-end-width: 0;
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129 > :not(#\9 ) {
+  border-block-end: var(--border-divider-section-width-ljhehl, 1px) solid var(--color-border-divider-default-8vuq97, #c6c6cd);
+}
+
+div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129 > :not(#\9 ):last-child, div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-last-child(2):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-2_vvxn7_1unmr_68.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-last-child(2):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(3n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(3n+2), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-3_vvxn7_1unmr_74.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(3):nth-child(3n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xxs_vvxn7_1unmr_62 > :not(#\9 ):nth-last-child(2):nth-child(odd), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(4n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(4n+2), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(2):nth-child(4n+3), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(3):nth-child(4n+1), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(3):nth-child(4n+2), div.awsui_column-layout_vvxn7_1unmr_9 > .awsui_grid_vvxn7_1unmr_41.awsui_grid-horizontal-borders_vvxn7_1unmr_129.awsui_grid-columns-4_vvxn7_1unmr_80.awsui_grid-breakpoint-xs_vvxn7_1unmr_65 > :not(#\9 ):nth-last-child(4):nth-child(4n+1) {
+  border-block-end-width: 0;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_column-layout_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

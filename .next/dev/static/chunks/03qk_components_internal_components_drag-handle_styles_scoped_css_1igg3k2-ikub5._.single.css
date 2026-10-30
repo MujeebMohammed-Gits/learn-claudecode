@@ -1,0 +1,107 @@
+/* [project]/node_modules/@cloudscape-design/components/internal/components/drag-handle/styles.scoped.css [app-client] (css) */
+.awsui_handle_sdha6_eyorv_9:not(#\9 ) {
+  appearance: none;
+  color: var(--color-text-interactive-default-2m347v, #424650);
+  touch-action: none;
+  background: none;
+  inline-size: fit-content;
+}
+
+.awsui_handle-size-normal_sdha6_eyorv_17:not(#\9 ) {
+  block-size: var(--line-height-body-m-18p63n, 20px);
+  padding-inline: var(--space-scaled-xxxs-sz4qc3, 2px);
+}
+
+.awsui_handle-size-small_sdha6_eyorv_21:not(#\9 ) {
+  block-size: var(--line-height-body-s-31lmk3, 16px);
+}
+
+.awsui_handle-drag-indicator_sdha6_eyorv_24:not(#\9 ):not(.awsui_handle-disabled_sdha6_eyorv_24) {
+  cursor: grab;
+}
+
+.awsui_handle-drag-indicator_sdha6_eyorv_24:not(#\9 ):not(.awsui_handle-disabled_sdha6_eyorv_24).awsui_active_sdha6_eyorv_27 {
+  cursor: grabbing;
+}
+
+.awsui_handle-resize-area_sdha6_eyorv_30:not(#\9 ) {
+  cursor: nwse-resize;
+  position: relative;
+}
+
+.awsui_handle-resize-area_sdha6_eyorv_30:not(#\9 ):after {
+  content: "";
+  block-size: 100%;
+  min-block-size: 24px;
+  inline-size: 100%;
+  min-inline-size: 24px;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+}
+
+.awsui_handle-resize-area_sdha6_eyorv_30:not(#\9 ):is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)) {
+  cursor: nesw-resize;
+}
+
+.awsui_handle-resize-horizontal_sdha6_eyorv_48:not(#\9 ) {
+  cursor: ew-resize;
+}
+
+.awsui_handle-resize-vertical_sdha6_eyorv_51:not(#\9 ) {
+  cursor: ns-resize;
+}
+
+.awsui_handle_sdha6_eyorv_9:not(#\9 ):hover {
+  color: var(--color-text-interactive-hover-n4kzym, #0f141a);
+}
+
+.awsui_handle_sdha6_eyorv_9:not(#\9 ):focus {
+  outline: none;
+  text-decoration: none;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_handle_sdha6_eyorv_9:not(#\9 ):focus:not(.awsui_hide-focus_sdha6_eyorv_61) {
+  outline-offset: calc(0px - 1px);
+  outline: 2px dotted #0000;
+  position: relative;
+}
+
+body[data-awsui-focus-visible="true"] .awsui_handle_sdha6_eyorv_9:not(#\9 ):focus:not(.awsui_hide-focus_sdha6_eyorv_61):before {
+  content: " ";
+  block-size: 100%;
+  inline-size: 100%;
+  box-shadow: 0 0 0 2px var(--color-border-item-focused-sb1fs0, #006ce0);
+  z-index: 2;
+  border-start-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-start-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-end-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  border-end-start-radius: var(--border-radius-control-default-focus-ring-hkazgq, 4px);
+  display: block;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_resize-icon_sdha6_eyorv_84:not(#\9 ) {
+  stroke: var(--color-text-interactive-default-2m347v, #424650);
+}
+
+.awsui_resize-icon_sdha6_eyorv_84:not(#\9 ):hover {
+  stroke: var(--color-text-interactive-hover-n4kzym, #0f141a);
+}
+
+.awsui_resize-icon-vertical_sdha6_eyorv_90:not(#\9 ) {
+  margin-block: auto;
+  margin-inline: auto;
+}
+
+.awsui_resize-icon-horizontal_sdha6_eyorv_94:not(#\9 ) {
+  transform: rotate(90deg);
+}
+
+.awsui_prevent-pointer_sdha6_eyorv_98:not(#\9 ) {
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=03qk_components_internal_components_drag-handle_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

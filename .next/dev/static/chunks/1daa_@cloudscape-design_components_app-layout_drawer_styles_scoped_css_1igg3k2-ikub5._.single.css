@@ -1,0 +1,116 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/drawer/styles.scoped.css [app-client] (css) */
+.awsui_toggle_1uo6m_89u0x_13:not(#\9 ) {
+  box-sizing: border-box;
+  padding-block: var(--space-xxs-burh9x, 4px);
+  padding-inline: 7px;
+}
+
+.awsui_drawer-triggers_1uo6m_89u0x_19:not(#\9 ) {
+  box-sizing: border-box;
+}
+
+.awsui_drawer_1uo6m_89u0x_19:not(#\9 ) {
+  word-wrap: break-word;
+  box-shadow: var(--shadow-panel-b0xrmq, 0px 0px 0px 1px #b6bec9);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.awsui_drawer_1uo6m_89u0x_19:not(#\9 ):not(.awsui_drawer-mobile_1uo6m_89u0x_29) {
+  z-index: 830;
+}
+
+.awsui_drawer-closed_1uo6m_89u0x_32:not(#\9 ) {
+  min-inline-size: 40px;
+}
+
+.awsui_drawer-closed_1uo6m_89u0x_32.awsui_drawer-mobile_1uo6m_89u0x_29:not(#\9 ) {
+  display: none;
+}
+
+.awsui_drawer-content_1uo6m_89u0x_39:not(#\9 ) {
+  background-color: var(--color-background-layout-panel-content-icpzfi, #fff);
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+  overflow: auto;
+}
+
+.awsui_drawer-mobile_1uo6m_89u0x_29 > .awsui_drawer-content_1uo6m_89u0x_39:not(#\9 ) {
+  z-index: 1001;
+  inset: 0;
+}
+
+.awsui_drawer-closed_1uo6m_89u0x_32 > .awsui_drawer-content_1uo6m_89u0x_39:not(#\9 ) {
+  inline-size: 40px;
+}
+
+.awsui_drawer-closed_1uo6m_89u0x_32 > .awsui_drawer-content_1uo6m_89u0x_39.awsui_drawer-content-clickable_1uo6m_89u0x_53:not(#\9 ) {
+  cursor: pointer;
+  color: var(--color-text-interactive-default-2m347v, #424650);
+}
+
+.awsui_drawer-closed_1uo6m_89u0x_32 > .awsui_drawer-content_1uo6m_89u0x_39.awsui_drawer-content-clickable_1uo6m_89u0x_53:not(#\9 ):hover {
+  background: var(--color-background-layout-panel-hover-3illt7, #ebebf0);
+}
+
+.awsui_drawer-content_1uo6m_89u0x_39 > [aria-hidden="true"]:not(#\9 ) {
+  display: none;
+}
+
+.awsui_drawer-content_1uo6m_89u0x_39 > .awsui_drawer-resize-content_1uo6m_89u0x_63:not(#\9 ) {
+  block-size: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.awsui_drawer-content_1uo6m_89u0x_39 > .awsui_drawer-content-wrapper_1uo6m_89u0x_68:not(#\9 ) {
+  flex: 1;
+}
+
+.awsui_drawer-triggers-wrapper_1uo6m_89u0x_72:not(#\9 ) {
+  text-align: center;
+  flex-direction: column;
+  align-items: stretch;
+  display: flex;
+}
+
+.awsui_drawer-trigger_1uo6m_89u0x_19:not(#\9 ) {
+  padding-block: var(--space-xxs-burh9x, 4px);
+  cursor: pointer;
+  color: var(--color-text-interactive-default-2m347v, #424650);
+  padding-inline: 7px;
+}
+
+.awsui_drawer-trigger_1uo6m_89u0x_19:not(#\9 ):not(:first-child) {
+  border-block-start: 1px solid var(--color-border-layout-ntd1rb, #c6c6cd);
+}
+
+.awsui_drawer-trigger_1uo6m_89u0x_19:not(#\9 ):hover {
+  color: var(--color-text-layout-toggle-hover-6deyl7, #006ce0);
+}
+
+.awsui_drawer-trigger-active_1uo6m_89u0x_91:not(#\9 ), .awsui_drawer-trigger-active_1uo6m_89u0x_91:not(#\9 ):hover {
+  background-color: var(--color-background-layout-toggle-selected-default-f9tjvi, #006ce0);
+  color: var(--color-text-layout-toggle-active-w96tjx, #fff);
+}
+
+.awsui_drawer-content-clickable_1uo6m_89u0x_53 > .awsui_drawer-triggers-wrapper_1uo6m_89u0x_72 > .awsui_drawer-trigger_1uo6m_89u0x_19:not(#\9 ):hover {
+  color: var(--color-text-interactive-default-2m347v, #424650);
+}
+
+.awsui_resize-handle-wrapper_1uo6m_89u0x_99:not(#\9 ) {
+  z-index: 1;
+  align-items: center;
+  block-size: 100%;
+  display: flex;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_hide_1uo6m_89u0x_109:not(#\9 ) {
+  display: none;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_app-layout_drawer_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

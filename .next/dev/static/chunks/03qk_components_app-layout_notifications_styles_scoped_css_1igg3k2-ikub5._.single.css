@@ -1,0 +1,20 @@
+/* [project]/node_modules/@cloudscape-design/components/app-layout/notifications/styles.scoped.css [app-client] (css) */
+.awsui_notifications_1hmm4_1iega_5:not(#\9 ), .awsui_notifications-sticky_1hmm4_1iega_6:not(#\9 ) {
+  z-index: 850;
+}
+
+.awsui_notifications_1hmm4_1iega_5:not(#\9 ) {
+  position: relative;
+}
+
+.awsui_notifications-sticky_1hmm4_1iega_6:not(#\9 ) {
+  --awsui-flashbar-sticky-bottom-margin-ka4djm: var(--space-xxl-l55zj3, 32px);
+  position: sticky;
+  inset-block-start: 0;
+}
+
+.awsui_no-content-paddings_1hmm4_1iega_21:not(#\9 ) {
+  --awsui-stacked-notifications-bottom-margin-ka4djm: var(--space-scaled-l-kalwlg, 20px);
+}
+
+/*# sourceMappingURL=03qk_components_app-layout_notifications_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

@@ -1,0 +1,42 @@
+/* [project]/node_modules/@cloudscape-design/components/column-layout/flexible-column-layout/styles.scoped.css [app-client] (css) */
+dl.awsui_css-grid_zqq3x_mw5iw_9:not(#\9 ) {
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9:not(#\9 ) {
+  gap: var(--space-grid-gutter-vhfxd9, 20px);
+  display: grid;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-no-gutters_zqq3x_mw5iw_20:not(#\9 ) {
+  gap: 0;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-variant-text-grid_zqq3x_mw5iw_23 > .awsui_item_zqq3x_mw5iw_23:not(#\9 ) {
+  padding-inline: var(--space-grid-gutter-vhfxd9, 20px);
+  position: relative;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-variant-text-grid_zqq3x_mw5iw_23 > .awsui_item_zqq3x_mw5iw_23:not(#\9 ):before {
+  content: "";
+  border-inline-start: var(--border-divider-section-width-ljhehl, 1px) solid var(--color-border-divider-default-8vuq97, #c6c6cd);
+  transform: translateX(calc(-.5 * var(--space-grid-gutter-vhfxd9, 20px)));
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-variant-text-grid_zqq3x_mw5iw_23 > .awsui_item_zqq3x_mw5iw_23:not(#\9 ):is(:lang(ae), :lang(ar), :lang(arc), :lang(bcc), :lang(bqi), :lang(ckb), :lang(dv), :lang(fa), :lang(glk), :lang(he), :lang(ku), :lang(mzn), :lang(nqo), :lang(pnb), :lang(ps), :lang(sd), :lang(ug), :lang(ur), :lang(yi)):before {
+  transform: translateX(calc(.5 * var(--space-grid-gutter-vhfxd9, 20px)));
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-variant-text-grid_zqq3x_mw5iw_23 > .awsui_item_zqq3x_mw5iw_23.awsui_first-column_zqq3x_mw5iw_40:not(#\9 ) {
+  padding-inline-start: 0;
+}
+
+.awsui_css-grid_zqq3x_mw5iw_9.awsui_grid-variant-text-grid_zqq3x_mw5iw_23 > .awsui_item_zqq3x_mw5iw_23.awsui_first-column_zqq3x_mw5iw_40:not(#\9 ):before {
+  display: none;
+}
+
+/*# sourceMappingURL=03qk_components_column-layout_flexible-column-layout_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

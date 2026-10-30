@@ -1,0 +1,187 @@
+/* [project]/node_modules/@cloudscape-design/components/status-indicator/styles.scoped.css [app-client] (css) */
+.awsui_icon-shake_1cbgc_19apy_13:not(#\9 ) {
+  animation: awsui_awsui-motion-shake-horizontally_1cbgc_19apy_1 var(--motion-duration-refresh-only-medium-ivrvd3, .165s);
+  display: inline-block;
+}
+
+@keyframes awsui_awsui-motion-shake-horizontally_1cbgc_19apy_1 {
+  0% {
+    animation-timing-function: linear;
+    transform: translateX(-5px);
+  }
+
+  50% {
+    animation-timing-function: var(--motion-easing-refresh-only-a-puvjff, cubic-bezier(0, 0, 0, 1));
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_icon-shake_1cbgc_19apy_13:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_icon-shake_1cbgc_19apy_13:not(#\9 ), .awsui-mode-entering .awsui_icon-shake_1cbgc_19apy_13:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_container-fade-in_1cbgc_19apy_41:not(#\9 ) {
+  animation: awsui_awsui-motion-fade-in-0_1cbgc_19apy_1 var(--motion-duration-refresh-only-medium-ivrvd3, .165s) var(--motion-easing-refresh-only-a-puvjff, cubic-bezier(0, 0, 0, 1));
+}
+
+@keyframes awsui_awsui-motion-fade-in-0_1cbgc_19apy_1 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .awsui_container-fade-in_1cbgc_19apy_41:not(#\9 ) {
+    transition: none;
+    animation: none;
+  }
+}
+
+.awsui-motion-disabled .awsui_container-fade-in_1cbgc_19apy_41:not(#\9 ), .awsui-mode-entering .awsui_container-fade-in_1cbgc_19apy_41:not(#\9 ) {
+  transition: none;
+  animation: none;
+}
+
+.awsui_root_1cbgc_19apy_63:not(#\9 ) {
+  font-size: var(--font-size-body-m-diae7s, 14px);
+  line-height: var(--line-height-body-m-18p63n, 20px);
+  color: var(--color-text-body-default-9im48h, #0f141a);
+  font-weight: var(--font-weight-normal-jditlz, 400);
+  font-family: var(--font-family-base-khplu5, "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-error_1cbgc_19apy_72:not(#\9 ) {
+  color: var(--color-text-status-error-5dgk9e, #db0000);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-warning_1cbgc_19apy_75:not(#\9 ) {
+  color: var(--color-text-status-warning-r365u3, #855900);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-success_1cbgc_19apy_78:not(#\9 ) {
+  color: var(--color-text-status-success-ib4hya, #00802f);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-info_1cbgc_19apy_81:not(#\9 ) {
+  color: var(--color-text-status-info-qrft38, #006ce0);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-stopped_1cbgc_19apy_84:not(#\9 ), .awsui_root_1cbgc_19apy_63.awsui_status-pending_1cbgc_19apy_87:not(#\9 ), .awsui_root_1cbgc_19apy_63.awsui_status-in-progress_1cbgc_19apy_90:not(#\9 ), .awsui_root_1cbgc_19apy_63.awsui_status-loading_1cbgc_19apy_93:not(#\9 ), .awsui_root_1cbgc_19apy_63.awsui_status-not-started_1cbgc_19apy_96:not(#\9 ), .awsui_root_1cbgc_19apy_63.awsui_status-log_1cbgc_19apy_99:not(#\9 ) {
+  color: var(--color-text-status-inactive-eu7bes, #656871);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-red_1cbgc_19apy_102:not(#\9 ) {
+  color: var(--color-text-status-error-5dgk9e, #db0000);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-grey_1cbgc_19apy_105:not(#\9 ) {
+  color: var(--color-text-status-inactive-eu7bes, #656871);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-blue_1cbgc_19apy_108:not(#\9 ) {
+  color: var(--color-text-status-info-qrft38, #006ce0);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-green_1cbgc_19apy_111:not(#\9 ) {
+  color: var(--color-text-status-success-ib4hya, #00802f);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-yellow_1cbgc_19apy_114:not(#\9 ) {
+  color: var(--color-text-status-warning-r365u3, #855900);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-error_1cbgc_19apy_72:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-error-64zrs5, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-warning_1cbgc_19apy_75:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-warning-ynctf6, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-success_1cbgc_19apy_78:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-success-cqigpm, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-info_1cbgc_19apy_81:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-info-8rf1wr, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_status-stopped_1cbgc_19apy_84:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41, .awsui_root_1cbgc_19apy_63.awsui_status-pending_1cbgc_19apy_87:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41, .awsui_root_1cbgc_19apy_63.awsui_status-in-progress_1cbgc_19apy_90:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41, .awsui_root_1cbgc_19apy_63.awsui_status-loading_1cbgc_19apy_93:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41, .awsui_root_1cbgc_19apy_63.awsui_status-not-started_1cbgc_19apy_96:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41, .awsui_root_1cbgc_19apy_63.awsui_status-log_1cbgc_19apy_99:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-neutral-9q2pil, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-red_1cbgc_19apy_102:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-error-64zrs5, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-grey_1cbgc_19apy_105:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-neutral-9q2pil, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-blue_1cbgc_19apy_108:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-info-8rf1wr, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-green_1cbgc_19apy_111:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-success-cqigpm, transparent);
+}
+
+.awsui_root_1cbgc_19apy_63.awsui_color-override-yellow_1cbgc_19apy_114:not(#\9 ):not(.awsui_embedded_1cbgc_19apy_117) > .awsui_container_1cbgc_19apy_41 {
+  background: var(--color-background-status-indicator-warning-ynctf6, transparent);
+}
+
+.awsui_container_1cbgc_19apy_41:not(#\9 ) {
+  padding-inline: var(--space-status-indicator-padding-horizontal-93amq9, 0px);
+  border-start-start-radius: var(--border-radius-status-indicator-w444fr, 4px);
+  border-start-end-radius: var(--border-radius-status-indicator-w444fr, 4px);
+  border-end-end-radius: var(--border-radius-status-indicator-w444fr, 4px);
+  border-end-start-radius: var(--border-radius-status-indicator-w444fr, 4px);
+}
+
+.awsui_container_1cbgc_19apy_41.awsui_display-inline_1cbgc_19apy_170:not(#\9 ) {
+  word-break: break-word;
+  min-inline-size: 0;
+  display: inline;
+}
+
+.awsui_container_1cbgc_19apy_41.awsui_display-inline_1cbgc_19apy_170 > .awsui_icon_1cbgc_19apy_13:not(#\9 ) {
+  white-space: nowrap;
+}
+
+.awsui_container_1cbgc_19apy_41.awsui_display-inline-block_1cbgc_19apy_178:not(#\9 ) {
+  word-wrap: break-word;
+  word-break: break-all;
+  display: inline-block;
+}
+
+.awsui_container_1cbgc_19apy_41.awsui_display-inline-block_1cbgc_19apy_178 > .awsui_icon_1cbgc_19apy_13:not(#\9 ) {
+  padding-inline-end: var(--space-xxs-burh9x, 4px);
+}
+
+.awsui_overflow-ellipsis_1cbgc_19apy_187:not(#\9 ) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: text-bottom;
+  max-inline-size: 100%;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=1daa_%40cloudscape-design_components_status-indicator_styles_scoped_css_1igg3k2-ikub5._.single.css.map*/

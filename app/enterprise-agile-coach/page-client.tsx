@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Cloudscape components
 import AppLayout from "@cloudscape-design/components/app-layout";

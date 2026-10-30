@@ -588,6 +588,31 @@ function getPracticalExamples(
 }
 
 /**
+ * Get coaching overview based on primary challenge
+ * Returns a brief overview tailored to the main challenge type
+ */
+function getCoachingOverview(
+  primaryChallenge: string
+): string {
+  switch (primaryChallenge) {
+    case "velocity":
+      return "Focus on improving flow and delivery cadence. Identify and remove bottlenecks to increase sprint velocity and predictability.";
+    case "quality":
+      return "Emphasize quality built-in from the start. Implement robust Definition of Done with automated testing and code review standards.";
+    case "collaboration":
+      return "Prioritize cross-functional communication and teamwork. Break down silos with shared goals and regular cross-team syncs.";
+    case "communication":
+      return "Establish clear communication channels and update cadences. Use visual management and regular retrospectives to surface gaps.";
+    case "burnout":
+      return "Focus on sustainable pace and well-being. Implement workload redistribution, regular breaks, and capacity planning.";
+    case "uncertainty":
+      return "Use iterative planning with minimum viable outcomes. Create option-based roadmaps for flexible direction and risk mitigation.";
+    default:
+      return "Focus on team health and continuous improvement. Start with a retrospective to surface current challenges and opportunities.";
+  }
+}
+
+/**
  * Build a relevant data summary from RAG pipeline results
  * Includes metrics, topics, and insights for coaching response
  */

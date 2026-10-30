@@ -171,7 +171,9 @@ export async function POST(request: NextRequest) {
                 structuredResponse.practicalExamples,
                 structuredResponse.overview,
                 structuredResponse.query,
-                structuredResponse.teamContext
+                structuredResponse.teamContext,
+                structuredResponse.ragInsights,
+                structuredResponse.knowledgeGaps
               ),
               action: "interactive-coaching",
               timestamp: new Date().toISOString()
@@ -299,6 +301,7 @@ export async function POST(request: NextRequest) {
         }
       }
 
+      // Add to the POST handler switch case
       default:
         return new Response(
           JSON.stringify({ error: "Unknown action" }),
@@ -318,66 +321,6 @@ export async function POST(request: NextRequest) {
       }
     );
   }
-}
-
-/**
- * Structure the coaching response into organized sections
- * Parses the raw coaching text and extracts key recommendations
- */
-function structureCoachingResponse(
-  rawText: string,
-  query: string,
-  teamContext: { teamSize: number, teamMaturityLevel: string, primaryChallenge: string }
-) {
-  // Default structured response with practical examples
-  const defaultResponse = {
-    organizationTypeRecommendations: getOrganizationTypeRecommendations(teamContext.teamSize),
-    teamMaturityRecommendations: getTeamMaturityRecommendations(teamContext.teamMaturityLevel),
-    primaryChallengeRecommendations: getPrimaryChallengeRecommendations(teamContext.primaryChallenge),
-    practicalExamples: getPracticalExamples(teamContext.primaryChallenge, teamContext.teamSize),
-    overview: getCoachingOverview(teamContext.primaryChallenge),
-    query: query,
-    teamContext: {
-      teamSize: teamContext.teamSize,
-      teamMaturityLevel: teamContext.teamMaturityLevel,
-      primaryChallenge: teamContext.primaryChallenge
-    }
-  };
-
-  // If we have raw coaching text, try to extract key sections
-  if (rawText && rawText.length > 10) {
-    const orgTypeMatch = rawText.match(/\*\*Organization Type\*\*\s+(.+?)(?=\*\*Team Maturity\*\*|$)/);
-    const maturityMatch = rawText.match(/\*\*Team Maturity\*\*\s+(.+?)(?=\*\*Primary Challenge\*\*|$)/);
-    const challengeMatch = rawText.match(/\*\*Primary Challenge\*\*\s+(.+?)(?=\.\s*Coaching|$)/);
-
-    if (orgTypeMatch || maturityMatch || challengeMatch) {
-      const result = { ...defaultResponse };
-
-      if (orgTypeMatch) {
-        result.organizationTypeRecommendations = orgTypeMatch[1].trim();
-      }
-      if (maturityMatch) {
-        result.teamMaturityRecommendations = maturityMatch[1].trim();
-      }
-      if (challengeMatch) {
-        result.primaryChallengeRecommendations = challengeMatch[1].trim();
-      }
-
-      // Extract overview (text after the three main sections)
-      const overviewMatch = rawText.match(/Coaching recommendations generated[^.]*(.*)$/);
-      if (overviewMatch) {
-        result.overview = overviewMatch[1].trim();
-      }
-
-      return result;
-    }
-  }
-
-  // Return default structured response with practical examples
-  return {
-    ...defaultResponse,
-    rawCoachingText: rawText || undefined
-  };
 }
 
 /**
@@ -429,10 +372,10 @@ function getPracticalExamples(challenge: string, teamSize: number) {
   const examples: Record<string, string> = {
     velocity: teamSize <= 10
       ? "Example: A 5-member team reduces sprint planning from 4 hours to 90 minutes by using planning poker and discussing only the top 5 user stories."
-      : "Example: A 15-member team implements capacity planning and sprint buffering to protect focus time, reducing context switching by 30%.",
+      : "Example: A 15-member team implements capacity planning and sprint buffering to protect focus time, reducing context switching by 30%",
     quality: teamSize <= 10
       ? "Example: A 6-member team adds unit tests and achieves 80% test coverage within 2 sprints, reducing post-release bugs by 60%."
-      : "Example: A 20-member team implements a Definition of Done with automated testing and code review gates, reducing critical bugs by 70%.",
+      : "Example: A 20-member team implements a Definition of Done with automated testing and code review gates, reducing critical bugs by 70%",
     collaboration: teamSize <= 10
       ? "Example: A 4-member team introduces a 15-minute daily stand-up with strict time-boxing and a 'parking lot' for off-topic discussions."
       : "Example: A 12-member team implements cross-functional pairs and a twice-weekly community of practice to share knowledge across disciplines.",
@@ -460,9 +403,112 @@ function getCoachingOverview(challenge: string) {
 }
 
 /**
+ * Structure the coaching response into organized sections
+ * Parses the raw coaching text and extracts key recommendations
+ * Enhanced: now incorporates query-specific content for dynamic responses
+ */
+function structureCoachingResponse(
+  rawText: string,
+  query: string,
+  teamContext: { teamSize: number, teamMaturityLevel: string, primaryChallenge: string }
+) {
+  // Build query-specific enhancements
+  const queryLower = query.toLowerCase();
+  const queryKeywords = queryLower.split(/\s+/).filter(k => k.length > 3);
+
+  // Enhance organization type recommendations based on query context
+  let orgTypeRecs = "Focus on rapid experimentation, flexible processes, and wearing multiple hats. Encourage daily stand-ups and direct communication. Empower the team to make quick decisions without excessive bureaucracy.";
+  if (queryKeywords.includes('velocity') || queryKeywords.includes('speed')) {
+    orgTypeRecs = "Focus on rapid flow and delivery cadence. " + orgTypeRecs;
+  }
+  if (queryKeywords.includes('quality') || queryKeywords.includes('bug')) {
+    orgTypeRecs = "Ensure quality built-in from the start. " + orgTypeRecs;
+  }
+  if (queryKeywords.includes('communication') || queryKeywords.includes('team')) {
+    orgTypeRecs = "Prioritize clear communication channels. " + orgTypeRecs;
+  }
+
+  // Enhance team maturity recommendations based on query context
+  let maturityRecs = "Focus on building trust, establishing norms, and defining clear ways of working. Create psychological safety and establish regular retrospectives to surface and address issues early.";
+  if (queryKeywords.includes('burnout') || queryKeywords.includes('stress')) {
+    maturityRecs = "Focus on sustainable pace and well-being. " + maturityRecs;
+  }
+  if (queryKeywords.includes('learning') || queryKeywords.includes('growth')) {
+    maturityRecs = "Emphasize continuous learning and improvement. " + maturityRecs;
+  }
+
+  // Enhance primary challenge recommendations based on query context
+  let challengeRecs = "Improve cross-functional communication, daily stand-up quality, shared ownership, pair programming rotations. Establish communication norms and regular cross-team syncs.";
+  if (queryKeywords.includes('quality') || queryKeywords.includes('bug')) {
+    challengeRecs = "Implement robust Definition of Done with automated testing. " + challengeRecs;
+  }
+  if (queryKeywords.includes('communication') || queryKeywords.includes('silo')) {
+    challengeRecs = "Break down silos with cross-functional collaboration. " + challengeRecs;
+  }
+  if (queryKeywords.includes('timeline') || queryKeywords.includes('deadline')) {
+    challengeRecs = "Protect sprint focus and manage scope effectively. " + challengeRecs;
+  }
+
+  // Default structured response with practical examples
+  const defaultResponse = {
+    organizationTypeRecommendations: orgTypeRecs,
+    teamMaturityRecommendations: maturityRecs,
+    primaryChallengeRecommendations: challengeRecs,
+    practicalExamples: getPracticalExamples(teamContext.primaryChallenge, teamContext.teamSize),
+    overview: getCoachingOverview(teamContext.primaryChallenge),
+    query: query,
+    teamContext: {
+      teamSize: teamContext.teamSize,
+      teamMaturityLevel: teamContext.teamMaturityLevel,
+      primaryChallenge: teamContext.primaryChallenge
+    }
+  };
+
+  // If we have raw coaching text, try to extract key sections
+  if (rawText && rawText.length > 10) {
+    const orgTypeMatch = rawText.match(/\*\*Organization Type\*\*\s+(.+?)(?=\*\*Team Maturity\*\*|$)/);
+    const maturityMatch = rawText.match(/\*\*Team Maturity\*\*\s+(.+?)(?=\*\*Primary Challenge\*\*|$)/);
+    const challengeMatch = rawText.match(/\*\*Primary Challenge\*\*\s+(.+?)(?=\.\s*Coaching|$)/);
+
+    if (orgTypeMatch || maturityMatch || challengeMatch) {
+      const result = { ...defaultResponse };
+
+      if (orgTypeMatch) {
+        result.organizationTypeRecommendations = orgTypeMatch[1].trim();
+      }
+      if (maturityMatch) {
+        result.teamMaturityRecommendations = maturityMatch[1].trim();
+      }
+      if (challengeMatch) {
+        result.primaryChallengeRecommendations = challengeMatch[1].trim();
+      }
+
+      // Extract overview (text after the three main sections)
+      const overviewMatch = rawText.match(/Coaching recommendations generated[^.]*(.*)$/);
+      if (overviewMatch) {
+        result.overview = overviewMatch[1].trim();
+      }
+
+      // Apply query enhancements to the extracted content
+      result.organizationTypeRecommendations = orgTypeRecs;
+      result.teamMaturityRecommendations = maturityRecs;
+      result.primaryChallengeRecommendations = challengeRecs;
+
+      return result;
+    }
+  }
+
+  // Return default structured response with query enhancements and practical examples
+  return {
+    ...defaultResponse,
+    rawCoachingText: rawText || undefined
+  };
+}
+
+/**
  * Format coaching response into a nicely-formatted plain text string
  * for display in the Agent Response Flashbar component
- * Enhancements: vertical spacing, sub-points, team size variations, metrics, custom separators
+ * Enhancements: vertical spacing, sub-points, team size variations, metrics, custom separators, RAG insights
  */
 function formatCoachingResponse(
   orgTypeRecommendations: string,
@@ -471,7 +517,9 @@ function formatCoachingResponse(
   practicalExamples: string,
   overallOverview: string,
   query: string,
-  teamContext: { teamSize: number, teamMaturityLevel: string, primaryChallenge: string }
+  teamContext: { teamSize: number, teamMaturityLevel: string, primaryChallenge: string },
+  ragInsights?: { deepRetrieved: number, topTopics: string[], relevance: number },
+  knowledgeGaps?: Array<{ gap: string, severity: "high" | "medium" | "low", recommendation: string }>
 ) {
   const sizeLabel = teamContext.teamSize <= 10 ? "small" : teamContext.teamSize <= 25 ? "medium" : "large";
   const maturityLabel = teamContext.teamMaturityLevel || "performing";
@@ -491,16 +539,29 @@ function formatCoachingResponse(
       ? `• Success rate tracks: 75%+ satisfaction, 40%+ reduction in blockers`
       : `• Success rate tracks: 70%+ satisfaction, 30%+ reduction in blockers`;
 
-  return `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // RAG insights section (if available)
+  let ragSection = '';
+  if (ragInsights && ragInsights.deepRetrieved > 0) {
+    const topTopics = ragInsights.topTopics.slice(0, 3).join(', ');
+    ragSection = `\n🔍 RAG Insights: Retrieved ${ragInsights.deepRetrieved} relevant knowledge sources. Top topics: ${topTopics}. Relevance: ${(ragInsights.relevance * 100).toFixed(0)}%`;
+  }
+
+  // Knowledge gaps section (if available)
+  let gapsSection = '';
+  if (knowledgeGaps && knowledgeGaps.length > 0) {
+    gapsSection = `\n🔧 Knowledge Gaps:${knowledgeGaps.map((g, i) => `\n${i + 1}. [${g.severity}] ${g.gap}: ${g.recommendation}`).join('')}`;
+  }
+
+  return `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🤖 Agile Coaching Recommendations
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **📋 Organization Type** (${sizeLabel} team)
 ${orgTypeRecommendations}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **👥 Team Maturity** (${maturityLabel})
 ${teamMaturityRecommendations}
@@ -510,7 +571,7 @@ ${teamMaturityRecommendations}
 • Enable self-organization and high-value increment delivery
 • Mentor other teams and share best practices
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 **🎯 Primary Challenge** (${challengeLabel})
 ${primaryChallengeRecommendations}
@@ -520,7 +581,7 @@ ${primaryChallengeRecommendations}
 • Enhance daily stand-up effectiveness
 • Establish shared ownership and pair programming rotations
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ${practicalExamples ? `\n${practicalExamples}` : ''}
 
@@ -530,7 +591,11 @@ ${sizeSpecificText ? `\n${sizeSpecificText}` : ''}
 
 ${metricText ? `\n${metricText}` : ''}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${ragSection || ''}
+
+${gapsSection || ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💡 Overall Overview
 ${overallOverview || 'Agile coaching recommendations generated for your team\'s specific context and challenges.'}
